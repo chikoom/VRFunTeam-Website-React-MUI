@@ -66,7 +66,15 @@ export function useAllPagesContext() {
 }
 
 const getCurrentPageIndex = pagePath => {
-  return Pages.findIndex(page => page.path === pagePath)
+  return Pages.findIndex(page => {
+    if (page.path === pagePath) return true
+    if (page.children) {
+      for (let child of page.children) {
+        if (child.path === pagePath) return true
+      }
+    }
+    return false
+  })
 }
 
 export const PagesProvider = ({ children }) => {

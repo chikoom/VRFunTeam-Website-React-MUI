@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ElevationScroll } from './helpers/ui-helpers'
 import { DarkModeButton } from './DarkModeButton'
@@ -10,6 +10,8 @@ import {
   Tab,
   Button,
   makeStyles,
+  Menu,
+  MenuItem,
 } from '@material-ui/core/'
 import logo from '../../assets/funteam-logo-bright.svg'
 import {
@@ -54,12 +56,24 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Header = props => {
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+
   const classes = useStyles()
   const pages = useAllPagesContext()
   const currentPageIndex = usePageContext()
   const updatePageContext = useUpdatePageContext()
+
   const handleTabChange = (e, value) => {
     updatePageContext(value)
+  }
+  const handleMenuClick = event => {
+    setAnchorEl(event.currentTarget)
+    setMenuOpen(true)
+  }
+  const handleMenuClose = event => {
+    setAnchorEl(null)
+    setMenuOpen(false)
   }
   return (
     <>
@@ -90,16 +104,55 @@ const Header = props => {
               onChange={handleTabChange}
               className={classes.tabContainer}
             >
-              {pages.map(page => (
-                <Tab
-                  key={page.path}
-                  label={page.name}
-                  className={classes.tab}
-                  component={Link}
-                  to={page.path}
-                />
-              ))}
+              {pages.map(page => {
+                const hasChildren = page.children.length
+                return (
+                  <Tab
+                    aria-owns={
+                      hasChildren && anchorEl ? `menu-${page.name}` : undefined
+                    }
+                    aria-haspopup={hasChildren && anchorEl ? true : undefined}
+                    onMouseOver={
+                      hasChildren ? event => handleMenuClick(event) : undefined
+                    }
+                    label={page.name}
+                    className={classes.tab}
+                    component={Link}
+                    to={page.path}
+                    key={page.path}
+                  />
+                )
+              })}
             </Tabs>
+            {pages.map((page, index) => {
+              const hasChildren = page.children.length
+              return hasChildren ? (
+                <Menu
+                  id={`menu-${page.name}`}
+                  key={page.path}
+                  anchorEl={anchorEl}
+                  open={menuOpen}
+                  onClose={handleMenuClose}
+                  MenuListProps={{ onMouseLeave: handleMenuClose }}
+                >
+                  {page.children.map(childPage => (
+                    <MenuItem
+                      key={childPage.path}
+                      onClick={() => {
+                        handleMenuClose()
+                        handleTabChange('_', index)
+                      }}
+                      component={Link}
+                      to={childPage.path}
+                    >
+                      {childPage.name}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              ) : (
+                ''
+              )
+            })}
             <DarkModeButton />
             <Button
               variant='contained'
