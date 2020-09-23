@@ -1,24 +1,34 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
-const digiPink = '#5bb7fb'
-const digiBlue = '#2e86d1'
-//c8375f
+const vrPink = '#d84987'
+const vrBlue = '#306ca0'
+
 let dLightTheme = createMuiTheme({
   palette: {
     common: {
-      digiPink: digiPink,
-      digiBlue: digiBlue,
+      digiPink: vrPink,
+      digiBlue: vrBlue,
     },
     primary: {
-      main: digiBlue,
+      main: vrBlue,
     },
     secondary: {
-      main: digiPink,
+      main: vrPink,
     },
   },
   typography: {
     h5: {
       fontWeight: 900,
+    },
+    tab: {
+      fontFamily: 'Raleway',
+      fontWeight: '700',
+      fontSize: '1rem',
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none',
     },
   },
 })
