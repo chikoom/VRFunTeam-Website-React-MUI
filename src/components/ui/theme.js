@@ -39,6 +39,20 @@ export const lightTheme = dLightTheme
 let dDarkTheme = createMuiTheme({
   palette: {
     type: 'dark',
+    common: {
+      digiPink: vrPink,
+      digiBlue: vrBlue,
+    },
+    primary: {
+      main: vrPink,
+    },
+    secondary: {
+      main: vrBlue,
+    },
+    background: {
+      paper: '#424242',
+      default: '#303030',
+    },
   },
   typography: {
     h5: {

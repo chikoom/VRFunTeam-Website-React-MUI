@@ -9,7 +9,6 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
-import { useUpdateTheme } from '../../contexts/ThemeContext'
 import { DarkModeButton } from './DarkModeButton'
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '3em',
   },
   logo: {
-    height: '5em',
+    height: '7em',
     paddingTop: '1em',
     paddingBottom: '1em',
   },
@@ -63,7 +62,6 @@ const Header = props => {
     if (window.location.pathname === '/contact' && tabValue !== 4)
       setTabValue(4)
   }, [tabValue])
-  const darkTheme = useUpdateTheme()
   return (
     <>
       <ElevationScroll>

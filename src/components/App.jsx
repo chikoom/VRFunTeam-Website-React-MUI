@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from './ui/Header'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { lightTheme, darkTheme } from './ui/theme'
-import { ThemeProvider } from '@material-ui/core/styles'
 import { LangProvider } from '../contexts/LangContext'
 import { ThemeContextProvider } from '../contexts/ThemeContext'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 function App() {
   return (
     <LangProvider>
       <ThemeContextProvider>
         <BrowserRouter>
+          <CssBaseline />
           <Header />
           <Switch>
             <Route exact path='/' render={() => <div>home</div>} />

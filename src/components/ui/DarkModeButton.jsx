@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+
 import IconButton from '@material-ui/core/IconButton'
 import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined'
 import { useUpdateTheme } from '../../contexts/ThemeContext'
