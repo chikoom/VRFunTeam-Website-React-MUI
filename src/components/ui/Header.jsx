@@ -10,8 +10,12 @@ import {
   Tab,
   Button,
   makeStyles,
-  Menu,
   MenuItem,
+  MenuList,
+  ClickAwayListener,
+  Grow,
+  Paper,
+  Popper,
 } from '@material-ui/core/'
 import logo from '../../assets/funteam-logo-bright.svg'
 import {
@@ -19,6 +23,7 @@ import {
   usePageContext,
   useUpdatePageContext,
 } from '../../contexts/PagesContext'
+import zIndex from '@material-ui/core/styles/zIndex'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -53,11 +58,25 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: 'transparent',
     },
   },
+  menu: {
+    backgroundColor: theme.palette.primary.main,
+    color: 'white',
+    borderRadius: '0px',
+    zIndex: 1302,
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
+    },
+  },
 }))
 
 const Header = props => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [selectedSubIndex, setSelectedSubIndex] = useState(0)
 
   const classes = useStyles()
   const pages = useAllPagesContext()
@@ -74,6 +93,17 @@ const Header = props => {
   const handleMenuClose = event => {
     setAnchorEl(null)
     setMenuOpen(false)
+  }
+  const handleListKeyDown = event => {
+    if (event.key === 'Tab') {
+      event.preventDefault()
+      setMenuOpen(false)
+    }
+  }
+  const handleSubMenuClick = (event, index) => {
+    setAnchorEl(null)
+    setMenuOpen(false)
+    setSelectedSubIndex(index)
   }
   return (
     <>
@@ -127,28 +157,57 @@ const Header = props => {
             {pages.map((page, index) => {
               const hasChildren = page.children.length
               return hasChildren ? (
-                <Menu
-                  id={`menu-${page.name}`}
-                  key={page.path}
-                  anchorEl={anchorEl}
+                <Popper
                   open={menuOpen}
-                  onClose={handleMenuClose}
-                  MenuListProps={{ onMouseLeave: handleMenuClose }}
+                  anchorEl={anchorEl}
+                  role={undefined}
+                  transition
+                  disablePortal
                 >
-                  {page.children.map(childPage => (
-                    <MenuItem
-                      key={childPage.path}
-                      onClick={() => {
-                        handleMenuClose()
-                        handleTabChange('_', index)
+                  {({ TransitionProps, placement }) => (
+                    <Grow
+                      {...TransitionProps}
+                      style={{
+                        transformOrigin:
+                          placement === 'bottom'
+                            ? 'center top'
+                            : 'center bottom',
                       }}
-                      component={Link}
-                      to={childPage.path}
                     >
-                      {childPage.name}
-                    </MenuItem>
-                  ))}
-                </Menu>
+                      <Paper classes={{ root: classes.menu }} elevation={0}>
+                        <ClickAwayListener onClickAway={handleMenuClose}>
+                          <MenuList
+                            disablePadding
+                            onMouseLeave={handleMenuClose}
+                            autoFocusItem={false}
+                            id={`menu-${page.name}`}
+                            onKeyDown={handleListKeyDown}
+                          >
+                            {page.children.map((childPage, childIndex) => (
+                              <MenuItem
+                                key={childPage.path}
+                                onClick={event => {
+                                  handleMenuClose()
+                                  handleTabChange(event, index)
+                                  handleSubMenuClick(event, childIndex)
+                                }}
+                                component={Link}
+                                to={childPage.path}
+                                classes={{ root: classes.menuItem }}
+                                selected={
+                                  childIndex === selectedSubIndex &&
+                                  index === currentPageIndex
+                                }
+                              >
+                                {childPage.name}
+                              </MenuItem>
+                            ))}
+                          </MenuList>
+                        </ClickAwayListener>
+                      </Paper>
+                    </Grow>
+                  )}
+                </Popper>
               ) : (
                 ''
               )
