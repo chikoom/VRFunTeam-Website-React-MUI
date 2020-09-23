@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -10,6 +10,11 @@ import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { DarkModeButton } from './DarkModeButton'
+import {
+  useAllPagesContext,
+  usePageContext,
+  useUpdatePageContext,
+} from '../../contexts/PagesContext'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -47,28 +52,20 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Header = props => {
-  const [tabValue, setTabValue] = useState(0)
-  const handleTabChange = (e, value) => {
-    setTabValue(value)
-  }
   const classes = useStyles()
-  useEffect(() => {
-    if (window.location.pathname === '/' && tabValue !== 0) setTabValue(0)
-    if (window.location.pathname === '/services' && tabValue !== 1)
-      setTabValue(1)
-    if (window.location.pathname === '/revolution' && tabValue !== 2)
-      setTabValue(2)
-    if (window.location.pathname === '/about' && tabValue !== 3) setTabValue(3)
-    if (window.location.pathname === '/contact' && tabValue !== 4)
-      setTabValue(4)
-  }, [tabValue])
+  const pages = useAllPagesContext()
+  const currentPageIndex = usePageContext()
+  const updatePageContext = useUpdatePageContext()
+  const handleTabChange = (e, value) => {
+    updatePageContext(value)
+  }
   return (
     <>
       <ElevationScroll>
         <AppBar position='fixed'>
           <Toolbar>
             <Button
-              onClick={() => setTabValue(0)}
+              onClick={() => handleTabChange('_', 0)}
               className={classes.logoButton}
               component={Link}
               to='/'
@@ -85,41 +82,21 @@ const Header = props => {
                 <Typography variant='subtitle1'>Better Than Reality</Typography>
               </div>
             </div>
+
             <Tabs
-              value={tabValue}
+              value={currentPageIndex}
               onChange={handleTabChange}
               className={classes.tabContainer}
             >
-              <Tab
-                label='Home'
-                className={classes.tab}
-                component={Link}
-                to='/'
-              />
-              <Tab
-                label='Services'
-                className={classes.tab}
-                component={Link}
-                to='/services'
-              />
-              <Tab
-                label='Revolution'
-                className={classes.tab}
-                component={Link}
-                to='/revolution'
-              />
-              <Tab
-                label='About'
-                className={classes.tab}
-                component={Link}
-                to='/about'
-              />
-              <Tab
-                label='Contact'
-                className={classes.tab}
-                component={Link}
-                to='/contact'
-              />
+              {pages.map(page => (
+                <Tab
+                  key={page.path}
+                  label={page.name}
+                  className={classes.tab}
+                  component={Link}
+                  to={page.path}
+                />
+              ))}
             </Tabs>
             <DarkModeButton />
             <Button

@@ -4,8 +4,23 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { LangProvider } from '../contexts/LangContext'
 import { ThemeContextProvider } from '../contexts/ThemeContext'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { useAllPagesContext } from '../contexts/PagesContext'
+
+const deconstructPages = pagesArray => {
+  const returnedPages = []
+  pagesArray.forEach(page => {
+    returnedPages.push(page)
+    let childrenCount = page.children.length
+    while (childrenCount) {
+      returnedPages.push(page.children[childrenCount - 1])
+      --childrenCount
+    }
+  })
+  return returnedPages
+}
 
 function App() {
+  const pages = deconstructPages(useAllPagesContext())
   return (
     <LangProvider>
       <ThemeContextProvider>
@@ -13,31 +28,14 @@ function App() {
           <CssBaseline />
           <Header />
           <Switch>
-            <Route exact path='/' render={() => <div>home</div>} />
-            <Route exact path='/services' render={() => <div>services</div>} />
-            <Route
-              exact
-              path='/services/private'
-              render={() => <div>private</div>}
-            />
-            <Route
-              exact
-              path='/services/company'
-              render={() => <div>company</div>}
-            />
-            <Route
-              exact
-              path='/services/events'
-              render={() => <div>events</div>}
-            />
-            <Route
-              exact
-              path='/revolution'
-              render={() => <div>revolution</div>}
-            />
-            <Route exact path='/about' render={() => <div>about</div>} />
-            <Route exact path='/contact' render={() => <div>contact</div>} />
-            <Route exact path='/estimate' render={() => <div>estimate</div>} />
+            {pages.map(page => (
+              <Route
+                key={page.path}
+                exact
+                path={page.path}
+                render={() => <div>{page.name}</div>}
+              />
+            ))}
           </Switch>
         </BrowserRouter>
       </ThemeContextProvider>
