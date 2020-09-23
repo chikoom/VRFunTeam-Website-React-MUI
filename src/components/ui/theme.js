@@ -40,6 +40,21 @@ let dDarkTheme = createMuiTheme({
   palette: {
     type: 'dark',
   },
+  typography: {
+    h5: {
+      fontWeight: 900,
+    },
+    tab: {
+      fontFamily: 'Raleway',
+      fontWeight: '700',
+      fontSize: '1rem',
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none',
+    },
+  },
 })
 
 dDarkTheme = responsiveFontSizes(dDarkTheme)

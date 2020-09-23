@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -9,6 +9,8 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import { useUpdateTheme } from '../../contexts/ThemeContext'
+import { DarkModeButton } from './DarkModeButton'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -37,6 +39,12 @@ const useStyles = makeStyles(theme => ({
     marginLeft: '50px',
     color: 'white',
   },
+  logoButton: {
+    padding: '0',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
 }))
 
 const Header = props => {
@@ -45,12 +53,32 @@ const Header = props => {
     setTabValue(value)
   }
   const classes = useStyles()
+  useEffect(() => {
+    if (window.location.pathname === '/' && tabValue !== 0) setTabValue(0)
+    if (window.location.pathname === '/services' && tabValue !== 1)
+      setTabValue(1)
+    if (window.location.pathname === '/revolution' && tabValue !== 2)
+      setTabValue(2)
+    if (window.location.pathname === '/about' && tabValue !== 3) setTabValue(3)
+    if (window.location.pathname === '/contact' && tabValue !== 4)
+      setTabValue(4)
+  }, [tabValue])
+  const darkTheme = useUpdateTheme()
   return (
     <>
       <ElevationScroll>
         <AppBar position='fixed'>
           <Toolbar>
-            <img src={logo} alt='funteam logo' className={classes.logo} />
+            <Button
+              onClick={() => setTabValue(0)}
+              className={classes.logoButton}
+              component={Link}
+              to='/'
+              disableRipple
+            >
+              <img src={logo} alt='funteam logo' className={classes.logo} />
+            </Button>
+
             <div className={classes.headerText}>
               <div>
                 <Typography variant='h5'>VRFunTeam</Typography>
@@ -95,6 +123,7 @@ const Header = props => {
                 to='/contact'
               />
             </Tabs>
+            <DarkModeButton />
             <Button
               variant='contained'
               color='secondary'
