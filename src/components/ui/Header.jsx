@@ -1,15 +1,17 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core'
-import { ElevationScroll } from './helpers/ui-helpers'
-import logo from '../../assets/funteam-logo-bright.svg'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
+import { ElevationScroll } from './helpers/ui-helpers'
 import { DarkModeButton } from './DarkModeButton'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Tabs,
+  Tab,
+  Button,
+  makeStyles,
+} from '@material-ui/core/'
+import logo from '../../assets/funteam-logo-bright.svg'
 import {
   useAllPagesContext,
   usePageContext,
