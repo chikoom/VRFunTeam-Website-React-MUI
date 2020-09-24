@@ -70,13 +70,15 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       opacity: 1,
     },
+    '&.Mui-selected': {
+      opacity: 1,
+    },
   },
 }))
 
 const Header = props => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [selectedSubIndex, setSelectedSubIndex] = useState(0)
 
   const classes = useStyles()
   const pages = useAllPagesContext()
@@ -84,7 +86,7 @@ const Header = props => {
   const updatePageContext = useUpdatePageContext()
 
   const handleTabChange = (e, value) => {
-    updatePageContext(value)
+    updatePageContext([value, null])
   }
   const handleMenuClick = event => {
     setAnchorEl(event.currentTarget)
@@ -100,10 +102,10 @@ const Header = props => {
       setMenuOpen(false)
     }
   }
-  const handleSubMenuClick = (event, index) => {
+  const handleSubMenuClick = (event, parentIndex, index) => {
     setAnchorEl(null)
     setMenuOpen(false)
-    setSelectedSubIndex(index)
+    updatePageContext([parentIndex, index])
   }
   return (
     <>
@@ -130,7 +132,7 @@ const Header = props => {
             </div>
 
             <Tabs
-              value={currentPageIndex}
+              value={currentPageIndex[0]}
               onChange={handleTabChange}
               className={classes.tabContainer}
             >
@@ -156,13 +158,14 @@ const Header = props => {
             </Tabs>
             {pages.map((page, index) => {
               const hasChildren = page.children.length
-              return hasChildren ? (
+              return hasChildren && anchorEl ? (
                 <Popper
                   open={menuOpen}
                   anchorEl={anchorEl}
                   role={undefined}
                   transition
                   disablePortal
+                  key={page.path}
                 >
                   {({ TransitionProps, placement }) => (
                     <Grow
@@ -189,14 +192,14 @@ const Header = props => {
                                 onClick={event => {
                                   handleMenuClose()
                                   handleTabChange(event, index)
-                                  handleSubMenuClick(event, childIndex)
+                                  handleSubMenuClick(event, index, childIndex)
                                 }}
                                 component={Link}
                                 to={childPage.path}
                                 classes={{ root: classes.menuItem }}
                                 selected={
-                                  childIndex === selectedSubIndex &&
-                                  index === currentPageIndex
+                                  childIndex === currentPageIndex[1] &&
+                                  index === currentPageIndex[0]
                                 }
                               >
                                 {childPage.name}

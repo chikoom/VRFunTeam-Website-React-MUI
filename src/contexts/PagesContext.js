@@ -65,28 +65,35 @@ export function useAllPagesContext() {
   return useContext(AllPagesContext)
 }
 
-const getCurrentPageIndex = pagePath => {
-  return Pages.findIndex(page => {
-    if (page.path === pagePath) return true
+const getCurrentPageIndecies = pagePath => {
+  console.log(pagePath)
+  const indecies = [null, null]
+  Pages.forEach((page, index) => {
+    if (page.path === pagePath) indecies[0] = index
     if (page.children) {
-      for (let child of page.children) {
-        if (child.path === pagePath) return true
-      }
+      page.children.forEach((childPage, childIndex) => {
+        if (childPage.path === pagePath) {
+          indecies[0] = index
+          indecies[1] = childIndex
+        }
+      })
     }
-    return false
   })
+  return indecies
 }
 
 export const PagesProvider = ({ children }) => {
-  const [currentPage, setCurrentPage] = useState(
-    getCurrentPageIndex(window.location.pathname)
+  const [currentPageIndecies, setCurrentPageIndecies] = useState(
+    getCurrentPageIndecies(window.location.pathname)
   )
+
   const updateCurrentPage = value => {
-    setCurrentPage(value)
+    console.log(value)
+    setCurrentPageIndecies(value)
   }
   return (
     <AllPagesContext.Provider value={Pages}>
-      <PageContext.Provider value={currentPage}>
+      <PageContext.Provider value={currentPageIndecies}>
         <PageUpdateContext.Provider value={updateCurrentPage}>
           {children}
         </PageUpdateContext.Provider>
