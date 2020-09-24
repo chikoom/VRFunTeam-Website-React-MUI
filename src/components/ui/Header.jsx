@@ -1,29 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import DrawerMenu from './DrawerMenu'
 import { ElevationScroll } from './helpers/ui-helpers'
-import { DarkModeButton } from './DarkModeButton'
 import {
   AppBar,
   Toolbar,
   Typography,
-  Tabs,
-  Tab,
   Button,
   makeStyles,
-  MenuItem,
-  MenuList,
-  ClickAwayListener,
-  Grow,
-  Paper,
-  Popper,
+  useMediaQuery,
+  useTheme,
 } from '@material-ui/core/'
 import logo from '../../assets/funteam-logo-bright.svg'
-import {
-  useAllPagesContext,
-  usePageContext,
-  useUpdatePageContext,
-} from '../../contexts/PagesContext'
-import zIndex from '@material-ui/core/styles/zIndex'
+import { useUpdatePageContext } from '../../contexts/PagesContext'
+import TabsMenu from './TabsMenu'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -34,6 +24,12 @@ const useStyles = makeStyles(theme => ({
     height: '7em',
     paddingTop: '1em',
     paddingBottom: '1em',
+    [theme.breakpoints.down('md')]: {
+      height: '6em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '5em',
+    },
   },
   headerText: {
     marginLeft: '1em',
@@ -74,39 +70,47 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
+  menuIconContainer: {
+    marginLeft: 'auto',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  drawer: {
+    backgroundColor: theme.palette.primary.main,
+    color: '#fafafa',
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+  },
+  drawerItemSelected: {
+    opacity: 1,
+  },
+  specialDrawerItem: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+  drawerIcon: {
+    height: '40px',
+    width: '40px',
+    color: '#fafafa',
+  },
+  drawerTextIcon: {
+    color: '#fafafa',
+  },
 }))
 
 const Header = props => {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const [menuOpen, setMenuOpen] = useState(false)
-
   const classes = useStyles()
-  const pages = useAllPagesContext()
-  const currentPageIndex = usePageContext()
   const updatePageContext = useUpdatePageContext()
+
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   const handleTabChange = (e, value) => {
     updatePageContext([value, null])
   }
-  const handleMenuClick = event => {
-    setAnchorEl(event.currentTarget)
-    setMenuOpen(true)
-  }
-  const handleMenuClose = event => {
-    setAnchorEl(null)
-    setMenuOpen(false)
-  }
-  const handleListKeyDown = event => {
-    if (event.key === 'Tab') {
-      event.preventDefault()
-      setMenuOpen(false)
-    }
-  }
-  const handleSubMenuClick = (event, parentIndex, index) => {
-    setAnchorEl(null)
-    setMenuOpen(false)
-    updatePageContext([parentIndex, index])
-  }
+
   return (
     <>
       <ElevationScroll>
@@ -131,98 +135,7 @@ const Header = props => {
               </div>
             </div>
 
-            <Tabs
-              value={currentPageIndex[0]}
-              onChange={handleTabChange}
-              className={classes.tabContainer}
-            >
-              {pages.map(page => {
-                const hasChildren = page.children.length
-                return (
-                  <Tab
-                    aria-owns={
-                      hasChildren && anchorEl ? `menu-${page.name}` : undefined
-                    }
-                    aria-haspopup={hasChildren && anchorEl ? true : undefined}
-                    onMouseOver={
-                      hasChildren ? event => handleMenuClick(event) : undefined
-                    }
-                    label={page.name}
-                    className={classes.tab}
-                    component={Link}
-                    to={page.path}
-                    key={page.path}
-                  />
-                )
-              })}
-            </Tabs>
-            {pages.map((page, index) => {
-              const hasChildren = page.children.length
-              return hasChildren && anchorEl ? (
-                <Popper
-                  open={menuOpen}
-                  anchorEl={anchorEl}
-                  role={undefined}
-                  transition
-                  disablePortal
-                  key={page.path}
-                >
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{
-                        transformOrigin:
-                          placement === 'bottom'
-                            ? 'center top'
-                            : 'center bottom',
-                      }}
-                    >
-                      <Paper classes={{ root: classes.menu }} elevation={0}>
-                        <ClickAwayListener onClickAway={handleMenuClose}>
-                          <MenuList
-                            disablePadding
-                            onMouseLeave={handleMenuClose}
-                            autoFocusItem={false}
-                            id={`menu-${page.name}`}
-                            onKeyDown={handleListKeyDown}
-                          >
-                            {page.children.map((childPage, childIndex) => (
-                              <MenuItem
-                                key={childPage.path}
-                                onClick={event => {
-                                  handleMenuClose()
-                                  handleTabChange(event, index)
-                                  handleSubMenuClick(event, index, childIndex)
-                                }}
-                                component={Link}
-                                to={childPage.path}
-                                classes={{ root: classes.menuItem }}
-                                selected={
-                                  childIndex === currentPageIndex[1] &&
-                                  index === currentPageIndex[0]
-                                }
-                              >
-                                {childPage.name}
-                              </MenuItem>
-                            ))}
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              ) : (
-                ''
-              )
-            })}
-            <DarkModeButton />
-            <Button
-              variant='contained'
-              color='secondary'
-              className={classes.button}
-            >
-              Price Estimate
-            </Button>
+            {matches ? <DrawerMenu /> : <TabsMenu />}
           </Toolbar>
         </AppBar>
       </ElevationScroll>

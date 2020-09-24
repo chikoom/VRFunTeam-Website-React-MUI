@@ -5,6 +5,7 @@ const Pages = [
     name: 'Home',
     path: '/',
     children: [],
+    special: false,
   },
   {
     name: 'Services',
@@ -14,16 +15,19 @@ const Pages = [
         name: 'Private',
         path: '/services/private',
         children: [],
+        special: false,
       },
       {
         name: 'Company',
         path: '/services/company',
         children: [],
+        special: false,
       },
       {
         name: 'Events',
         path: '/services/events',
         children: [],
+        special: false,
       },
     ],
   },
@@ -31,21 +35,25 @@ const Pages = [
     name: 'Revolution',
     path: '/revolution',
     children: [],
+    special: false,
   },
   {
     name: 'About',
     path: '/about',
     children: [],
+    special: false,
   },
   {
     name: 'Contact',
     path: '/contact',
     children: [],
+    special: false,
   },
   {
     name: 'Estimate',
     path: '/estimate',
     children: [],
+    special: true,
   },
 ]
 

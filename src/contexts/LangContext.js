@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+const languages = ['en', 'he', 'du']
+
 const LangContext = React.createContext()
 
 export function LangProvider({ children }) {
