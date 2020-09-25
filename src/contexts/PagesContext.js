@@ -74,7 +74,6 @@ export function useAllPagesContext() {
 }
 
 const getCurrentPageIndecies = pagePath => {
-  console.log(pagePath)
   const indecies = [null, null]
   Pages.forEach((page, index) => {
     if (page.path === pagePath) indecies[0] = index
@@ -96,7 +95,6 @@ export const PagesProvider = ({ children }) => {
   )
 
   const updateCurrentPage = value => {
-    console.log(value)
     setCurrentPageIndecies(value)
   }
   return (

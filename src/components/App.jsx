@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './ui/Header'
+import Header from './ui/Header/Header'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { LangProvider } from '../contexts/LangContext'
 import { ThemeContextProvider } from '../contexts/ThemeContext'

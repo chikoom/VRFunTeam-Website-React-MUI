@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { DarkModeButton } from './DarkModeButton'
+import { DarkModeButton } from '../DarkModeButton'
 import {
   Tabs,
   Tab,
@@ -17,7 +17,7 @@ import {
   useAllPagesContext,
   usePageContext,
   useUpdatePageContext,
-} from '../../contexts/PagesContext'
+} from '../../../contexts/PagesContext'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -138,6 +138,7 @@ const TabsMenu = props => {
             transition
             disablePortal
             key={page.path}
+            keepMounted
           >
             {({ TransitionProps, placement }) => (
               <Grow

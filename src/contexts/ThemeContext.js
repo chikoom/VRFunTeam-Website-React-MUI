@@ -15,7 +15,7 @@ export function ThemeContextProvider({ children }) {
   }
 
   return (
-    <ThemeUpdateContext.Provider value={toggleTheme}>
+    <ThemeUpdateContext.Provider value={{ toggleTheme, isDarkTheme }}>
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         {children}
       </ThemeProvider>

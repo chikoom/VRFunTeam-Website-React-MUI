@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import DrawerMenu from './DrawerMenu'
-import { ElevationScroll } from './helpers/ui-helpers'
+import { ElevationScroll } from '../helpers/ui-helpers'
 import {
   AppBar,
   Toolbar,
@@ -11,11 +11,14 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core/'
-import logo from '../../assets/funteam-logo-bright.svg'
-import { useUpdatePageContext } from '../../contexts/PagesContext'
+import logo from '../../../assets/funteam-logo-bright.svg'
+import { useUpdatePageContext } from '../../../contexts/PagesContext'
 import TabsMenu from './TabsMenu'
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    zIndex: theme.zIndex.modal + 1,
+  },
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: '3em',
@@ -114,7 +117,7 @@ const Header = props => {
   return (
     <>
       <ElevationScroll>
-        <AppBar position='fixed'>
+        <AppBar position='fixed' className={classes.appBar}>
           <Toolbar>
             <Button
               onClick={() => handleTabChange('_', 0)}

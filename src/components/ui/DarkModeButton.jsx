@@ -19,7 +19,7 @@ export const DarkModeButton = () => {
   const darkTheme = useUpdateTheme()
   return (
     <div className={classes.root}>
-      <IconButton onClick={darkTheme} aria-label='delete'>
+      <IconButton onClick={darkTheme.toggleTheme} aria-label='delete'>
         <Brightness4OutlinedIcon />
       </IconButton>
     </div>

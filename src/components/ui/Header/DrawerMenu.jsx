@@ -18,7 +18,8 @@ import {
   useAllPagesContext,
   usePageContext,
   useUpdatePageContext,
-} from '../../contexts/PagesContext'
+} from '../../../contexts/PagesContext'
+import DarkModeListSwitch from '../DarkModeListSwitch'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     color: 'white',
     borderRadius: '0px',
-    zIndex: 1302,
+    zIndex: theme.zIndex.modal + 2,
   },
   menuItem: {
     ...theme.typography.tab,
@@ -90,7 +91,9 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.7,
   },
   drawerItemSelected: {
-    opacity: 1,
+    '& .MuiListItemText-root': {
+      opacity: 1,
+    },
   },
   specialDrawerItem: {
     backgroundColor: theme.palette.secondary.main,
@@ -140,12 +143,14 @@ const DrawerMenu = props => {
         onOpen={() => setDrawerOpen(true)}
         classes={{ paper: classes.drawer }}
       >
+        <div className={classes.toolbarMargin}></div>
         <List
           component='nav'
           aria-labelledby='nested-list-subheader'
           className={classes.root}
           disablePadding
         >
+          <DarkModeListSwitch />
           {pages.map((page, index) => (
             <React.Fragment key={page.path}>
               <ListItem
@@ -159,18 +164,12 @@ const DrawerMenu = props => {
                   handleTabChange(event, index)
                 }}
                 className={page.special ? classes.specialDrawerItem : ''}
+                classes={{ selected: classes.drawerItemSelected }}
               >
                 <ListItemIcon className={classes.drawerTextIcon}>
                   <SendIcon />
                 </ListItemIcon>
-                <ListItemText
-                  className={
-                    index === currentPageIndex[0]
-                      ? `${classes.drawerItem}  ${classes.drawerItemSelected}`
-                      : classes.drawerItem
-                  }
-                  disableTypography
-                >
+                <ListItemText className={classes.drawerItem} disableTypography>
                   {page.name}
                 </ListItemText>
                 {page.children.length > 0 ? (
@@ -221,17 +220,13 @@ const DrawerMenu = props => {
                           handleSubMenuClick(event, index, childIndex)
                         }}
                         className={classes.nested}
+                        classes={{ selected: classes.drawerItemSelected }}
                       >
                         <ListItemIcon className={classes.drawerTextIcon}>
                           <SendIcon />
                         </ListItemIcon>
                         <ListItemText
-                          className={
-                            childIndex === currentPageIndex[1] &&
-                            index === currentPageIndex[0]
-                              ? `${classes.drawerItem}  ${classes.drawerItemSelected}`
-                              : classes.drawerItem
-                          }
+                          className={classes.drawerItem}
                           disableTypography
                         >
                           {childPage.name}
