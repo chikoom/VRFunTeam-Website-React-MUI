@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     marginBottom: '3em',
   },
+  headerText: {
+    marginLeft: '1em',
+  },
   logo: {
     height: '7em',
     paddingTop: '1em',
@@ -34,72 +37,11 @@ const useStyles = makeStyles(theme => ({
       height: '5em',
     },
   },
-  headerText: {
-    marginLeft: '1em',
-  },
-  tabContainer: {
-    marginLeft: 'auto',
-  },
-  tab: {
-    ...theme.typography.tab,
-    minWidth: 10,
-    marginLeft: '10px',
-  },
-  button: {
-    ...theme.typography.estimate,
-    borderRadius: '50px',
-    marginLeft: '50px',
-    color: 'white',
-  },
   logoButton: {
     padding: '0',
     '&:hover': {
       backgroundColor: 'transparent',
     },
-  },
-  menu: {
-    backgroundColor: theme.palette.primary.main,
-    color: 'white',
-    borderRadius: '0px',
-    zIndex: 1302,
-  },
-  menuItem: {
-    ...theme.typography.tab,
-    opacity: 0.7,
-    '&:hover': {
-      opacity: 1,
-    },
-    '&.Mui-selected': {
-      opacity: 1,
-    },
-  },
-  menuIconContainer: {
-    marginLeft: 'auto',
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-  },
-  drawer: {
-    backgroundColor: theme.palette.primary.main,
-    color: '#fafafa',
-  },
-  drawerItem: {
-    ...theme.typography.tab,
-    opacity: 0.7,
-  },
-  drawerItemSelected: {
-    opacity: 1,
-  },
-  specialDrawerItem: {
-    backgroundColor: theme.palette.secondary.main,
-  },
-  drawerIcon: {
-    height: '40px',
-    width: '40px',
-    color: '#fafafa',
-  },
-  drawerTextIcon: {
-    color: '#fafafa',
   },
 }))
 

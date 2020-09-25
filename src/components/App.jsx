@@ -16,16 +16,18 @@ function App() {
         <BrowserRouter>
           <CssBaseline />
           <Header />
-          <Switch>
-            {pages.map(page => (
-              <Route
-                key={page.path}
-                exact
-                path={page.path}
-                render={() => <div>{page.name}</div>}
-              />
-            ))}
-          </Switch>
+          <main style={{ minHeight: '80vh' }}>
+            <Switch>
+              {pages.map(page => (
+                <Route
+                  key={page.path}
+                  exact
+                  path={page.path}
+                  render={() => <div>{page.name}</div>}
+                />
+              ))}
+            </Switch>
+          </main>
           <Footer />
         </BrowserRouter>
       </ThemeContextProvider>

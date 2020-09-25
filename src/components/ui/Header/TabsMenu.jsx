@@ -20,14 +20,6 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     marginBottom: '3em',
   },
-  logo: {
-    height: '7em',
-    paddingTop: '1em',
-    paddingBottom: '1em',
-  },
-  headerText: {
-    marginLeft: '1em',
-  },
   tabContainer: {
     marginLeft: 'auto',
   },
@@ -41,12 +33,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50px',
     marginLeft: '50px',
     color: 'white',
-  },
-  logoButton: {
-    padding: '0',
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
   },
   menu: {
     backgroundColor: theme.palette.primary.main,

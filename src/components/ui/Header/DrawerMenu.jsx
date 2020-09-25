@@ -10,67 +10,41 @@ import {
   ListItemText,
 } from '@material-ui/core/'
 import Collapse from '@material-ui/core/Collapse'
-import SendIcon from '@material-ui/icons/Send'
 import MenuIcon from '@material-ui/icons/Menu'
+import SendIcon from '@material-ui/icons/Send'
+import HomeIcon from '@material-ui/icons/Home'
+import AppsIcon from '@material-ui/icons/Apps'
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive'
+import InfoIcon from '@material-ui/icons/Info'
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
+import GroupIcon from '@material-ui/icons/Group'
+import BusinessIcon from '@material-ui/icons/Business'
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import { usePagesContext } from '../../../contexts/PagesContext'
 import DarkModeListSwitch from '../DarkModeListSwitch'
 
+// const iconMapping = {
+//   SendIcon,HomeIcon,AppsIcon,AllInclusiveIcon,InfoIcon,AccountBalanceWalletIcon,GroupIcon,BusinessIcon,EmojiEventsIcon
+// }
+
+const iconMapping = {
+  SendIcon: <SendIcon />,
+  HomeIcon: <HomeIcon />,
+  AppsIcon: <AppsIcon />,
+  AllInclusiveIcon: <AllInclusiveIcon />,
+  InfoIcon: <InfoIcon />,
+  AccountBalanceWalletIcon: <AccountBalanceWalletIcon />,
+  GroupIcon: <GroupIcon />,
+  BusinessIcon: <BusinessIcon />,
+  EmojiEventsIcon: <EmojiEventsIcon />,
+}
+
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: '3em',
-  },
-  logo: {
-    height: '7em',
-    paddingTop: '1em',
-    paddingBottom: '1em',
-    [theme.breakpoints.down('md')]: {
-      height: '6em',
-    },
-    [theme.breakpoints.down('xs')]: {
-      height: '5em',
-    },
-  },
-  headerText: {
-    marginLeft: '1em',
-  },
-  tabContainer: {
-    marginLeft: 'auto',
-  },
-  tab: {
-    ...theme.typography.tab,
-    minWidth: 10,
-    marginLeft: '10px',
-  },
-  button: {
-    ...theme.typography.estimate,
-    borderRadius: '50px',
-    marginLeft: '50px',
-    color: 'white',
-  },
-  logoButton: {
-    padding: '0',
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-  },
-  menu: {
-    backgroundColor: theme.palette.primary.main,
-    color: 'white',
-    borderRadius: '0px',
-    zIndex: theme.zIndex.modal + 2,
-  },
-  menuItem: {
-    ...theme.typography.tab,
-    opacity: 0.7,
-    '&:hover': {
-      opacity: 1,
-    },
-    '&.Mui-selected': {
-      opacity: 1,
-    },
   },
   menuIconContainer: {
     marginLeft: 'auto',
@@ -101,6 +75,9 @@ const useStyles = makeStyles(theme => ({
   },
   drawerTextIcon: {
     color: '#fafafa',
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
   },
 }))
 
@@ -165,7 +142,7 @@ const DrawerMenu = props => {
                 classes={{ selected: classes.drawerItemSelected }}
               >
                 <ListItemIcon className={classes.drawerTextIcon}>
-                  <SendIcon />
+                  {iconMapping[page.icon]}
                 </ListItemIcon>
                 <ListItemText className={classes.drawerItem} disableTypography>
                   {page.name}
@@ -221,7 +198,7 @@ const DrawerMenu = props => {
                         classes={{ selected: classes.drawerItemSelected }}
                       >
                         <ListItemIcon className={classes.drawerTextIcon}>
-                          <SendIcon />
+                          {iconMapping[childPage.icon]}
                         </ListItemIcon>
                         <ListItemText
                           className={classes.drawerItem}
