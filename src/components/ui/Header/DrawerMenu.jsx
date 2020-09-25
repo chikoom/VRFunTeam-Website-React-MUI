@@ -14,11 +14,7 @@ import SendIcon from '@material-ui/icons/Send'
 import MenuIcon from '@material-ui/icons/Menu'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
-import {
-  useAllPagesContext,
-  usePageContext,
-  useUpdatePageContext,
-} from '../../../contexts/PagesContext'
+import { usePagesContext } from '../../../contexts/PagesContext'
 import DarkModeListSwitch from '../DarkModeListSwitch'
 
 const useStyles = makeStyles(theme => ({
@@ -113,18 +109,20 @@ const DrawerMenu = props => {
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const classes = useStyles()
-  const pages = useAllPagesContext()
-  const currentPageIndex = usePageContext()
-  const updatePageContext = useUpdatePageContext()
+  const {
+    pages,
+    currentPageIndecies,
+    setCurrentPageIndecies,
+  } = usePagesContext()
 
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   const handleTabChange = (e, value) => {
-    updatePageContext([value, null])
+    setCurrentPageIndecies([value, null])
   }
   const handleSubMenuClick = (event, parentIndex, index) => {
     setMenuOpen(false)
-    updatePageContext([parentIndex, index])
+    setCurrentPageIndecies([parentIndex, index])
   }
   return (
     <>
@@ -158,7 +156,7 @@ const DrawerMenu = props => {
                 button
                 component={Link}
                 to={page.path}
-                selected={index === currentPageIndex[0]}
+                selected={index === currentPageIndecies[0]}
                 onClick={event => {
                   setDrawerOpen(false)
                   handleTabChange(event, index)
@@ -211,8 +209,8 @@ const DrawerMenu = props => {
                         component={Link}
                         to={childPage.path}
                         selected={
-                          childIndex === currentPageIndex[1] &&
-                          index === currentPageIndex[0]
+                          childIndex === currentPageIndecies[1] &&
+                          index === currentPageIndecies[0]
                         }
                         onClick={event => {
                           setDrawerOpen(false)

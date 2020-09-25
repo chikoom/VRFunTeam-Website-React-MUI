@@ -13,11 +13,7 @@ import {
   Paper,
   Popper,
 } from '@material-ui/core/'
-import {
-  useAllPagesContext,
-  usePageContext,
-  useUpdatePageContext,
-} from '../../../contexts/PagesContext'
+import { usePagesContext } from '../../../contexts/PagesContext'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -75,12 +71,14 @@ const TabsMenu = props => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const classes = useStyles()
-  const pages = useAllPagesContext()
-  const currentPageIndex = usePageContext()
-  const updatePageContext = useUpdatePageContext()
+  const {
+    pages,
+    currentPageIndecies,
+    setCurrentPageIndecies,
+  } = usePagesContext()
 
   const handleTabChange = (e, value) => {
-    updatePageContext([value, null])
+    setCurrentPageIndecies([value, null])
   }
   const handleMenuClick = event => {
     setAnchorEl(event.currentTarget)
@@ -99,12 +97,12 @@ const TabsMenu = props => {
   const handleSubMenuClick = (event, parentIndex, index) => {
     setAnchorEl(null)
     setMenuOpen(false)
-    updatePageContext([parentIndex, index])
+    setCurrentPageIndecies([parentIndex, index])
   }
   return (
     <>
       <Tabs
-        value={currentPageIndex[0]}
+        value={currentPageIndecies[0]}
         onChange={handleTabChange}
         className={classes.tabContainer}
       >
@@ -169,8 +167,8 @@ const TabsMenu = props => {
                           to={childPage.path}
                           classes={{ root: classes.menuItem }}
                           selected={
-                            childIndex === currentPageIndex[1] &&
-                            index === currentPageIndex[0]
+                            childIndex === currentPageIndecies[1] &&
+                            index === currentPageIndecies[0]
                           }
                         >
                           {childPage.name}

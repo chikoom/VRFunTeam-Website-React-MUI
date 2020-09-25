@@ -12,7 +12,7 @@ import {
   useTheme,
 } from '@material-ui/core/'
 import logo from '../../../assets/funteam-logo-bright.svg'
-import { useUpdatePageContext } from '../../../contexts/PagesContext'
+import { usePagesContext } from '../../../contexts/PagesContext'
 import TabsMenu from './TabsMenu'
 
 const useStyles = makeStyles(theme => ({
@@ -105,13 +105,13 @@ const useStyles = makeStyles(theme => ({
 
 const Header = props => {
   const classes = useStyles()
-  const updatePageContext = useUpdatePageContext()
+  const { setCurrentPageIndecies } = usePagesContext()
 
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.down('md'))
 
   const handleTabChange = (e, value) => {
-    updatePageContext([value, null])
+    setCurrentPageIndecies([value, null])
   }
 
   return (

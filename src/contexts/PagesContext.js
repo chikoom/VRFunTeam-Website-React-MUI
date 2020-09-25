@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 
-const Pages = [
+const pages = [
   {
     name: 'Home',
     path: '/',
@@ -57,25 +57,9 @@ const Pages = [
   },
 ]
 
-const PageContext = React.createContext()
-const PageUpdateContext = React.createContext()
-const AllPagesContext = React.createContext()
-
-export function usePageContext() {
-  return useContext(PageContext)
-}
-
-export function useUpdatePageContext() {
-  return useContext(PageUpdateContext)
-}
-
-export function useAllPagesContext() {
-  return useContext(AllPagesContext)
-}
-
 const getCurrentPageIndecies = pagePath => {
   const indecies = [null, null]
-  Pages.forEach((page, index) => {
+  pages.forEach((page, index) => {
     if (page.path === pagePath) indecies[0] = index
     if (page.children) {
       page.children.forEach((childPage, childIndex) => {
@@ -89,21 +73,37 @@ const getCurrentPageIndecies = pagePath => {
   return indecies
 }
 
+const deconstructPages = () => {
+  const returnedPages = []
+  pages.forEach(page => {
+    returnedPages.push(page)
+    let childrenCount = page.children.length
+    while (childrenCount) {
+      returnedPages.push(page.children[childrenCount - 1])
+      --childrenCount
+    }
+  })
+  return returnedPages
+}
+
+const PagesContext = React.createContext()
+export function usePagesContext() {
+  return useContext(PagesContext)
+}
+
 export const PagesProvider = ({ children }) => {
   const [currentPageIndecies, setCurrentPageIndecies] = useState(
     getCurrentPageIndecies(window.location.pathname)
   )
-
-  const updateCurrentPage = value => {
-    setCurrentPageIndecies(value)
+  const contextValue = {
+    pages,
+    currentPageIndecies,
+    setCurrentPageIndecies,
+    deconstructPages,
   }
   return (
-    <AllPagesContext.Provider value={Pages}>
-      <PageContext.Provider value={currentPageIndecies}>
-        <PageUpdateContext.Provider value={updateCurrentPage}>
-          {children}
-        </PageUpdateContext.Provider>
-      </PageContext.Provider>
-    </AllPagesContext.Provider>
+    <PagesContext.Provider value={contextValue}>
+      {children}
+    </PagesContext.Provider>
   )
 }

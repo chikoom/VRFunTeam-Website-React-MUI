@@ -4,23 +4,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { LangProvider } from '../contexts/LangContext'
 import { ThemeContextProvider } from '../contexts/ThemeContext'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { useAllPagesContext } from '../contexts/PagesContext'
-
-const deconstructPages = pagesArray => {
-  const returnedPages = []
-  pagesArray.forEach(page => {
-    returnedPages.push(page)
-    let childrenCount = page.children.length
-    while (childrenCount) {
-      returnedPages.push(page.children[childrenCount - 1])
-      --childrenCount
-    }
-  })
-  return returnedPages
-}
+import { usePagesContext } from '../contexts/PagesContext'
+import Footer from './ui/Footer/Footer'
 
 function App() {
-  const pages = deconstructPages(useAllPagesContext())
+  const { deconstructPages } = usePagesContext()
+  const pages = deconstructPages()
   return (
     <LangProvider>
       <ThemeContextProvider>
@@ -37,6 +26,7 @@ function App() {
               />
             ))}
           </Switch>
+          <Footer />
         </BrowserRouter>
       </ThemeContextProvider>
     </LangProvider>
