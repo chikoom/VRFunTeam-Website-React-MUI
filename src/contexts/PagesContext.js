@@ -108,6 +108,7 @@ export const PagesProvider = ({ children }) => {
   const contextValue = {
     pages,
     currentPageIndecies,
+    getCurrentPageIndecies,
     setCurrentPageIndecies,
     deconstructPages,
   }
