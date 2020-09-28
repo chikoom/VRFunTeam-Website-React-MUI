@@ -105,12 +105,18 @@ export const PagesProvider = ({ children }) => {
   const [currentPageIndecies, setCurrentPageIndecies] = useState(
     getCurrentPageIndecies(window.location.pathname)
   )
+
+  const setPageIndecies = () => {
+    setCurrentPageIndecies(getCurrentPageIndecies(window.location.pathname))
+  }
+
   const contextValue = {
     pages,
     currentPageIndecies,
     getCurrentPageIndecies,
     setCurrentPageIndecies,
     deconstructPages,
+    setPageIndecies,
   }
   return (
     <PagesContext.Provider value={contextValue}>

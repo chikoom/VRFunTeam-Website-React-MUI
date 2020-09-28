@@ -64,7 +64,7 @@ const TabsMenu = props => {
   } = usePagesContext()
 
   const handleTabChange = (e, value) => {
-    setCurrentPageIndecies([value, null])
+    // setCurrentPageIndecies([value, null])
   }
   const handleMenuClick = event => {
     setAnchorEl(event.currentTarget)
@@ -83,7 +83,7 @@ const TabsMenu = props => {
   const handleSubMenuClick = (event, parentIndex, index) => {
     setAnchorEl(null)
     setMenuOpen(false)
-    setCurrentPageIndecies([parentIndex, index])
+    // setCurrentPageIndecies([parentIndex, index])
   }
   return (
     <>
