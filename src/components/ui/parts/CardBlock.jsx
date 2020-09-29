@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+
 import {
   useMediaQuery,
   useTheme,
@@ -25,7 +26,6 @@ const CardBlock = props => {
       direction={'row-reverse'}
       alignItems='center'
       justify='center'
-      className={classes.coupleItem}
     >
       <Grid item md={6} xs={8}>
         <Card>

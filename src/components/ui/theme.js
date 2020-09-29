@@ -31,6 +31,25 @@ let dLightTheme = createMuiTheme({
       textTransform: 'none',
     },
   },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: vrBlue,
+        fontSize: '1rem',
+      },
+    },
+    MuiFilledInput: {
+      root: {
+        backgroundColor: 'rgba(0, 0, 0, 0.04)',
+      },
+    },
+    MuiDivider: {
+      root: {
+        marginTop: '1em',
+        marginBottom: '2em',
+      },
+    },
+  },
 })
 
 dLightTheme = responsiveFontSizes(dLightTheme)

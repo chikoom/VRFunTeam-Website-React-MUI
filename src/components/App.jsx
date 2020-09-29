@@ -14,6 +14,7 @@ import Estimate from './views/Estimate'
 import ServicesEvents from './views/ServicesEvents'
 import ServicesCompany from './views/ServicesCompany'
 import ServicesPrivate from './views/ServicesPrivate'
+import PageHeader from './ui/PageHeader'
 import Contact from './views/Contact'
 
 function App() {
@@ -28,25 +29,77 @@ function App() {
           <main style={{ minHeight: '80vh' }}>
             <Switch>
               <Route exact path='/' render={() => <HomePage />} />
-              <Route exact path='/about' render={() => <About />} />
-              <Route exact path='/revolution' render={() => <Revolution />} />
-              <Route exact path='/services' render={() => <Services />} />
-              <Route exact path='/contact' render={() => <Contact />} />
-              <Route exact path='/estimate' render={() => <Estimate />} />
+              <Route
+                exact
+                path='/about'
+                render={() => (
+                  <PageHeader header='About Us'>
+                    <About />
+                  </PageHeader>
+                )}
+              />
+              <Route
+                exact
+                path='/revolution'
+                render={() => (
+                  <PageHeader header='The VR Revolution'>
+                    <Revolution />
+                  </PageHeader>
+                )}
+              />
+              <Route
+                exact
+                path='/services'
+                render={() => (
+                  <PageHeader header='Our Services'>
+                    <Services />
+                  </PageHeader>
+                )}
+              />
+              <Route
+                exact
+                path='/contact'
+                render={() => (
+                  <PageHeader header='Contact Us'>
+                    <Contact />
+                  </PageHeader>
+                )}
+              />
+              <Route
+                exact
+                path='/estimate'
+                render={() => (
+                  <PageHeader header='Price Estimate'>
+                    <Estimate />
+                  </PageHeader>
+                )}
+              />
               <Route
                 exact
                 path='/services/events'
-                render={() => <ServicesEvents />}
+                render={() => (
+                  <PageHeader header='Conferences & Exhibitions'>
+                    <ServicesEvents />
+                  </PageHeader>
+                )}
               />
               <Route
                 exact
                 path='/services/company'
-                render={() => <ServicesCompany />}
+                render={() => (
+                  <PageHeader header='Company Events'>
+                    <ServicesCompany />
+                  </PageHeader>
+                )}
               />
               <Route
                 exact
                 path='/services/private'
-                render={() => <ServicesPrivate />}
+                render={() => (
+                  <PageHeader header='Family & Friends'>
+                    <ServicesPrivate />
+                  </PageHeader>
+                )}
               />
             </Switch>
           </main>

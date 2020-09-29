@@ -14,60 +14,26 @@ import {
   Divider,
   Card,
 } from '@material-ui/core'
-import handsImage from '../../assets/hands.jpg'
-import logoTrans from '../../assets/funteam-logo-transparent.svg'
 import logoBlue from '../../assets/funteam-logo.svg'
 import creativeIcon from '../../assets/icon-creative.svg'
 import funIcon from '../../assets/icon-fun.svg'
 import teamIcon from '../../assets/icon-teamwork.svg'
+import triTile from '../../assets/triTile.svg'
 import oculusGlasses from '../../assets/glasses_oculus.png'
 import funteamCouple from '../../assets/vrfunteam-couple.jpg'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import InfoImageBlock from '../ui/parts/InfoImageBlock'
 import Cardblock from '../ui/parts/CardBlock'
 import { usePagesContext } from '../../contexts/PagesContext'
 import { Link } from 'react-router-dom'
+import VideoBlock from '../ui/parts/VideoBlock'
+import HeroBlock from '../ui/parts/HeroBlock'
 
 const useStyles = makeStyles(theme => ({
-  heroContainer: {
-    backgroundImage: `url(${handsImage})`,
-    minHeight: '80vh',
-    height: 'auto',
-    backgroundPosition: '50%',
-    backgroundSize: 'cover',
-  },
-  heroBackdrop: {
-    backgroundColor: 'rgba(33, 75, 112,0.8)',
-  },
-  heroLogo: {
-    width: '18em',
-    height: '18em',
-  },
-  heroHeader: {
-    fontWeight: 700,
-    color: '#fff',
-  },
-  heroText: {
-    color: '#fff',
-    marginTop: '1em',
-    marginBottom: '1.5em',
-    paddingRight: '10%',
-    paddingLeft: '10%',
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1.1em',
-    },
-  },
-  heroButton: {
-    margin: '0.5em',
-  },
-  heroButtonEmpty: {
-    color: '#fff',
-    borderColor: '#fff',
-  },
   contentBlock: {
     paddingLeft: '0',
     paddingRight: '0',
     paddingBottom: '5em',
+    minHeight: '60vh',
   },
   image: {
     width: '100%',
@@ -114,77 +80,7 @@ const HomePage = props => {
   return (
     <Grid container direction='column'>
       <Grid item className={classes.contentBlock}>
-        <Grid container className={classes.heroContainer}>
-          <Grid
-            container
-            className={classes.heroBackdrop}
-            alignContent='center'
-          >
-            <Grid item xs></Grid>
-            <Grid item xs={10} md={6}>
-              <Grid
-                container
-                direction='column'
-                justify='center'
-                alignContent='center'
-                alignItems='center'
-              >
-                <Grid item>
-                  <img
-                    src={logoTrans}
-                    alt='funteam logo'
-                    className={classes.heroLogo}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography
-                    variant='h4'
-                    align='center'
-                    className={classes.heroHeader}
-                    gutterBottom
-                  >
-                    Team Experience
-                    <br />
-                    in Virtual Reality
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    variant='h6'
-                    align='justify'
-                    className={classes.heroText}
-                  >
-                    Virtual Reality events are stirring the world - the
-                    experience is emmersive and mind blowing, with no cables or
-                    clumsy equipment. Take your team, family or friends to an
-                    unforgettable jurney of consolidation, creative thinking and
-                    pure fun.
-                  </Typography>
-                </Grid>
-                <Grid container justify='center'>
-                  <Grid container spacing={2} justify='center'>
-                    <Button
-                      variant='contained'
-                      color='secondary'
-                      className={classes.heroButton}
-                    >
-                      Price Estimate
-                    </Button>
-                    <Button
-                      variant='outlined'
-                      color='secondary'
-                      endIcon={<ExpandMoreIcon />}
-                      className={`${classes.heroButton} ${classes.heroButtonEmpty}`}
-                    >
-                      Learn More
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs></Grid>
-          </Grid>
-        </Grid>
+        <HeroBlock />
       </Grid>
       <Grid item className={classes.contentBlock}>
         <Grid
@@ -194,6 +90,7 @@ const HomePage = props => {
           justify='center'
           spacing={10}
           style={{ width: '100%', margin: 'auto', height: 'auto' }}
+          id='contentStart'
         >
           <Grid item xs={12} md={4}>
             <InfoImageBlock
@@ -245,7 +142,7 @@ const HomePage = props => {
           </Grid>
           <Grid item xs={12} md={4} style={{ padding: '0' }}>
             <List>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <Icon
                     className='fa fa-cube'
@@ -260,7 +157,7 @@ const HomePage = props => {
                   primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.'
                 />
               </ListItem>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <Icon
                     className='fa fa-cube'
@@ -275,7 +172,7 @@ const HomePage = props => {
                   primary='Suitable for groups of 2-12 participants, in all ages (6-80).'
                 />
               </ListItem>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <Icon
                     className='fa fa-cube'
@@ -290,7 +187,7 @@ const HomePage = props => {
                   primary='Professional guidence by our emphatic instructors.'
                 />
               </ListItem>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <Icon
                     className='fa fa-cube'
@@ -309,7 +206,30 @@ const HomePage = props => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item className={classes.contentBlock}>
+
+      <Grid
+        item
+        container
+        justify='center'
+        alignContent='center'
+        className={classes.contentBlock}
+      >
+        <VideoBlock />
+      </Grid>
+      <Grid
+        item
+        container
+        className={classes.contentBlock}
+        alignItems='center'
+        style={{ backgroundSize: '3%', backgroundImage: `url(${triTile})` }}
+      >
+        <Cardblock />
+      </Grid>
+      <Grid
+        item
+        className={classes.contentBlock}
+        style={{ paddingBottom: '0' }}
+      >
         <Grid
           container
           direction={'row-reverse'}
@@ -384,9 +304,6 @@ const HomePage = props => {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid item className={classes.contentBlock}>
-        <Cardblock />
       </Grid>
     </Grid>
   )

@@ -171,7 +171,13 @@ const TabsMenu = props => {
         )
       })}
       <DarkModeButton />
-      <Button variant='contained' color='secondary' className={classes.button}>
+      <Button
+        component={Link}
+        to='/estimate'
+        variant='contained'
+        color='secondary'
+        className={classes.button}
+      >
         Price Estimate
       </Button>
     </>
