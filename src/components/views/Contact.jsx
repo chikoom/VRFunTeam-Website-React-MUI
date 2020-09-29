@@ -5,6 +5,7 @@ import {
   Icon,
   makeStyles,
   Typography,
+  useMediaQuery,
   useTheme,
 } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
@@ -12,12 +13,19 @@ import ContactForm from '../ui/parts/ContactForm'
 import PhoneOutlinedIcon from '@material-ui/icons/PhoneOutlined'
 import MailOutlineIcon from '@material-ui/icons/MailOutline'
 import { usePagesContext } from '../../contexts/PagesContext'
+import QnA from '../ui/parts/QnA'
 
-const useStyles = makeStyles(theme => ({}))
+const useStyles = makeStyles(theme => ({
+  link: {
+    textDecoration: 'none',
+    color: theme.palette.primary.main,
+  },
+}))
 
 const Contact = props => {
   const classes = useStyles()
   const theme = useTheme()
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'))
   const { setPageIndecies } = usePagesContext()
 
   useEffect(() => {
@@ -33,10 +41,11 @@ const Contact = props => {
         direction='column'
         justify='center'
         alignContent='center'
+        style={{ marginBottom: '5em' }}
       >
         <Grid item style={{ minWidth: '300px' }}>
           <Typography variant='subtitle1'>
-            We're waiting to make you fly
+            We're eager to make you fly
           </Typography>
         </Grid>
         <Divider />
@@ -46,7 +55,11 @@ const Contact = props => {
               <PhoneOutlinedIcon style={{ marginRight: '0.5em' }} />
             </Grid>
             <Grid item>
-              <Typography variant='body1'>972-528-228-640</Typography>
+              <Typography variant='body1'>
+                <a className={classes.link} href='tel:+972528228640'>
+                  972-528-228-640
+                </a>
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -56,7 +69,11 @@ const Contact = props => {
               <MailOutlineIcon style={{ marginRight: '0.5em' }} />
             </Grid>
             <Grid item>
-              <Typography variant='body1'>studio@vrfunteam.com</Typography>
+              <Typography variant='body1'>
+                <a className={classes.link} href='mailto:studio@vrfunteam.com'>
+                  studio@vrfunteam.com
+                </a>
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -71,12 +88,16 @@ const Contact = props => {
         xs={12}
         md={6}
         direction='column'
-        justify='center'
-        alignContent='center'
+        alignContent={matchesMD ? 'center' : 'flex-start'}
+        style={{ marginBottom: '5em' }}
       >
-        <Grid item>FORM Heading</Grid>
-        <Grid item>FORM text</Grid>
-        <Grid item>FORM</Grid>
+        <Grid item style={{ width: '90%', maxWidth: '500px' }}>
+          <Grid item>
+            <Typography variant='h4'>FAQ</Typography>
+          </Grid>
+          <Divider />
+          <QnA />
+        </Grid>
       </Grid>
     </Grid>
   )
