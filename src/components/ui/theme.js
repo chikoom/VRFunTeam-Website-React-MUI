@@ -17,8 +17,29 @@ let dLightTheme = createMuiTheme({
     },
   },
   typography: {
+    h1: {
+      fontWeight: 900,
+      fontFamily: 'Raleway',
+    },
+    h2: {
+      fontWeight: 900,
+      fontFamily: 'Raleway',
+    },
+    h3: {
+      fontWeight: 900,
+      fontFamily: 'Raleway',
+    },
+    h4: {
+      fontWeight: 900,
+      fontFamily: 'Raleway',
+    },
     h5: {
       fontWeight: 900,
+      fontFamily: 'Raleway',
+    },
+    h6: {
+      fontWeight: 900,
+      fontFamily: 'Raleway',
     },
     tab: {
       fontFamily: 'Raleway',
