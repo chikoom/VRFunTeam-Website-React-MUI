@@ -43,7 +43,7 @@ const Contact = props => {
         alignContent='center'
         style={{ marginBottom: '5em' }}
       >
-        <Grid item style={{ minWidth: '300px' }}>
+        <Grid item style={{ width: '80%', maxWidth: '400px' }}>
           <Typography variant='subtitle1'>
             We're eager to make you fly
           </Typography>

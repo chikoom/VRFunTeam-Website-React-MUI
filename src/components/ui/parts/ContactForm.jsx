@@ -251,7 +251,7 @@ const ContactForm = props => {
           multiline
           rows={8}
           id='message'
-          value={message}
+          value={props.message || message}
           onChange={handleInput}
           onBlur={handleInputBlur}
           style={{ marginTop: '2em' }}
