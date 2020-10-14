@@ -78,7 +78,11 @@ function App() {
                 exact
                 path='/services/events'
                 render={() => (
-                  <PageHeader header='Conferences & Exhibitions'>
+                  <PageHeader
+                    header='Conferences & Exhibitions'
+                    topHeader='Services'
+                    to='/services'
+                  >
                     <ServicesEvents />
                   </PageHeader>
                 )}
@@ -87,7 +91,11 @@ function App() {
                 exact
                 path='/services/company'
                 render={() => (
-                  <PageHeader header='Company Events'>
+                  <PageHeader
+                    header='Company Events'
+                    topHeader='Services'
+                    to='/services'
+                  >
                     <ServicesCompany />
                   </PageHeader>
                 )}
@@ -96,7 +104,11 @@ function App() {
                 exact
                 path='/services/private'
                 render={() => (
-                  <PageHeader header='Family & Friends'>
+                  <PageHeader
+                    header='Family & Friends'
+                    topHeader='Services'
+                    to='/services'
+                  >
                     <ServicesPrivate />
                   </PageHeader>
                 )}
