@@ -1,5 +1,18 @@
 import React, { useState, useContext } from 'react'
 
+const createPagePathMap = pages => {
+  const map = {}
+  pages.forEach(page => {
+    map[page.path] = page
+    if (page.children.length > 0) {
+      page.children.forEach(childPage => {
+        map[childPage.path] = childPage
+      })
+    }
+  })
+  return map
+}
+
 const pages = [
   {
     name: 'Home',
@@ -50,6 +63,10 @@ const pages = [
     special: false,
     icon: 'InfoIcon',
     children: [],
+    meta: `
+    <title key='title'>About Us - Company & Team | VRFunTeam</title>
+    <meta name="description" key="description" content=""/>
+    `,
   },
   {
     name: 'Contact',
@@ -66,6 +83,8 @@ const pages = [
     children: [],
   },
 ]
+
+// const pagesMap = createPagePathMap(pages)
 
 const getCurrentPageIndecies = pagePath => {
   const indecies = [null, null]
@@ -103,11 +122,11 @@ export function usePagesContext() {
 
 export const PagesProvider = ({ children }) => {
   const [currentPageIndecies, setCurrentPageIndecies] = useState(
-    getCurrentPageIndecies(window.location.pathname)
+    getCurrentPageIndecies('/about')
   )
 
-  const setPageIndecies = () => {
-    setCurrentPageIndecies(getCurrentPageIndecies(window.location.pathname))
+  const setPageIndecies = path => {
+    setCurrentPageIndecies(getCurrentPageIndecies(path))
   }
 
   const contextValue = {

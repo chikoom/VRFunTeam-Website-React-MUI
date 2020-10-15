@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { lightTheme, darkTheme } from '../components/ui/theme'
+import { lightTheme, darkTheme } from '../ui/theme'
 
 const ThemeUpdateContext = React.createContext()
 

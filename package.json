@@ -1,41 +1,30 @@
 {
-  "name": "digidigi",
-  "version": "0.1.0",
+  "name": "nextjs",
+  "version": "4.0.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
+    "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "clsx": "latest",
+    "fs-extra": "^9.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^8.0.0",
+    "next": "latest",
+    "next-compose-plugins": "^2.2.0",
+    "next-optimized-images": "^2.6.2",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "react-lottie": "^1.2.3",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
     "react-scroll": "^1.8.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "postbuild": "node scripts/sitemap.js"
   }
 }
