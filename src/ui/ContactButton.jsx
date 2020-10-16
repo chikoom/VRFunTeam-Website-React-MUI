@@ -46,7 +46,7 @@ export default function ContactButton() {
   // const pageUrl = document.querySelector('link[rel=canonical]')
   //   ? document.querySelector('link[rel=canonical]').href
   //   : document.location.href
-  const pageUrl = 'https://www.vrfunteam.com'
+  const pageUrl = 'https://www.funteamvr.com'
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const [snakOpen, setSnakOpen] = useState(false)

@@ -5,6 +5,8 @@ import { PagesProvider } from '../src/contexts/PagesContext'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from '../src/ui/Header/Header'
 import Footer from '../src/ui/Footer/Footer'
+import ReactGA from 'react-ga'
+ReactGA.initialize('G-ZZVGT0FZWP')
 
 export default function MyApp(props) {
   const { Component, pageProps } = props

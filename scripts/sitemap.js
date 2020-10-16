@@ -4,7 +4,7 @@ const formatDate = require('./formatDate')
 
 // ROBOTS.txt
 const robotsTxt = `User-agent: *
-Sitemap: https://funteamvr.com/sitemap_local.xml
+Sitemap: https://www.funteamvr.com/sitemap_local.xml
 Disallow:`
 
 fs.writeFileSync('public/robots.txt', robotsTxt)
@@ -22,8 +22,8 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
       path => `<url>
     ${
       path === '/index'
-        ? `<loc>https://funteamvr.com</loc>`
-        : `<loc>https://funteamvr.com${path}</loc>`
+        ? `<loc>https://www.funteamvr.com</loc>`
+        : `<loc>https://www.funteamvr.com${path}</loc>`
     }
     <lastmod>${
       pathsObj[path].lastModified

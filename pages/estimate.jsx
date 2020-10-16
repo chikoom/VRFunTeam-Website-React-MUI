@@ -151,6 +151,7 @@ const Estimate = props => {
     players: 2,
     hours: 1,
   })
+
   const createMsg = () => {
     return `Hello VRFunTeam! I would like more details about a ${
       priceData.eventType
@@ -173,7 +174,7 @@ const Estimate = props => {
         ? '/assets/player-icons-03.svg'
         : '/assets/player-icons-04.svg'
 
-    setPlayerIconImg(playerImg)
+    // setPlayerIconImg(playerImg)
     const returnValue = value === 20 ? '21+' : value
     return returnValue
   }

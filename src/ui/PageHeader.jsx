@@ -25,7 +25,7 @@ const PageHeader = props => {
         {props.topHeader ? (
           <>
             <Typography
-              variant='subtitle'
+              variant='subtitle1'
               component={Link}
               className={classes.topHeader}
               href={props.href}
