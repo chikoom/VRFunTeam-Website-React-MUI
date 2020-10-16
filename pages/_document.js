@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           {/*<meta name='theme-color' content={theme.palette.primary.main} />*/}
-
+          <link rel='icon' type='image/png' href='favicon.png'></link>
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap'
