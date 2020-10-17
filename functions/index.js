@@ -429,7 +429,8 @@ const confirmTemplate = name => {
                                         </tr>
                                         <tr>
                                           <td
-                                            align="center"
+                                            align="justify"
+                                            dir="ltr"
                                             style="
                                               font-family: 'Pacifico', Tahoma;
                                               font-size: 34.28px;
@@ -444,7 +445,7 @@ const confirmTemplate = name => {
                                         </tr>
                                         <tr>
                                           <td
-                                            align="center"
+                                            align="justify"
                                             style="
                                               padding: 20px 0px 0px 0px;
                                               font-family: 'Roboto', Tahoma, Segoe,
@@ -455,6 +456,7 @@ const confirmTemplate = name => {
                                               color: #fff;
                                               text-align: center;
                                             "
+                                            dir="ltr"
                                           >
                                             Hi ${name},<br />
                                             Thanks for sending us a message! We’ll

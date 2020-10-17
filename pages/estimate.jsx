@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Head from 'next/Head'
-
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie-player'
 import clsx from 'clsx'
 import {
   Avatar,
@@ -14,7 +13,7 @@ import {
 } from '@material-ui/core'
 import Slider from '@material-ui/core/Slider'
 import { usePagesContext } from '../src/contexts/PagesContext'
-import estimateAnimation from '../src/animations/estimate.json'
+// import estimateAnimation from '../src/animations/estimate.json'
 import ContactForm from '../src/ui/parts/ContactForm'
 import PageHeader from '../src/ui/PageHeader'
 
@@ -48,15 +47,15 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '2em',
   },
 }))
-const animationOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: estimateAnimation,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMin meet',
-    imagePreserveAspectRatio: 'xMidYMin meet',
-  },
-}
+// const animationOptions = {
+//   loop: true,
+//   autoplay: true,
+//   animationData: estimateAnimation,
+//   rendererSettings: {
+//     preserveAspectRatio: 'xMidYMin meet',
+//     imagePreserveAspectRatio: 'xMidYMin meet',
+//   },
+// }
 
 const questions = [
   {
@@ -223,7 +222,16 @@ const Estimate = props => {
         <Grid item container direction='column' md={3}>
           <Grid item className={classes.animationContainer}>
             <Grid item className={classes.animation}>
-              <Lottie options={animationOptions} height='50%' width='70%' />
+              {/* <Lottie
+                loop
+                rendererSettings={{
+                  preserveAspectRatio: 'xMidYMin meet',
+                  imagePreserveAspectRatio: 'xMidYMin meet',
+                }}
+                animationData={estimateAnimation}
+                play
+                style={{ width: '70%', height: '50%' }}
+              /> */}
             </Grid>
           </Grid>
         </Grid>

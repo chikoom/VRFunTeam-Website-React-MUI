@@ -7,6 +7,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core'
+import YoutubeContainer from './YoutubeContainer'
 
 const useStyles = makeStyles(theme => ({}))
 
@@ -22,18 +23,7 @@ const RevolutionArticle = props => {
       style={{ marginBottom: '6em' }}
     >
       <Grid item xs={12} md={5}>
-        <iframe
-          title='Oculus Quest'
-          width='560'
-          height='315'
-          src={`https://www.youtube.com/embed/${props.video}`}
-          frameBorder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-          iv_load_policy='3'
-          modestbranding='1'
-          style={{ width: '100%' }}
-        ></iframe>
+        <YoutubeContainer video={props.video} />
       </Grid>
       <Grid item xs={12} md={5}>
         <Typography variant='h4'>{props.title}</Typography>

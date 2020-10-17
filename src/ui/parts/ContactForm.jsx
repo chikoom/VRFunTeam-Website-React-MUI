@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
@@ -16,6 +16,7 @@ import { green, red } from '@material-ui/core/colors'
 import SendIcon from '@material-ui/icons/Send'
 import CheckIcon from '@material-ui/icons/Check'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
+import { event as GAevent } from '../../functions/gtag'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,6 +80,10 @@ const ContactForm = props => {
     message: '',
     color: '',
   })
+
+  useEffect(() => {
+    if (props.message) setMessage(props.message)
+  }, [props.message])
 
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
@@ -186,6 +191,12 @@ const ContactForm = props => {
             backgroundColor: '#4BB543',
             message: 'You message has been sent!',
           })
+          GAevent({
+            category: 'Leads',
+            action: 'Lead Sent',
+            label: 'Website Conversions',
+            value: '1',
+          })
         })
         .catch(err => {
           setLoading(false)
@@ -194,6 +205,12 @@ const ContactForm = props => {
             open: true,
             backgroundColor: '#FF3232',
             message: 'There was an error sending your message',
+          })
+          GAevent({
+            category: 'Errors',
+            action: 'Lead Failed',
+            label: 'Website Conversions Errors',
+            value: '0',
           })
         })
     }
@@ -251,7 +268,7 @@ const ContactForm = props => {
           multiline
           rows={8}
           id='message'
-          value={props.message || message}
+          value={message}
           onChange={handleInput}
           onBlur={handleInputBlur}
           style={{ marginTop: '2em' }}

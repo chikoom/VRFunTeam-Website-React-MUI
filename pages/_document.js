@@ -1,6 +1,7 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
+import { GA_TRACKING_ID } from '../src/functions/gtag'
 
 export default class MyDocument extends Document {
   render() {
@@ -15,10 +16,6 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap'
           />
 
-          <link
-            rel='stylesheet'
-            href='https://use.fontawesome.com/releases/v5.12.0/css/all.css'
-          />
           <meta property='og:type' content='website' />
           <meta property='og:title' content='website' />
           <meta
@@ -32,6 +29,43 @@ export default class MyDocument extends Document {
             property='og:image:alt'
             content='VRFunTeam Better Than Reality'
           />
+          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+
+          {/* <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-ZZVGT0FZWP'
+          ></script>
+          <script
+            async
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-ZZVGT0FZWP');`,
+            }}
+          /> */}
+
+          <>
+            {/* Global Site Tag (gtag.js) - Google Analytics */}
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', '${GA_TRACKING_ID}', {
+                      page_path: window.location.pathname,
+                    });
+                  `,
+              }}
+            />
+          </>
         </Head>
         <body>
           <Main />

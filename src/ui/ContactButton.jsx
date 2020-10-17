@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     height: 380,
     transform: 'translateZ(0px)',
     flexGrow: 1,
-    position: 'absolute',
+    position: 'fixed',
     bottom: '0',
     right: '0',
   },
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
   socialGrid: {
     position: 'absolute',
-    bottom: '1em',
+    bottom: '3em',
     right: '1em',
     width: 'auto',
   },
@@ -43,9 +43,6 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function ContactButton() {
-  // const pageUrl = document.querySelector('link[rel=canonical]')
-  //   ? document.querySelector('link[rel=canonical]').href
-  //   : document.location.href
   const pageUrl = 'https://www.funteamvr.com'
   const classes = useStyles()
   const [open, setOpen] = useState(false)

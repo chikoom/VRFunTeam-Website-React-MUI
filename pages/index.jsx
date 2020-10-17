@@ -22,6 +22,7 @@ import InfoImageBlock from '../src/ui/parts/InfoImageBlock'
 import Cardblock from '../src/ui/parts/CardBlock'
 import VideoBlock from '../src/ui/parts/VideoBlock'
 import HeroBlock from '../src/ui/parts/HeroBlock'
+import CardsSlider from '../src/ui/parts/CardsSlider'
 
 const useStyles = makeStyles(theme => ({
   contentBlock: {
@@ -233,7 +234,8 @@ const HomePage = props => {
           backgroundImage: `url('/assets/triTile.svg')`,
         }}
       >
-        <Cardblock />
+        {/* <Cardblock /> */}
+        <CardsSlider />
       </Grid>
       <Grid
         item

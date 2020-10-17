@@ -1,15 +1,7 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/about": "pages/about.html",
-  "/contact": "pages/contact.html",
-  "/estimate": "pages/estimate.html",
-  "/": "pages/index.html",
-  "/revolution": "pages/revolution.html",
-  "/services": "pages/services.html",
-  "/services/company": "pages/services/company.html",
-  "/services/events": "pages/services/events.html",
-  "/services/private": "pages/services/private.html",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
+  "/revolution": "pages/revolution.js",
+  "/": "pages/index.js"
 }

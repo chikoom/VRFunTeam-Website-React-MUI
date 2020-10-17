@@ -9,6 +9,7 @@ import {
   Button,
 } from '@material-ui/core'
 import Link from '../../Link'
+import YoutubeContainer from './YoutubeContainer'
 
 const useStyles = makeStyles(theme => ({
   playerWrapper: {
@@ -40,18 +41,7 @@ const VideoBlock = props => {
       <Grid item md={6} className={classes.playerWrapper}>
         <Grid container justify='center' alignContent='center'>
           <Grid item className={classes.playerContainer}>
-            <iframe
-              title='Oculus Quest'
-              width='560'
-              height='315'
-              src='https://www.youtube.com/embed/cmZ-4BsCoIA?'
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-              allowFullScreen
-              iv_load_policy='3'
-              modestbranding='1'
-              style={{ width: '100%' }}
-            ></iframe>
+            <YoutubeContainer video='cmZ-4BsCoIA' />
           </Grid>
         </Grid>
       </Grid>

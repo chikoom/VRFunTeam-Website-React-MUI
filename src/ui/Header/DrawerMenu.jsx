@@ -24,6 +24,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import { usePagesContext } from '../../contexts/PagesContext'
 import DarkModeListSwitch from '../DarkModeListSwitch'
+import { event as GAevent } from '../../functions/gtag'
 
 // const iconMapping = {
 //   SendIcon,HomeIcon,AppsIcon,AllInclusiveIcon,InfoIcon,AccountBalanceWalletIcon,GroupIcon,BusinessIcon,EmojiEventsIcon
@@ -137,6 +138,12 @@ const DrawerMenu = props => {
                 onClick={event => {
                   setDrawerOpen(false)
                   handleTabChange(event, index)
+                  GAevent({
+                    category: 'Menu Buttons',
+                    action: `Mobile Drawer ${page.name} Click`,
+                    label: 'Website Actions',
+                    value: '0',
+                  })
                 }}
                 className={page.special ? classes.specialDrawerItem : ''}
                 classes={{ selected: classes.drawerItemSelected }}
@@ -193,6 +200,12 @@ const DrawerMenu = props => {
                           setDrawerOpen(false)
                           handleTabChange(event, index)
                           handleSubMenuClick(event, index, childIndex)
+                          GAevent({
+                            category: 'Menu Buttons',
+                            action: `Mobile Drawer ${childPage.name} Click`,
+                            label: 'Website Actions',
+                            value: '0',
+                          })
                         }}
                         className={classes.nested}
                         classes={{ selected: classes.drawerItemSelected }}

@@ -14,6 +14,7 @@ import {
   Popper,
 } from '@material-ui/core/'
 import { usePagesContext } from '../../contexts/PagesContext'
+import { event as GAevent } from '../../functions/gtag'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -108,6 +109,14 @@ const TabsMenu = props => {
               component={Link}
               href={page.path}
               key={page.path}
+              onClick={() =>
+                GAevent({
+                  category: 'Menu Buttons',
+                  action: `Desktop Tabs ${page.name} Click`,
+                  label: 'Website Actions',
+                  value: '0',
+                })
+              }
             />
           )
         })}
@@ -148,6 +157,12 @@ const TabsMenu = props => {
                             handleMenuClose()
                             handleTabChange(event, index)
                             handleSubMenuClick(event, index, childIndex)
+                            GAevent({
+                              category: 'Menu Buttons',
+                              action: `Desktop Tabs ${childPage.name} Click`,
+                              label: 'Website Actions',
+                              value: '0',
+                            })
                           }}
                           component={Link}
                           href={childPage.path}
@@ -177,6 +192,14 @@ const TabsMenu = props => {
         variant='contained'
         color='secondary'
         className={classes.button}
+        onClick={() =>
+          GAevent({
+            category: 'Estimate',
+            action: 'Desktop Tabs Special Estimate Click',
+            label: 'Website Actions',
+            value: '0',
+          })
+        }
       >
         Price Estimate
       </Button>

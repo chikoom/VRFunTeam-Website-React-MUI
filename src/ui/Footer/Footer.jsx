@@ -5,12 +5,13 @@ import Hidden from '@material-ui/core/Hidden'
 import Link from '../../Link'
 import { makeStyles } from '@material-ui/core/styles'
 import { usePagesContext } from '../../contexts/PagesContext'
+import Copyright from './Copyright'
 
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
-    zIndex: theme.zIndex.modal + 100,
+    zIndex: theme.zIndex.modal + 101,
     position: 'relative',
     color: '#fafafa',
   },
@@ -92,7 +93,7 @@ const Footer = props => {
           </Grid>
         </Grid>
       </Grid>
-
+      <Copyright />
       <ContactButton />
     </footer>
   )

@@ -64,6 +64,7 @@ const HeroBlock = props => {
             justify='center'
             alignContent='center'
             alignItems='center'
+            style={{ marginBottom: '5em', marginTop: '1em' }}
           >
             <Grid item>
               <img
