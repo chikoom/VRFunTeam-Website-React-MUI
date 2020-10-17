@@ -43,7 +43,7 @@ const CardsSlider = props => {
       justify='center'
       style={{ overflow: 'hidden' }}
     >
-      <Grid item md={6} xs={8}>
+      <Grid item md={6} xs={10}>
         {elements.map((element, index) => (
           <Slide
             key={element.subContent}
@@ -71,7 +71,7 @@ const CardsSlider = props => {
               <CardContent>
                 <Grid container direction='column'>
                   <Grid item>
-                    <Typography variant='h4' style={{ fontWeight: 400 }}>
+                    <Typography variant='h5' style={{ fontWeight: 700 }}>
                       "{element.content}"
                     </Typography>
                     <Divider />

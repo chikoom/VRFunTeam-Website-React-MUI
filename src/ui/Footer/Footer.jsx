@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
-    zIndex: theme.zIndex.modal + 101,
+    zIndex: theme.zIndex.modal - 1,
     position: 'relative',
     color: '#fafafa',
   },

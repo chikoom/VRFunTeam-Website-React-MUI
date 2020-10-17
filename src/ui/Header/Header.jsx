@@ -66,7 +66,7 @@ const Header = props => {
     <>
       <ElevationScroll>
         <AppBar position='fixed' className={classes.appBar}>
-          <Toolbar>
+          <Toolbar style={{ paddingLeft: '2%', paddingRight: '2%' }}>
             <Button
               onClick={() => handleTabChange('_', 0)}
               className={classes.logoButton}

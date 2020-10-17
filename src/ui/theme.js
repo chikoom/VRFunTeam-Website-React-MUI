@@ -2,20 +2,7 @@ import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
 const vrPink = '#d84987'
 const vrBlue = '#306ca0'
-
-let dLightTheme = createMuiTheme({
-  palette: {
-    common: {
-      digiPink: vrPink,
-      digiBlue: vrBlue,
-    },
-    primary: {
-      main: vrBlue,
-    },
-    secondary: {
-      main: vrPink,
-    },
-  },
+const themeAll = {
   typography: {
     h1: {
       fontWeight: 900,
@@ -83,6 +70,22 @@ let dLightTheme = createMuiTheme({
       },
     },
   },
+}
+
+let dLightTheme = createMuiTheme({
+  palette: {
+    common: {
+      digiPink: vrPink,
+      digiBlue: vrBlue,
+    },
+    primary: {
+      main: vrBlue,
+    },
+    secondary: {
+      main: vrPink,
+    },
+  },
+  ...themeAll,
 })
 
 dLightTheme = responsiveFontSizes(dLightTheme)
@@ -106,47 +109,7 @@ let dDarkTheme = createMuiTheme({
       default: '#303030',
     },
   },
-  typography: {
-    h5: {
-      fontWeight: 900,
-    },
-    tab: {
-      fontFamily: 'Raleway',
-      fontWeight: '700',
-      fontSize: '1rem',
-    },
-    estimate: {
-      fontFamily: 'Pacifico',
-      fontSize: '1rem',
-      textTransform: 'none',
-    },
-  },
-  overrides: {
-    MuiInputLabel: {
-      root: {
-        color: vrBlue,
-        fontSize: '1rem',
-      },
-    },
-    MuiFilledInput: {
-      root: {
-        backgroundColor: 'rgba(0, 0, 0, 0.04)',
-      },
-    },
-    MuiDivider: {
-      root: {
-        marginTop: '1em',
-        marginBottom: '2em',
-      },
-    },
-    MuiAccordion: {
-      root: {
-        '&.Mui-expanded': {
-          margin: 0,
-        },
-      },
-    },
-  },
+  ...themeAll,
 })
 
 dDarkTheme = responsiveFontSizes(dDarkTheme)

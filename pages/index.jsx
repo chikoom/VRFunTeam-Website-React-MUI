@@ -245,6 +245,7 @@ const HomePage = props => {
         style={{
           backgroundSize: '3%',
           backgroundImage: `url('/assets/triTile.svg')`,
+          minHeight: '80vh',
         }}
       >
         {/* <Cardblock /> */}
