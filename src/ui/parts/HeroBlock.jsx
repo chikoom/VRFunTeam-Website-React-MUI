@@ -1,15 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  useMediaQuery,
-  useTheme,
-  Grid,
-  Typography,
-  Button,
-} from '@material-ui/core'
+import { useTheme, Grid, Typography, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Link from '../../Link'
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {

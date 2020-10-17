@@ -51,6 +51,11 @@ let dLightTheme = createMuiTheme({
       fontSize: '1rem',
       textTransform: 'none',
     },
+    listIcon: {
+      fontSize: '2em',
+      transform: 'rotate(-15deg)',
+      textShadow: '0px 0px 23px #555',
+    },
   },
   overrides: {
     MuiInputLabel: {

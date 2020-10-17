@@ -4,7 +4,6 @@ import Head from 'next/Head'
 import {
   Divider,
   Grid,
-  Icon,
   makeStyles,
   Typography,
   useMediaQuery,

@@ -1,13 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  Button,
-  Grid,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@material-ui/core'
-import Link from '../../Link'
+import { Grid, Typography, useTheme } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   copyfooter: {

@@ -101,11 +101,28 @@ const About = props => {
         </Grid>
         <Grid item container direction='row' justify='center'>
           <Grid item xs={12} md={5}>
-            <img
-              src='/assets/vrteam.png'
+            <picture alt='funteam logo' className={classes.image}>
+              <source
+                srcSet={require('../public/assets/vrteam.png?webp')}
+                type='image/webp'
+                style={{ width: '90%' }}
+              />
+              <source
+                srcSet={require('../public/assets/vrteam.png')}
+                type='image/png'
+                style={{ width: '90%' }}
+              />
+              <img
+                src={require('../public/assets/vrteam.png?webp')}
+                alt='funteam logo'
+                style={{ width: '90%' }}
+              />
+            </picture>
+            {/* <img
+              src='/assets/vrteam.png?webp'
               alt='vrfunteam'
               style={{ width: '90%' }}
-            />
+            /> */}
           </Grid>
           <Grid item xs={12} md={4}>
             <Typography variant='body1' style={{ marginTop: '2em' }}>

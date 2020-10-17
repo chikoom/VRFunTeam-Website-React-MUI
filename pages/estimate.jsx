@@ -2,15 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/Head'
 // import Lottie from 'react-lottie-player'
 import clsx from 'clsx'
-import {
-  Avatar,
-  CardMedia,
-  Divider,
-  Grid,
-  makeStyles,
-  Paper,
-  Typography,
-} from '@material-ui/core'
+import { Grid, makeStyles, Typography } from '@material-ui/core'
 import Slider from '@material-ui/core/Slider'
 import { usePagesContext } from '../src/contexts/PagesContext'
 // import estimateAnimation from '../src/animations/estimate.json'

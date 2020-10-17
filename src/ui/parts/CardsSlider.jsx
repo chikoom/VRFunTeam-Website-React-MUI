@@ -7,6 +7,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Card, CardContent, Divider, Grid, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({}))
+var timeOutHandler
 
 const elements = [
   {
@@ -29,7 +30,11 @@ const CardsSlider = props => {
   const theme = useTheme()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [slideEnter, setSlideEnter] = useState(true)
-
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeOutHandler)
+    }
+  }, [])
   return (
     <Grid
       container
@@ -51,7 +56,7 @@ const CardsSlider = props => {
               exit: 500,
             }}
             onEntered={() => {
-              setTimeout(() => {
+              timeOutHandler = setTimeout(() => {
                 setSlideEnter(false)
               }, 3500)
             }}

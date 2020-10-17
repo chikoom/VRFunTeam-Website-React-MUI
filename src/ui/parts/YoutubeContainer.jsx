@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Icon, IconButton, useMediaQuery, useTheme } from '@material-ui/core'
+import { useTheme } from '@material-ui/core'
 import YouTubeIcon from '@material-ui/icons/YouTube'
 const useStyles = makeStyles(theme => ({
   wrapper: {

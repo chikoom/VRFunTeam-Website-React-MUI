@@ -6,7 +6,6 @@ import {
   Button,
   Grid,
   TextField,
-  useMediaQuery,
   useTheme,
   CircularProgress,
   Snackbar,
@@ -114,8 +113,8 @@ const ContactForm = props => {
     },
     message: {
       set: setMessage,
-      validate: /^[0-9@a-zA-Z א-ת\-\!]*$/,
-      err: 'Invalid Message',
+      validate: /^[0-9@a-zA-Z א-ת\-\!\$]*$/,
+      err: 'Invalid. No special charecters please.',
       setErr: setMessageErr,
       isErr: messageErr,
     },
@@ -135,7 +134,6 @@ const ContactForm = props => {
   const checkError = (targetId, value) => {
     let valid = ''
     valid = fieldMapping[targetId].validate.test(value)
-    console.log(valid)
     if (!valid) fieldMapping[targetId].setErr(true)
     else fieldMapping[targetId].setErr(false)
     return valid
@@ -170,7 +168,6 @@ const ContactForm = props => {
   }
 
   const handleSubmit = () => {
-    console.log(checkAllErrors())
     if (checkAllErrors()) {
       if (!loading) {
         setSuccess(false)

@@ -10,11 +10,185 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           {/*<meta name='theme-color' content={theme.palette.primary.main} />*/}
-          <link rel='icon' type='image/png' href='favicon.png'></link>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                
+              /* roboto-300 - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Roboto';
+                  font-style: normal;
+                  font-weight: 300;
+                  src: local('Roboto Light'), local('Roboto-Light'),
+                       url('../fonts/roboto-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* roboto-regular - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Roboto';
+                  font-style: normal;
+                  font-weight: 400;
+                  src: local('Roboto'), local('Roboto-Regular'),
+                       url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* roboto-500 - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Roboto';
+                  font-style: normal;
+                  font-weight: 500;
+                  src: local('Roboto Medium'), local('Roboto-Medium'),
+                       url('../fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* roboto-700 - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Roboto';
+                  font-style: normal;
+                  font-weight: 700;
+                  src: local('Roboto Bold'), local('Roboto-Bold'),
+                       url('../fonts/roboto-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* pacifico-regular - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Pacifico';
+                  font-style: normal;
+                  font-weight: 400;
+                  src: local('Pacifico Regular'), local('Pacifico-Regular'),
+                      url('../fonts/pacifico-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                      url('../fonts/pacifico-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* raleway-100 - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Raleway';
+                  font-style: normal;
+                  font-weight: 100;
+                  src: local(''),
+                       url('../fonts/raleway-v18-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* raleway-regular - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Raleway';
+                  font-style: normal;
+                  font-weight: 400;
+                  src: local(''),
+                       url('../fonts/raleway-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* raleway-700 - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Raleway';
+                  font-style: normal;
+                  font-weight: 700;
+                  src: local(''),
+                       url('../fonts/raleway-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                /* raleway-italic - latin */
+                @font-face {
+                  font-display: swap;
+                  font-family: 'Raleway';
+                  font-style: italic;
+                  font-weight: 400;
+                  src: local(''),
+                       url('../fonts/raleway-v18-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                }
+                <style> 
+                  `,
+            }}
+          ></style>
+
           <link
-            rel='stylesheet'
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/pacifico-v17-latin-regular.woff2'
+            crossOrigin='anonymous'
+          ></link>
+
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/raleway-v18-latin-100.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/raleway-v18-latin-700.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/raleway-v18-latin-italic.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/raleway-v18-latin-regular.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/roboto-v20-latin-300.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/roboto-v20-latin-500.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/roboto-v20-latin-700.woff2'
+            crossOrigin='anonymous'
+          ></link>
+          <link
+            rel='preload'
+            as='font'
+            type='font/woff2'
+            href='../fonts/roboto-v20-latin-regular.woff2'
+            crossOrigin='anonymous'
+          ></link>
+
+          <link rel='icon' type='image/png' href='favicon.png'></link>
+          {/* <link
+            rel='preconnect'
+            href='https://www.googletagmanager.com'
+            crossorigin
+          ></link>
+          <link
+            rel='preconnect'
+            href='https://fonts.gstatic.com/'
+            crossorigin
+          ></link>
+          <link
             href='https://fonts.googleapis.com/css?family=Pacifico|Raleway:100,400,400i,700|Roboto:300,400,500,700&display=swap'
-          />
+            rel='stylesheet'
+          ></link> */}
 
           <meta property='og:type' content='website' />
           <meta property='og:title' content='website' />

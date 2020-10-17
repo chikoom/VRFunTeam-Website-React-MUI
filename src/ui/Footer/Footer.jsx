@@ -32,7 +32,6 @@ const GridLink = props => {
   const { path, text } = props
   const { getCurrentPageIndecies, setCurrentPageIndecies } = usePagesContext()
   const handleLinkClick = path => {
-    console.log(path)
     setCurrentPageIndecies(getCurrentPageIndecies(path))
   }
   return (

@@ -15,11 +15,9 @@ import {
   useMediaQuery,
   useTheme,
   Divider,
-  Card,
 } from '@material-ui/core'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import InfoImageBlock from '../src/ui/parts/InfoImageBlock'
-import Cardblock from '../src/ui/parts/CardBlock'
 import VideoBlock from '../src/ui/parts/VideoBlock'
 import HeroBlock from '../src/ui/parts/HeroBlock'
 import CardsSlider from '../src/ui/parts/CardsSlider'
@@ -47,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   coupleItem: {
-    backgroundImage: `url('/assets/vrfunteam-couple.jpg')`,
+    backgroundImage: `url('${require('../public/assets/vrfunteam-couple.jpg?webp')}')`,
     textAlign: 'justify center',
     backgroundPosition: '100% 100%',
     backgroundSize: 'cover',
@@ -142,11 +140,26 @@ const HomePage = props => {
           style={{ width: '100%', margin: 'auto', height: 'auto' }}
         >
           <Grid item xs={12} md={4}>
-            <img
-              src='/assets/glasses_oculus.png'
+            <picture alt='funteam logo' className={classes.image}>
+              <source
+                srcSet={require('../public/assets/glasses_oculus.png?webp')}
+                type='image/webp'
+              />
+              <source
+                srcSet={require('../public/assets/glasses_oculus.png')}
+                type='image/png'
+              />
+              <img
+                src={require('../public/assets/glasses_oculus.png?webp')}
+                alt='funteam logo'
+                className={classes.image}
+              />
+            </picture>
+            {/* <img
+              src='/assets/glasses_oculus.png?webp'
               alt='funteam logo'
               className={classes.image}
-            />
+            /> */}
           </Grid>
           <Grid item xs={12} md={4} style={{ padding: '0' }}>
             <List>

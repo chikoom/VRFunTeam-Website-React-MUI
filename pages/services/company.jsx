@@ -5,7 +5,6 @@ import {
   Button,
   Divider,
   Grid,
-  Icon,
   List,
   ListItem,
   ListItemIcon,
@@ -14,6 +13,7 @@ import {
   Typography,
   GridList,
   GridListTile,
+  useTheme,
 } from '@material-ui/core'
 import { usePagesContext } from '../../src/contexts/PagesContext'
 import Link from '../../src/Link'
@@ -81,7 +81,7 @@ const useStyles = makeStyles(theme => ({
 const ServicesCompany = props => {
   const classes = useStyles()
   const { setPageIndecies } = usePagesContext()
-
+  const theme = useTheme()
   useEffect(() => {
     setPageIndecies('/services/company')
   }, [])
@@ -137,41 +137,25 @@ const ServicesCompany = props => {
               <List>
                 <ListItem>
                   <ListItemIcon>
-                    <Icon
-                      className='fa fa-cube'
-                      color='primary'
-                      style={{ fontSize: '2em' }}
-                    />
+                    <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
                   <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <Icon
-                      className='fa fa-cube'
-                      color='primary'
-                      style={{ fontSize: '2em' }}
-                    />
+                    <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
                   <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <Icon
-                      className='fa fa-cube'
-                      color='primary'
-                      style={{ fontSize: '2em' }}
-                    />
+                    <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
                   <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <Icon
-                      className='fa fa-cube'
-                      color='primary'
-                      style={{ fontSize: '2em' }}
-                    />
+                    <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
                   <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
                 </ListItem>

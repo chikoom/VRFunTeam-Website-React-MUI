@@ -1,12 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  Avatar,
-  Grid,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@material-ui/core'
+import { Avatar, Grid, Typography, useTheme } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   img: {
