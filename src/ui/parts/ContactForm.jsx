@@ -16,6 +16,8 @@ import SendIcon from '@material-ui/icons/Send'
 import CheckIcon from '@material-ui/icons/Check'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 import { event as GAevent } from '../../functions/gtag'
+import { useLanguageContext } from '../../../src/contexts/LangContext'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -212,14 +214,14 @@ const ContactForm = props => {
         })
     }
   }
-
+  const { siteData, language } = useLanguageContext()
   return (
     <Grid container direction='column' justify='center'>
       <Grid item>
         <TextField
           variant='filled'
           fullWidth
-          label='Name'
+          label={siteData.contactForm.name}
           id='name'
           value={name}
           onChange={handleInput}
@@ -233,7 +235,7 @@ const ContactForm = props => {
         <TextField
           variant='filled'
           fullWidth
-          label='Phone'
+          label={siteData.contactForm.phone}
           id='phone'
           value={phone}
           onChange={handleInput}
@@ -247,7 +249,7 @@ const ContactForm = props => {
         <TextField
           variant='filled'
           fullWidth
-          label='Email'
+          label={siteData.contactForm.email}
           id='email'
           value={email}
           onChange={handleInput}
@@ -261,7 +263,7 @@ const ContactForm = props => {
         <TextField
           variant='filled'
           fullWidth
-          placeholder='How can we help you?'
+          placeholder={siteData.contactForm.text}
           multiline
           rows={8}
           id='message'
@@ -281,7 +283,7 @@ const ContactForm = props => {
           onClick={handleSubmit}
           className={buttonClassname}
         >
-          Send Message{' '}
+          {siteData.contactForm.submit}{' '}
           {success ? (
             <CheckIcon />
           ) : (

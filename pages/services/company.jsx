@@ -18,7 +18,7 @@ import {
 import { usePagesContext } from '../../src/contexts/PagesContext'
 import Link from '../../src/Link'
 import PageHeader from '../../src/ui/PageHeader'
-
+import { useLanguageContext } from '../../src/contexts/LangContext'
 const tileData = [
   {
     img: '/assets/team_photos/team_1.jpg',
@@ -85,10 +85,11 @@ const ServicesCompany = props => {
   useEffect(() => {
     setPageIndecies('/services/company')
   }, [])
+  const { siteData } = useLanguageContext()
   return (
     <PageHeader
-      header='Companies & Teams'
-      topHeader='Services'
+      header={siteData.pages.company}
+      topHeader={siteData.pages.services}
       href='/services'
     >
       <Head>
@@ -118,16 +119,12 @@ const ServicesCompany = props => {
       </Head>
       <Grid container direction='column' alignItems='center'>
         <Grid item xs={10} md={6}>
-          <Typography variant='h4'>Company & Teams</Typography>
+          <Typography variant='h4'>{siteData.services.company.title}</Typography>
           <Divider />
         </Grid>
         <Grid item xs={10} md={6}>
           <Typography variant='body1'>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English.
+          {siteData.services.company.text}
           </Typography>
           <Divider />
         </Grid>
@@ -135,30 +132,12 @@ const ServicesCompany = props => {
           <Grid container direction='row' alignItems='center'>
             <Grid item xs={12} sm={8}>
               <List>
-                <ListItem>
+              {siteData.services.company.points.map(point => <ListItem>
                   <ListItemIcon>
                     <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
-                  <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <span style={theme.typography.listIcon}>🥽</span>
-                  </ListItemIcon>
-                  <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <span style={theme.typography.listIcon}>🥽</span>
-                  </ListItemIcon>
-                  <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <span style={theme.typography.listIcon}>🥽</span>
-                  </ListItemIcon>
-                  <ListItemText primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.' />
-                </ListItem>
+                  <ListItemText primary={point} />
+                </ListItem>)}
               </List>
             </Grid>
             <Grid item xs={12} sm={4} align='center'>
@@ -169,7 +148,7 @@ const ServicesCompany = props => {
                 color='secondary'
                 className={classes.button}
               >
-                Price Estimate
+                {siteData.priceEstimate}
               </Button>
             </Grid>
           </Grid>

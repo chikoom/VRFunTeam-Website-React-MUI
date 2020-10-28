@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "dvyx");
+/******/ 	return __webpack_require__(__webpack_require__.s = "BK31");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1308,109 +1308,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _Snackbar__WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
 
-
-/***/ }),
-
-/***/ "/a9y":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__("TqRt");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__("q1tI"));
-
-var _head = _interopRequireDefault(__webpack_require__("8Kt/"));
-
-const statusCodes = {
-  400: 'Bad Request',
-  404: 'This page could not be found',
-  405: 'Method Not Allowed',
-  500: 'Internal Server Error'
-};
-
-function _getInitialProps({
-  res,
-  err
-}) {
-  const statusCode = res && res.statusCode ? res.statusCode : err ? err.statusCode : 404;
-  return {
-    statusCode
-  };
-}
-/**
-* `Error` component used for handling errors.
-*/
-
-
-class Error extends _react.default.Component {
-  render() {
-    const {
-      statusCode
-    } = this.props;
-    const title = this.props.title || statusCodes[statusCode] || 'An unexpected error has occurred';
-    return /*#__PURE__*/_react.default.createElement("div", {
-      style: styles.error
-    }, /*#__PURE__*/_react.default.createElement(_head.default, null, /*#__PURE__*/_react.default.createElement("title", null, statusCode, ": ", title)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("style", {
-      dangerouslySetInnerHTML: {
-        __html: 'body { margin: 0 }'
-      }
-    }), statusCode ? /*#__PURE__*/_react.default.createElement("h1", {
-      style: styles.h1
-    }, statusCode) : null, /*#__PURE__*/_react.default.createElement("div", {
-      style: styles.desc
-    }, /*#__PURE__*/_react.default.createElement("h2", {
-      style: styles.h2
-    }, title, "."))));
-  }
-
-}
-
-exports.default = Error;
-Error.displayName = 'ErrorPage';
-Error.getInitialProps = _getInitialProps;
-Error.origGetInitialProps = _getInitialProps;
-const styles = {
-  error: {
-    color: '#000',
-    background: '#fff',
-    fontFamily: '-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif',
-    height: '100vh',
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  desc: {
-    display: 'inline-block',
-    textAlign: 'left',
-    lineHeight: '49px',
-    height: '49px',
-    verticalAlign: 'middle'
-  },
-  h1: {
-    display: 'inline-block',
-    borderRight: '1px solid rgba(0, 0, 0,.3)',
-    margin: 0,
-    marginRight: '20px',
-    padding: '10px 23px 10px 0',
-    fontSize: '24px',
-    fontWeight: 500,
-    verticalAlign: 'top'
-  },
-  h2: {
-    fontSize: '14px',
-    fontWeight: 'normal',
-    lineHeight: 'inherit',
-    margin: 0,
-    padding: 0
-  }
-};
 
 /***/ }),
 
@@ -5221,22 +5118,16 @@ var createMuiTheme = __webpack_require__("viY9");
 var responsiveFontSizes = __webpack_require__("q4d2");
 
 // CONCATENATED MODULE: ./src/ui/theme.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 const vrPink = '#d84987';
 const vrBlue = '#306ca0';
-let dLightTheme = Object(createMuiTheme["a" /* default */])({
-  palette: {
-    common: {
-      digiPink: vrPink,
-      digiBlue: vrBlue
-    },
-    primary: {
-      main: vrBlue
-    },
-    secondary: {
-      main: vrPink
-    }
-  },
+const themeAll = {
   typography: {
     h1: {
       fontWeight: 900,
@@ -5271,6 +5162,11 @@ let dLightTheme = Object(createMuiTheme["a" /* default */])({
       fontFamily: 'Pacifico',
       fontSize: '1rem',
       textTransform: 'none'
+    },
+    listIcon: {
+      fontSize: '2em',
+      transform: 'rotate(-15deg)',
+      textShadow: '0px 0px 23px #555'
     }
   },
   overrides: {
@@ -5299,10 +5195,24 @@ let dLightTheme = Object(createMuiTheme["a" /* default */])({
       }
     }
   }
-});
+};
+let dLightTheme = Object(createMuiTheme["a" /* default */])(_objectSpread({
+  palette: {
+    common: {
+      digiPink: vrPink,
+      digiBlue: vrBlue
+    },
+    primary: {
+      main: vrBlue
+    },
+    secondary: {
+      main: vrPink
+    }
+  }
+}, themeAll));
 dLightTheme = Object(responsiveFontSizes["a" /* default */])(dLightTheme);
 const lightTheme = dLightTheme;
-let dDarkTheme = Object(createMuiTheme["a" /* default */])({
+let dDarkTheme = Object(createMuiTheme["a" /* default */])(_objectSpread({
   palette: {
     type: 'dark',
     common: {
@@ -5319,49 +5229,8 @@ let dDarkTheme = Object(createMuiTheme["a" /* default */])({
       paper: '#424242',
       default: '#303030'
     }
-  },
-  typography: {
-    h5: {
-      fontWeight: 900
-    },
-    tab: {
-      fontFamily: 'Raleway',
-      fontWeight: '700',
-      fontSize: '1rem'
-    },
-    estimate: {
-      fontFamily: 'Pacifico',
-      fontSize: '1rem',
-      textTransform: 'none'
-    }
-  },
-  overrides: {
-    MuiInputLabel: {
-      root: {
-        color: vrBlue,
-        fontSize: '1rem'
-      }
-    },
-    MuiFilledInput: {
-      root: {
-        backgroundColor: 'rgba(0, 0, 0, 0.04)'
-      }
-    },
-    MuiDivider: {
-      root: {
-        marginTop: '1em',
-        marginBottom: '2em'
-      }
-    },
-    MuiAccordion: {
-      root: {
-        '&.Mui-expanded': {
-          margin: 0
-        }
-      }
-    }
   }
-});
+}, themeAll));
 dDarkTheme = Object(responsiveFontSizes["a" /* default */])(dDarkTheme);
 const theme_darkTheme = dDarkTheme;
 // CONCATENATED MODULE: ./src/contexts/ThemeContext.js
@@ -5396,6 +5265,9 @@ function ThemeContextProvider({
 }
 // EXTERNAL MODULE: ./src/contexts/PagesContext.js
 var PagesContext = __webpack_require__("oN2N");
+
+// EXTERNAL MODULE: ./src/contexts/LangContext.js
+var LangContext = __webpack_require__("jiai");
 
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js
 var CssBaseline = __webpack_require__("5CWz");
@@ -5505,11 +5377,11 @@ var gtag = __webpack_require__("i0iE");
 // CONCATENATED MODULE: ./src/ui/Header/DrawerMenu.jsx
 var DrawerMenu_jsx = react_default.a.createElement;
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function DrawerMenu_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function DrawerMenu_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { DrawerMenu_ownKeys(Object(source), true).forEach(function (key) { DrawerMenu_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { DrawerMenu_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function DrawerMenu_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -5545,7 +5417,7 @@ const iconMapping = {
   EmojiEventsIcon: DrawerMenu_jsx(EmojiEvents_default.a, null)
 };
 const DrawerMenu_useStyles = Object(core["makeStyles"])(theme => ({
-  toolbarMargin: _objectSpread(_objectSpread({}, theme.mixins.toolbar), {}, {
+  toolbarMargin: DrawerMenu_objectSpread(DrawerMenu_objectSpread({}, theme.mixins.toolbar), {}, {
     marginBottom: '3em'
   }),
   menuIconContainer: {
@@ -5558,7 +5430,7 @@ const DrawerMenu_useStyles = Object(core["makeStyles"])(theme => ({
     backgroundColor: theme.palette.primary.main,
     color: '#fafafa'
   },
-  drawerItem: _objectSpread(_objectSpread({}, theme.typography.tab), {}, {
+  drawerItem: DrawerMenu_objectSpread(DrawerMenu_objectSpread({}, theme.typography.tab), {}, {
     opacity: 0.7
   }),
   drawerItemSelected: {
@@ -5764,6 +5636,67 @@ const DarkModeButton = () => {
     "aria-label": "delete"
   }, DarkModeButton_jsx(Brightness4Outlined_default.a, null)));
 };
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Button/Button.js
+var Button = __webpack_require__("Z3vd");
+
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Menu/Menu.js
+var Menu_Menu = __webpack_require__("gd/W");
+
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/MenuItem/MenuItem.js
+var MenuItem = __webpack_require__("jjAL");
+
+// CONCATENATED MODULE: ./src/ui/LanguageButton.jsx
+var LanguageButton_jsx = react_default.a.createElement;
+
+
+
+
+
+
+
+const LanguageButton = props => {
+  const [anchorEl, setAnchorEl] = react_default.a.useState(null);
+  const {
+    language,
+    languages,
+    changeLanguageTo
+  } = Object(LangContext["b" /* useLanguageContext */])();
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSelect = lang => {
+    setAnchorEl(null);
+    changeLanguageTo(lang);
+  };
+
+  return LanguageButton_jsx("div", null, LanguageButton_jsx(Button["a" /* default */], {
+    "aria-controls": "simple-menu",
+    "aria-haspopup": "true",
+    onClick: handleClick
+  }, language), LanguageButton_jsx(Menu_Menu["a" /* default */], {
+    id: "simple-menu",
+    anchorEl: anchorEl,
+    keepMounted: true,
+    open: Boolean(anchorEl),
+    onClose: handleClose,
+    style: {
+      zIndex: '9999'
+    }
+  }, languages.map(savedLanguage => LanguageButton_jsx(MenuItem["a" /* default */], {
+    key: savedLanguage,
+    component: Link["a" /* default */],
+    href: `?lang=${savedLanguage}`,
+    onClick: () => handleSelect(savedLanguage)
+  }, savedLanguage))));
+};
+
+/* harmony default export */ var ui_LanguageButton = (LanguageButton);
 // CONCATENATED MODULE: ./src/ui/Header/TabsMenu.jsx
 var TabsMenu_jsx = react_default.a.createElement;
 
@@ -5774,6 +5707,7 @@ function TabsMenu_ownKeys(object, enumerableOnly) { var keys = Object.keys(objec
 function TabsMenu_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { TabsMenu_ownKeys(Object(source), true).forEach(function (key) { TabsMenu_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { TabsMenu_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function TabsMenu_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5927,7 +5861,7 @@ const TabsMenu = props => {
       },
       selected: childIndex === currentPageIndecies[1] && index === currentPageIndecies[0]
     }, childPage.name))))))) : '';
-  }), TabsMenu_jsx(DarkModeButton, null), TabsMenu_jsx(core["Button"], {
+  }), TabsMenu_jsx(DarkModeButton, null), TabsMenu_jsx(ui_LanguageButton, null), TabsMenu_jsx(core["Button"], {
     component: Link["a" /* default */],
     href: "/estimate",
     variant: "contained",
@@ -6009,7 +5943,12 @@ const Header = props => {
   return Header_jsx(react_default.a.Fragment, null, Header_jsx(ElevationScroll, null, Header_jsx(core["AppBar"], {
     position: "fixed",
     className: classes.appBar
-  }, Header_jsx(core["Toolbar"], null, Header_jsx(core["Button"], {
+  }, Header_jsx(core["Toolbar"], {
+    style: {
+      paddingLeft: '2%',
+      paddingRight: '2%'
+    }
+  }, Header_jsx(core["Button"], {
     onClick: () => handleTabChange('_', 0),
     className: classes.logoButton,
     component: Link["a" /* default */],
@@ -6904,7 +6843,6 @@ var Copyright_jsx = react_default.a.createElement;
 
 
 
-
 const Copyright_useStyles = Object(makeStyles["a" /* default */])(theme => ({
   copyfooter: {
     backgroundColor: theme.palette.primary.dark,
@@ -6989,7 +6927,7 @@ const Footer_useStyles = Object(makeStyles["a" /* default */])(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
-    zIndex: theme.zIndex.modal + 101,
+    zIndex: theme.zIndex.modal - 1,
     position: 'relative',
     color: '#fafafa'
   },
@@ -7017,7 +6955,6 @@ const GridLink = props => {
   } = Object(PagesContext["b" /* usePagesContext */])();
 
   const handleLinkClick = path => {
-    console.log(path);
     setCurrentPageIndecies(getCurrentPageIndecies(path));
   };
 
@@ -7121,6 +7058,7 @@ var _app_jsx = react_default.a.createElement;
 
 
 
+
 router_default.a.events.on('routeChangeComplete', url => gtag["c" /* pageview */](url));
 function MyApp(props) {
   const {
@@ -7135,7 +7073,7 @@ function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  return _app_jsx(react_default.a.Fragment, null, _app_jsx(PagesContext["a" /* PagesProvider */], null, _app_jsx(ThemeContextProvider, null, _app_jsx(CssBaseline["a" /* default */], null), _app_jsx(Header_Header, null), _app_jsx(Component, pageProps), _app_jsx(Footer_Footer, null))));
+  return _app_jsx(react_default.a.Fragment, null, _app_jsx(PagesContext["a" /* PagesProvider */], null, _app_jsx(ThemeContextProvider, null, _app_jsx(LangContext["a" /* LangProvider */], null, _app_jsx(CssBaseline["a" /* default */], null), _app_jsx(Header_Header, null), _app_jsx(Component, pageProps), _app_jsx(Footer_Footer, null)))));
 }
 
 /***/ }),
@@ -12056,8 +11994,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 300;
                   src: local('Roboto Light'), local('Roboto-Light'),
-                       url('./fonts/roboto-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/roboto-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/roboto-v20-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* roboto-regular - latin */
                 @font-face {
@@ -12066,8 +12004,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 400;
                   src: local('Roboto'), local('Roboto-Regular'),
-                       url('./fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* roboto-500 - latin */
                 @font-face {
@@ -12076,8 +12014,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 500;
                   src: local('Roboto Medium'), local('Roboto-Medium'),
-                       url('./fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/roboto-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* roboto-700 - latin */
                 @font-face {
@@ -12086,8 +12024,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 700;
                   src: local('Roboto Bold'), local('Roboto-Bold'),
-                       url('./fonts/roboto-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/roboto-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/roboto-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/roboto-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* pacifico-regular - latin */
                 @font-face {
@@ -12096,8 +12034,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 400;
                   src: local('Pacifico Regular'), local('Pacifico-Regular'),
-                      url('./fonts/pacifico-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                      url('./fonts/pacifico-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                      url('../fonts/pacifico-v17-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                      url('../fonts/pacifico-v17-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* raleway-100 - latin */
                 @font-face {
@@ -12106,8 +12044,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 100;
                   src: local(''),
-                       url('./fonts/raleway-v18-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/raleway-v18-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/raleway-v18-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* raleway-regular - latin */
                 @font-face {
@@ -12116,8 +12054,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 400;
                   src: local(''),
-                       url('./fonts/raleway-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/raleway-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/raleway-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* raleway-700 - latin */
                 @font-face {
@@ -12126,8 +12064,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: normal;
                   font-weight: 700;
                   src: local(''),
-                       url('./fonts/raleway-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/raleway-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/raleway-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 /* raleway-italic - latin */
                 @font-face {
@@ -12136,8 +12074,8 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
                   font-style: italic;
                   font-weight: 400;
                   src: local(''),
-                       url('./fonts/raleway-v18-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-                       url('./fonts/raleway-v18-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+                       url('../fonts/raleway-v18-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+                       url('../fonts/raleway-v18-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
                 }
                 <style> 
                   `
@@ -12146,55 +12084,55 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/pacifico-v17-latin-regular.woff2",
+      href: "../fonts/pacifico-v17-latin-regular.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/raleway-v18-latin-100.woff2",
+      href: "../fonts/raleway-v18-latin-100.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/raleway-v18-latin-700.woff2",
+      href: "../fonts/raleway-v18-latin-700.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/raleway-v18-latin-italic.woff2",
+      href: "../fonts/raleway-v18-latin-italic.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/raleway-v18-latin-regular.woff2",
+      href: "../fonts/raleway-v18-latin-regular.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/roboto-v20-latin-300.woff2",
+      href: "../fonts/roboto-v20-latin-300.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/roboto-v20-latin-500.woff2",
+      href: "../fonts/roboto-v20-latin-500.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/roboto-v20-latin-700.woff2",
+      href: "../fonts/roboto-v20-latin-700.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "preload",
       as: "font",
       type: "font/woff2",
-      href: "./fonts/roboto-v20-latin-regular.woff2",
+      href: "../fonts/roboto-v20-latin-regular.woff2",
       crossOrigin: "anonymous"
     }), __jsx("link", {
       rel: "icon",
@@ -15601,6 +15539,14 @@ module.exports = __webpack_require__("VDXt")
 
 /***/ }),
 
+/***/ "8rWI":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("8Kt/")
+
+
+/***/ }),
+
 /***/ "8xkj":
 /***/ (function(module, exports) {
 
@@ -17137,6 +17083,321 @@ function exactProp(propTypes) {
     return null;
   }));
 }
+
+/***/ }),
+
+/***/ "BK31":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticProps", function() { return getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticPaths", function() { return getStaticPaths; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { return getServerSideProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticPaths", function() { return unstable_getStaticPaths; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getServerProps", function() { return unstable_getServerProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return _app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
+/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
+
+    
+    
+    
+    const {isResSent} = __webpack_require__("g/15");
+
+    
+    const { processEnv } = __webpack_require__("fXeI")
+    processEnv([])
+  
+    
+    const runtimeConfig = {}
+    const {parse: parseUrl, format: formatUrl} = __webpack_require__("bzos")
+    const {parse: parseQs} = __webpack_require__("8xkj")
+    const { renderToHTML } = __webpack_require__("/bjS");
+    const { tryGetPreviewData } = __webpack_require__("PCLx");
+    const { denormalizePagePath } = __webpack_require__("wkBG")
+    const { setLazyProp, getCookieParser } = __webpack_require__("PCLx")
+    const {sendPayload} = __webpack_require__("KyNf");
+    const buildManifest = __webpack_require__("LZ9C");
+    const reactLoadableManifest = __webpack_require__("67Bq");
+    const Document = __webpack_require__("5w0S").default;
+    const Error = __webpack_require__("Y0NT").default;
+    const App = __webpack_require__("1TCz").default;
+
+    
+    
+    const { rewrites } = __webpack_require__("Skye")
+    const { pathToRegexp, default: pathMatch } = __webpack_require__("N6Fi")
+  
+
+    const ComponentInfo = __webpack_require__("Y0NT")
+
+    const Component = ComponentInfo.default
+    /* harmony default export */ __webpack_exports__["default"] = (Component);
+    const unstable_getStaticParams = ComponentInfo['unstable_getStaticParam' + 's']
+    const getStaticProps = ComponentInfo['getStaticProp' + 's']
+    const getStaticPaths = ComponentInfo['getStaticPath' + 's']
+    const getServerSideProps = ComponentInfo['getServerSideProp' + 's']
+
+    // kept for detecting legacy exports
+    const unstable_getStaticProps = ComponentInfo['unstable_getStaticProp' + 's']
+    const unstable_getStaticPaths = ComponentInfo['unstable_getStaticPath' + 's']
+    const unstable_getServerProps = ComponentInfo['unstable_getServerProp' + 's']
+
+    
+    
+    
+    
+    const getCustomRouteMatcher = pathMatch(true)
+    const prepareDestination = __webpack_require__("6mnf").default
+
+    function handleRewrites(parsedUrl) {
+      for (const rewrite of rewrites) {
+        const matcher = getCustomRouteMatcher(rewrite.source)
+        const params = matcher(parsedUrl.pathname)
+
+        if (params) {
+          const { parsedDestination } = prepareDestination(
+            rewrite.destination,
+            params,
+            parsedUrl.query,
+            true,
+            ""
+          )
+
+          Object.assign(parsedUrl.query, parsedDestination.query)
+          delete parsedDestination.query
+
+          Object.assign(parsedUrl, parsedDestination)
+
+          if (parsedUrl.pathname === '/_error'){
+            break
+          }
+          
+        }
+      }
+
+      return parsedUrl
+    }
+  
+
+    const config = ComponentInfo['confi' + 'g'] || {}
+    const _app = App
+    async function renderReqToHTML(req, res, renderMode, _renderOpts, _params) {
+      const fromExport = renderMode === 'export' || renderMode === true;
+      const nextStartMode = renderMode === 'passthrough'
+
+      setLazyProp({ req }, 'cookies', getCookieParser(req))
+
+      const options = {
+        App,
+        Document,
+        buildManifest,
+        getStaticProps,
+        getServerSideProps,
+        getStaticPaths,
+        reactLoadableManifest,
+        canonicalBase: "",
+        buildId: "GchRG7l3miHXPeqfxue8t",
+        assetPrefix: "",
+        runtimeConfig: runtimeConfig.publicRuntimeConfig || {},
+        previewProps: {previewModeId:"86a67d4890d320ef1b43f70cd373defc",previewModeSigningKey:"04216a7b2c67b81d1111532c169507a37923f8844418d7d410572239d29e94ef",previewModeEncryptionKey:"7430d03ba0dbcb2336eb2a1f317a4cdc800ef9ddc3a61ef6cbcb1c2e3cc7a8bf"},
+        env: process.env,
+        basePath: "",
+        ..._renderOpts
+      }
+      let _nextData = false
+      let parsedUrl
+
+      try {
+        // We need to trust the dynamic route params from the proxy
+        // to ensure we are using the correct values
+        const trustQuery = !getStaticProps && req.headers['x-vercel-id']
+        let parsedUrl = parseUrl(req.url, true)
+        let routeNoAssetPath = parsedUrl.pathname
+        const origQuery = Object.assign({}, parsedUrl.query)
+
+        parsedUrl = handleRewrites(parsedUrl)
+
+        
+
+        if (parsedUrl.pathname.match(/_next\/data/)) {
+          const {
+            default: getrouteNoAssetPath,
+          } = __webpack_require__("1Ej0");
+          _nextData = true;
+          parsedUrl.pathname = getrouteNoAssetPath(
+            parsedUrl.pathname.replace(
+              new RegExp('/_next/data/GchRG7l3miHXPeqfxue8t/'),
+              '/'
+            ),
+            '.json'
+          );
+          routeNoAssetPath = parsedUrl.pathname
+        }
+
+        
+      const i18n = {}
+      const detectedLocale = undefined
+    
+
+        const renderOpts = Object.assign(
+          {
+            Component,
+            pageConfig: config,
+            nextExport: fromExport,
+            isDataReq: _nextData,
+            locale: detectedLocale,
+            locales: i18n.locales,
+            defaultLocale: i18n.defaultLocale,
+          },
+          options,
+        )
+
+        
+          if (!res.statusCode) {
+            res.statusCode = 404
+          }
+        
+
+        const params = {};
+        const nowParams = null;
+
+        // make sure to set renderOpts to the correct params e.g. _params
+        // if provided from worker or params if we're parsing them here
+        renderOpts.params = _params || params
+
+        // make sure to normalize req.url on Vercel to strip dynamic params
+        // from the query which are added during routing
+        
+
+        // normalize request URL/asPath for fallback/revalidate pages since the
+        // proxy sets the request URL to the output's path for fallback pages
+        
+
+        // make sure to normalize asPath for revalidate and _next/data requests
+        // since the asPath should match what is shown on the client
+        if (
+          !fromExport &&
+          (getStaticProps || getServerSideProps)
+        ) {
+          
+
+          parsedUrl.pathname = denormalizePagePath(parsedUrl.pathname)
+          renderOpts.resolvedUrl = formatUrl({
+            ...parsedUrl,
+            query: origQuery
+          })
+
+          // For getServerSideProps we need to ensure we use the original URL
+          // and not the resolved URL to prevent a hydration mismatch on asPath
+          renderOpts.resolvedAsPath = getServerSideProps
+            ? formatUrl({
+              ...parsedUrl,
+              pathname: routeNoAssetPath,
+              query: origQuery,
+            })
+            : renderOpts.resolvedUrl
+        }
+
+        const isFallback = parsedUrl.query.__nextFallback
+
+        const previewData = tryGetPreviewData(req, res, options.previewProps)
+        const isPreviewMode = previewData !== false
+
+        if (false) {}
+        let result = await renderToHTML(req, res, "/_error", Object.assign({}, getStaticProps ? { ...(parsedUrl.query.amp ? { amp: '1' } : {}) } : parsedUrl.query, nowParams ? nowParams : params, _params, isFallback ? { __nextFallback: 'true' } : {}), renderOpts)
+
+        if (!renderMode) {
+          if (_nextData || getStaticProps || getServerSideProps) {
+            sendPayload(req, res, _nextData ? JSON.stringify(renderOpts.pageData) : result, _nextData ? 'json' : 'html', true, {
+              private: isPreviewMode,
+              stateful: !!getServerSideProps,
+              revalidate: renderOpts.revalidate,
+            })
+            return null
+          }
+        } else if (isPreviewMode) {
+          res.setHeader(
+            'Cache-Control',
+            'private, no-cache, no-store, max-age=0, must-revalidate'
+          )
+        }
+
+        if (renderMode) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (!parsedUrl) {
+          parsedUrl = parseUrl(req.url, true)
+        }
+
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+        } else if (err.code === 'DECODE_FAILED') {
+          // TODO: better error?
+          res.statusCode = 400
+        } else {
+          console.error('Unhandled error during request:', err)
+
+          // Backwards compat (call getInitialProps in custom error):
+          try {
+            await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+              getStaticProps: undefined,
+              getStaticPaths: undefined,
+              getServerSideProps: undefined,
+              Component: Error,
+              err: err,
+              // Short-circuit rendering:
+              isDataReq: true
+            }))
+          } catch (underErrorErr) {
+            console.error('Failed call /_error subroutine, continuing to crash function:', underErrorErr)
+          }
+
+          // Throw the error to crash the serverless function
+          if (isResSent(res)) {
+            console.error('!!! WARNING !!!')
+            console.error(
+              'Your function crashed, but closed the response before allowing the function to exit.\n' +
+              'This may cause unexpected behavior for the next request.'
+            )
+            console.error('!!! WARNING !!!')
+          }
+          throw err
+        }
+
+        const result = await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+          getStaticProps: undefined,
+          getStaticPaths: undefined,
+          getServerSideProps: undefined,
+          Component: Error,
+          err: res.statusCode === 404 ? undefined : err
+        }))
+        return result
+      }
+    }
+    async function render (req, res) {
+      try {
+        await Object(next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          sendPayload(req, res, html, 'html', {generateEtags: true, poweredByHeader: true})
+        }
+      } catch(err) {
+        console.error(err)
+        await Object(next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"])(err)
+        // Throw the error to crash the serverless function
+        throw err
+      }
+    }
+  
 
 /***/ }),
 
@@ -21734,7 +21995,7 @@ var grey = {
 /***/ "LZ9C":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"polyfillFiles\":[\"static/chunks/polyfills-05d6b25b3c33d28a7267.js\"],\"devFiles\":[],\"ampDevFiles\":[],\"lowPriorityFiles\":[\"static/7DLVOLl77mjQixbQtGGrS/_buildManifest.js\",\"static/7DLVOLl77mjQixbQtGGrS/_ssgManifest.js\"],\"pages\":{\"/\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/acbf9725faf1c7939791b98a41b688cb9d0436e8.e99d6e0ea0b9f30f07f4.js\",\"static/chunks/pages/index-9067d00cead5bfb1a9fb.js\"],\"/_app\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.db13a7be2cb65a5f646d.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/_app-673b82c58ad90b51bbc9.js\"],\"/_error\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/pages/_error-d4b77732f9fdcae5cf5b.js\"],\"/about\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/pages/about-9e0d51b9afbdf55f5db1.js\"],\"/contact\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.db13a7be2cb65a5f646d.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.e84b17163d0bddb99ba4.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/contact-f6aa41c6e737f010f647.js\"],\"/estimate\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.db13a7be2cb65a5f646d.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.e84b17163d0bddb99ba4.js\",\"static/chunks/pages/estimate-507194add37b9a5af350.js\"],\"/revolution\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/pages/revolution-aff6b8fd63b0929e2c55.js\"],\"/services\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/pages/services-92c7cac88b1f788bbe6c.js\"],\"/services/company\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/acbf9725faf1c7939791b98a41b688cb9d0436e8.e99d6e0ea0b9f30f07f4.js\",\"static/chunks/pages/services/company-3b09ef0e18089fe15941.js\"],\"/services/events\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/acbf9725faf1c7939791b98a41b688cb9d0436e8.e99d6e0ea0b9f30f07f4.js\",\"static/chunks/pages/services/events-8061097323a792638e2f.js\"],\"/services/private\":[\"static/chunks/main-ccd550ed71bd6fd7a126.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.c6a8bf6988d7f4eaa7c5.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.eac8608c6e3efcea6b5a.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/acbf9725faf1c7939791b98a41b688cb9d0436e8.e99d6e0ea0b9f30f07f4.js\",\"static/chunks/pages/services/private-68c1a96472592218f0ca.js\"]},\"ampFirstPages\":[]}");
+module.exports = JSON.parse("{\"polyfillFiles\":[\"static/chunks/polyfills-c4e17b86567f813ec632.js\"],\"devFiles\":[],\"ampDevFiles\":[],\"lowPriorityFiles\":[\"static/GchRG7l3miHXPeqfxue8t/_buildManifest.js\",\"static/GchRG7l3miHXPeqfxue8t/_ssgManifest.js\"],\"pages\":{\"/\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.df885d12a6348ea4027d.js\",\"static/chunks/pages/index-0ce1cdaaa3469d221db8.js\"],\"/_app\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/_app-0adfb9c322b50b39ce79.js\"],\"/_error\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.db20d99e33e072dd6a57.js\",\"static/chunks/pages/_error-472b4921aa64bebe018c.js\"],\"/about\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.db20d99e33e072dd6a57.js\",\"static/chunks/pages/about-3b6727e3dbe02ec09242.js\"],\"/contact\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.d6a2f42f9bbd909f9b11.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/contact-b818ab5ed5a693bc6fd8.js\"],\"/estimate\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.d6a2f42f9bbd909f9b11.js\",\"static/chunks/pages/estimate-dac7a2ce8c4bf692c923.js\"],\"/revolution\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.df885d12a6348ea4027d.js\",\"static/chunks/pages/revolution-2589d3318d0fa4e7d2d4.js\"],\"/services\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/pages/services-127a911b3f7ea5b71f06.js\"],\"/services/company\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/company-c12a66b81b3e7b64e6a1.js\"],\"/services/events\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/events-990af6fdef7572ab2f3f.js\"],\"/services/private\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/private-f56fbf80a4184b232129.js\"]},\"ampFirstPages\":[]}");
 
 /***/ }),
 
@@ -30031,6 +30292,142 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "Y0NT":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("8rWI");
+/* harmony import */ var next_Head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_Head__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("m178");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _src_contexts_PagesContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("oN2N");
+/* harmony import */ var _src_ui_parts_PersonBlock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("yoD/");
+/* harmony import */ var _src_ui_PageHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("m6Dd");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+const managers = [{
+  image: '/assets/idan.jpg',
+  name: 'Idan Baron',
+  title: 'Founder & CTO',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/lihoo.jpg',
+  name: 'Lihoo Zaid',
+  title: 'Founder & CEO',
+  text: 'Lorem ipsum bla bla'
+}];
+const instructors = [{
+  image: '/assets/dana.jpg',
+  name: 'Dana Ganesh',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/david.jpg',
+  name: 'David Forman',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/michael.jpg',
+  name: 'Michael Strauss',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/ossy.jpg',
+  name: 'Ossy Biton',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/ron.jpg',
+  name: 'Ron Bauman',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}, {
+  image: '/assets/tammy.jpg',
+  name: 'Tammy Fine',
+  title: 'Instructor',
+  text: 'Lorem ipsum bla bla'
+}];
+const useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])(theme => ({}));
+
+const About = props => {
+  const classes = useStyles();
+  const {
+    setPageIndecies,
+    getPageMeta
+  } = Object(_src_contexts_PagesContext__WEBPACK_IMPORTED_MODULE_3__[/* usePagesContext */ "b"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setPageIndecies('/about');
+  }, []);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_Head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", {
+    key: "title"
+  }, "About Us - Company & Team | VRFunTeam"), __jsx("meta", {
+    name: "description",
+    key: "description",
+    content: "VRFunTeam provide imersive custom VR Experiences, led by talented instructors. Our team will ensure your trip trough the VR world will be imerssive and fun."
+  }), __jsx("meta", {
+    key: "ogtitle",
+    property: "og:title",
+    content: "Better than reality VR experiences | About Us"
+  }), __jsx("meta", {
+    key: "ogurl",
+    property: "og:url",
+    content: "https://funteamvr.com/about"
+  }), __jsx("link", {
+    rel: "canonical",
+    key: "canonical",
+    href: "https://funteamvr.com/about"
+  }), __jsx("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+            .css-3d-text {
+              margin-bottom:20px;
+              text-align:center;
+              font-size: 150px;
+              color: #548dff;
+              text-shadow: 0px 0px 0 rgb(73,130,244),0px 1px 0 rgb(61,118,232),0px 2px 0 rgb(50,107,221),0px 3px 0 rgb(38,95,209),0px 4px 0 rgb(27,84,198),0px 5px 0 rgb(16,73,187),0px 6px 0 rgb(4,61,175),0px 7px 0 rgb(-7,50,164),0px 8px 0 rgb(-18,39,153),0px 9px 0 rgb(-30,27,141),0px 10px 0 rgb(-41,16,130),0px 11px 0 rgb(-53,4,118),0px 12px 0 rgb(-64,-7,107),0px 13px  0 rgb(-75,-18,96),0px 14px 13px rgba(32,43,99,0.66),0px 14px 1px rgba(32,43,99,0.5),0px 0px 13px rgba(32,43,99,.2);
+           }
+             
+                <style> 
+                  `
+    }
+  })), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    container: true,
+    justify: "center",
+    alignContent: "center",
+    style: {
+      minHeight: '90vh'
+    },
+    direction: "column"
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h2",
+    align: "center"
+  }, "OH NO!")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h1",
+    className: "css-3d-text"
+  }, "404")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h5",
+    align: "center"
+  }, "There is nothing here..."))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (About);
+
+/***/ }),
+
 /***/ "YFqc":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35019,321 +35416,6 @@ exports.API_ROUTE=API_ROUTE;const PAGES_DIR_ALIAS='private-next-pages';exports.P
 
 /***/ }),
 
-/***/ "dvyx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticProps", function() { return getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticPaths", function() { return getStaticPaths; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { return getServerSideProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticPaths", function() { return unstable_getStaticPaths; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getServerProps", function() { return unstable_getServerProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return _app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
-/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
-
-    
-    
-    
-    const {isResSent} = __webpack_require__("g/15");
-
-    
-    const { processEnv } = __webpack_require__("fXeI")
-    processEnv([])
-  
-    
-    const runtimeConfig = {}
-    const {parse: parseUrl, format: formatUrl} = __webpack_require__("bzos")
-    const {parse: parseQs} = __webpack_require__("8xkj")
-    const { renderToHTML } = __webpack_require__("/bjS");
-    const { tryGetPreviewData } = __webpack_require__("PCLx");
-    const { denormalizePagePath } = __webpack_require__("wkBG")
-    const { setLazyProp, getCookieParser } = __webpack_require__("PCLx")
-    const {sendPayload} = __webpack_require__("KyNf");
-    const buildManifest = __webpack_require__("LZ9C");
-    const reactLoadableManifest = __webpack_require__("67Bq");
-    const Document = __webpack_require__("5w0S").default;
-    const Error = __webpack_require__("/a9y").default;
-    const App = __webpack_require__("1TCz").default;
-
-    
-    
-    const { rewrites } = __webpack_require__("Skye")
-    const { pathToRegexp, default: pathMatch } = __webpack_require__("N6Fi")
-  
-
-    const ComponentInfo = __webpack_require__("/a9y")
-
-    const Component = ComponentInfo.default
-    /* harmony default export */ __webpack_exports__["default"] = (Component);
-    const unstable_getStaticParams = ComponentInfo['unstable_getStaticParam' + 's']
-    const getStaticProps = ComponentInfo['getStaticProp' + 's']
-    const getStaticPaths = ComponentInfo['getStaticPath' + 's']
-    const getServerSideProps = ComponentInfo['getServerSideProp' + 's']
-
-    // kept for detecting legacy exports
-    const unstable_getStaticProps = ComponentInfo['unstable_getStaticProp' + 's']
-    const unstable_getStaticPaths = ComponentInfo['unstable_getStaticPath' + 's']
-    const unstable_getServerProps = ComponentInfo['unstable_getServerProp' + 's']
-
-    
-    
-    
-    
-    const getCustomRouteMatcher = pathMatch(true)
-    const prepareDestination = __webpack_require__("6mnf").default
-
-    function handleRewrites(parsedUrl) {
-      for (const rewrite of rewrites) {
-        const matcher = getCustomRouteMatcher(rewrite.source)
-        const params = matcher(parsedUrl.pathname)
-
-        if (params) {
-          const { parsedDestination } = prepareDestination(
-            rewrite.destination,
-            params,
-            parsedUrl.query,
-            true,
-            ""
-          )
-
-          Object.assign(parsedUrl.query, parsedDestination.query)
-          delete parsedDestination.query
-
-          Object.assign(parsedUrl, parsedDestination)
-
-          if (parsedUrl.pathname === '/_error'){
-            break
-          }
-          
-        }
-      }
-
-      return parsedUrl
-    }
-  
-
-    const config = ComponentInfo['confi' + 'g'] || {}
-    const _app = App
-    async function renderReqToHTML(req, res, renderMode, _renderOpts, _params) {
-      const fromExport = renderMode === 'export' || renderMode === true;
-      const nextStartMode = renderMode === 'passthrough'
-
-      setLazyProp({ req }, 'cookies', getCookieParser(req))
-
-      const options = {
-        App,
-        Document,
-        buildManifest,
-        getStaticProps,
-        getServerSideProps,
-        getStaticPaths,
-        reactLoadableManifest,
-        canonicalBase: "",
-        buildId: "7DLVOLl77mjQixbQtGGrS",
-        assetPrefix: "",
-        runtimeConfig: runtimeConfig.publicRuntimeConfig || {},
-        previewProps: {previewModeId:"7ea2fab8021e31bac9a9fa79f79f6024",previewModeSigningKey:"cddf73fb30ab87e4f478f7e8e17722acc87fabaf9479dfaa71f916e53b84c385",previewModeEncryptionKey:"eb30ad8897d12fcc845279854d56d03644b8462015a5d618c40a58a017f95dfe"},
-        env: process.env,
-        basePath: "",
-        ..._renderOpts
-      }
-      let _nextData = false
-      let parsedUrl
-
-      try {
-        // We need to trust the dynamic route params from the proxy
-        // to ensure we are using the correct values
-        const trustQuery = !getStaticProps && req.headers['x-vercel-id']
-        let parsedUrl = parseUrl(req.url, true)
-        let routeNoAssetPath = parsedUrl.pathname
-        const origQuery = Object.assign({}, parsedUrl.query)
-
-        parsedUrl = handleRewrites(parsedUrl)
-
-        
-
-        if (parsedUrl.pathname.match(/_next\/data/)) {
-          const {
-            default: getrouteNoAssetPath,
-          } = __webpack_require__("1Ej0");
-          _nextData = true;
-          parsedUrl.pathname = getrouteNoAssetPath(
-            parsedUrl.pathname.replace(
-              new RegExp('/_next/data/7DLVOLl77mjQixbQtGGrS/'),
-              '/'
-            ),
-            '.json'
-          );
-          routeNoAssetPath = parsedUrl.pathname
-        }
-
-        
-      const i18n = {}
-      const detectedLocale = undefined
-    
-
-        const renderOpts = Object.assign(
-          {
-            Component,
-            pageConfig: config,
-            nextExport: fromExport,
-            isDataReq: _nextData,
-            locale: detectedLocale,
-            locales: i18n.locales,
-            defaultLocale: i18n.defaultLocale,
-          },
-          options,
-        )
-
-        
-          if (!res.statusCode) {
-            res.statusCode = 404
-          }
-        
-
-        const params = {};
-        const nowParams = null;
-
-        // make sure to set renderOpts to the correct params e.g. _params
-        // if provided from worker or params if we're parsing them here
-        renderOpts.params = _params || params
-
-        // make sure to normalize req.url on Vercel to strip dynamic params
-        // from the query which are added during routing
-        
-
-        // normalize request URL/asPath for fallback/revalidate pages since the
-        // proxy sets the request URL to the output's path for fallback pages
-        
-
-        // make sure to normalize asPath for revalidate and _next/data requests
-        // since the asPath should match what is shown on the client
-        if (
-          !fromExport &&
-          (getStaticProps || getServerSideProps)
-        ) {
-          
-
-          parsedUrl.pathname = denormalizePagePath(parsedUrl.pathname)
-          renderOpts.resolvedUrl = formatUrl({
-            ...parsedUrl,
-            query: origQuery
-          })
-
-          // For getServerSideProps we need to ensure we use the original URL
-          // and not the resolved URL to prevent a hydration mismatch on asPath
-          renderOpts.resolvedAsPath = getServerSideProps
-            ? formatUrl({
-              ...parsedUrl,
-              pathname: routeNoAssetPath,
-              query: origQuery,
-            })
-            : renderOpts.resolvedUrl
-        }
-
-        const isFallback = parsedUrl.query.__nextFallback
-
-        const previewData = tryGetPreviewData(req, res, options.previewProps)
-        const isPreviewMode = previewData !== false
-
-        if (false) {}
-        let result = await renderToHTML(req, res, "/_error", Object.assign({}, getStaticProps ? { ...(parsedUrl.query.amp ? { amp: '1' } : {}) } : parsedUrl.query, nowParams ? nowParams : params, _params, isFallback ? { __nextFallback: 'true' } : {}), renderOpts)
-
-        if (!renderMode) {
-          if (_nextData || getStaticProps || getServerSideProps) {
-            sendPayload(req, res, _nextData ? JSON.stringify(renderOpts.pageData) : result, _nextData ? 'json' : 'html', true, {
-              private: isPreviewMode,
-              stateful: !!getServerSideProps,
-              revalidate: renderOpts.revalidate,
-            })
-            return null
-          }
-        } else if (isPreviewMode) {
-          res.setHeader(
-            'Cache-Control',
-            'private, no-cache, no-store, max-age=0, must-revalidate'
-          )
-        }
-
-        if (renderMode) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (!parsedUrl) {
-          parsedUrl = parseUrl(req.url, true)
-        }
-
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-        } else if (err.code === 'DECODE_FAILED') {
-          // TODO: better error?
-          res.statusCode = 400
-        } else {
-          console.error('Unhandled error during request:', err)
-
-          // Backwards compat (call getInitialProps in custom error):
-          try {
-            await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-              getStaticProps: undefined,
-              getStaticPaths: undefined,
-              getServerSideProps: undefined,
-              Component: Error,
-              err: err,
-              // Short-circuit rendering:
-              isDataReq: true
-            }))
-          } catch (underErrorErr) {
-            console.error('Failed call /_error subroutine, continuing to crash function:', underErrorErr)
-          }
-
-          // Throw the error to crash the serverless function
-          if (isResSent(res)) {
-            console.error('!!! WARNING !!!')
-            console.error(
-              'Your function crashed, but closed the response before allowing the function to exit.\n' +
-              'This may cause unexpected behavior for the next request.'
-            )
-            console.error('!!! WARNING !!!')
-          }
-          throw err
-        }
-
-        const result = await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-          getStaticProps: undefined,
-          getStaticPaths: undefined,
-          getServerSideProps: undefined,
-          Component: Error,
-          err: res.statusCode === 404 ? undefined : err
-        }))
-        return result
-      }
-    }
-    async function render (req, res) {
-      try {
-        await Object(next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          sendPayload(req, res, html, 'html', {generateEtags: true, poweredByHeader: true})
-        }
-      } catch(err) {
-        console.error(err)
-        await Object(next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"])(err)
-        // Throw the error to crash the serverless function
-        throw err
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "e3iB":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39816,6 +39898,56 @@ module.exports = require("util");
 
 /***/ }),
 
+/***/ "jiai":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return useLanguageContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LangProvider; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+const languages = ['en', 'he'];
+const siteData = {
+  en: {
+    mainHeader: `Team Experience
+      in Virtual Reality`
+  },
+  he: {
+    mainHeader: `חוויה קבוצתית מעולם אחר`
+  }
+};
+const LangContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
+function useLanguageContext() {
+  return Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(LangContext);
+}
+function LangProvider({
+  children
+}) {
+  const {
+    0: language,
+    1: setLanguage
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('en');
+
+  const changeLanguageTo = langString => {
+    console.log('Changing language to ', langString);
+    setLanguage(langString);
+  };
+
+  const contextValue = {
+    siteData: siteData[language],
+    language,
+    languages,
+    changeLanguageTo
+  };
+  return __jsx(LangContext.Provider, {
+    value: contextValue
+  }, children);
+}
+
+/***/ }),
+
 /***/ "jjAL":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -43995,6 +44127,67 @@ Object.keys(_Zoom).forEach(function (key) {
     }
   });
 });
+
+/***/ }),
+
+/***/ "m6Dd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("R/WZ");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("m178");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("OrM8");
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(theme => ({
+  heading: {
+    marginTop: '2em',
+    marginLeft: '10%'
+  },
+  topHeader: {
+    textDecoration: 'none',
+    fontWeight: 900,
+    color: theme.palette.primary.main
+  }
+}));
+
+const PageHeader = props => {
+  const classes = useStyles();
+  const theme = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["useTheme"])();
+  return __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    container: true,
+    direction: "column"
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true,
+    className: classes.heading
+  }, props.topHeader ? __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "subtitle1",
+    component: _Link__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"],
+    className: classes.topHeader,
+    href: props.href
+  }, props.topHeader), __jsx("span", {
+    className: classes.topHeader
+  }, " // ")) : '', __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h2",
+    style: {
+      color: theme.palette.primary.main
+    }
+  }, props.header)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Divider"], {
+    style: {
+      marginBottom: '3em'
+    }
+  }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, props.children));
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (PageHeader);
 
 /***/ }),
 
@@ -52534,6 +52727,64 @@ function jssNested() {
 
 exports.default = jssNested;
 
+
+/***/ }),
+
+/***/ "yoD/":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("R/WZ");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("m178");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(theme => ({
+  img: {
+    width: '100px',
+    height: '100px'
+  }
+}));
+
+const PersonBlock = props => {
+  const classes = useStyles();
+  const theme = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["useTheme"])();
+  return __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    container: true,
+    direction: "column",
+    style: {
+      padding: '2em'
+    }
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true,
+    align: "center"
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Avatar"], {
+    alt: props.name,
+    src: props.image,
+    className: classes.img
+  })), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h6",
+    align: "center"
+  }, props.name)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "h6",
+    align: "center"
+  }, props.title)), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Grid"], {
+    item: true
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
+    variant: "body1",
+    align: "center"
+  }, props.text)));
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (PersonBlock);
 
 /***/ }),
 

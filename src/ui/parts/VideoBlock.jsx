@@ -28,29 +28,26 @@ const useStyles = makeStyles(theme => ({
 const VideoBlock = props => {
   const classes = useStyles()
   const theme = useTheme()
-
+  const {article}=props
   return (
     <Grid container justify='center' alignContent='center'>
       <Grid item md={6} className={classes.playerWrapper}>
         <Grid container justify='center' alignContent='center'>
           <Grid item className={classes.playerContainer}>
-            <YoutubeContainer video='cmZ-4BsCoIA' />
+            <YoutubeContainer video={article.video} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item md={4}>
         <Grid container direction='column'>
           <Grid item>
-            <Typography variant='h3'>THE VR REVOLUTION</Typography>
+            <Typography variant='h3'>{article.title}</Typography>
             <Typography variant='body1'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              exercitationem eaque, architecto repudiandae dolores, quos quas
-              aspernatur officiis obcaecati, vero distinctio. Sit beatae
-              adipisci hic. Eveniet cumque illum aperiam id!
+            {article.text}
             </Typography>
             <Divider />
             <Button component={Link} href='/revolution' variant='outlined'>
-              The Revolution
+              {props.button}
             </Button>
           </Grid>
         </Grid>

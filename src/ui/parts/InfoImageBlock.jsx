@@ -8,7 +8,7 @@ import {
   Card,
 } from '@material-ui/core'
 import Link from '../../Link'
-
+import { useLanguageContext } from '../../contexts/LangContext'
 const useStyles = makeStyles(theme => ({
   image: {
     width: '100%',
@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 const InfoImageBlock = props => {
   const classes = useStyles()
+  const { siteData } = useLanguageContext()
   return (
     <Card style={{ padding: '2em' }} elevation={2}>
       <Grid container className={classes.block} direction='column'>
@@ -55,7 +56,7 @@ const InfoImageBlock = props => {
             component={Link}
             href={props.path}
           >
-            Learn More
+            {siteData.learnMore}
           </Button>
         </Grid>
       </Grid>

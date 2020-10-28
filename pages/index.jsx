@@ -16,11 +16,13 @@ import {
   useTheme,
   Divider,
 } from '@material-ui/core'
+import {shortenText} from '../src/ui/helpers/ui-helpers'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import InfoImageBlock from '../src/ui/parts/InfoImageBlock'
 import VideoBlock from '../src/ui/parts/VideoBlock'
 import HeroBlock from '../src/ui/parts/HeroBlock'
 import CardsSlider from '../src/ui/parts/CardsSlider'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   contentBlock: {
@@ -70,7 +72,7 @@ const HomePage = props => {
   useEffect(() => {
     setPageIndecies('/')
   }, [])
-
+  const { siteData, language } = useLanguageContext()
   return (
     <Grid container direction='column'>
       <Head>
@@ -101,30 +103,24 @@ const HomePage = props => {
           <Grid item xs={12} md={4}>
             <InfoImageBlock
               image='/assets/icon-teamwork.svg'
-              header={'Family & Friends'}
-              text={
-                'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-              }
+              header={siteData.services.private.title}
+              text={shortenText(siteData.services.private.text,120)}
               path='/services/private'
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <InfoImageBlock
               image='/assets/icon-creative.svg'
-              header={'Company Events'}
-              text={
-                'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-              }
+              header={siteData.services.company.title}
+              text={shortenText(siteData.services.company.text,120)}
               path='/services/company'
             />
           </Grid>
           <Grid item xs={12} md={4}>
             <InfoImageBlock
               image='/assets/icon-fun.svg'
-              header={`Exhibitions`}
-              text={
-                'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-              }
+              header={siteData.services.events.title}
+              text={shortenText(siteData.services.events.text,120)}
               path='/services/events'
             />
           </Grid>
@@ -163,66 +159,18 @@ const HomePage = props => {
           </Grid>
           <Grid item xs={12} md={4} style={{ padding: '0' }}>
             <List>
-              <ListItem>
+              {siteData.megaPoints.map(point => <ListItem>
                 <ListItemIcon>
-                  <Icon
-                    className='fa fa-cube'
-                    color='primary'
-                    style={{ fontSize: '2em' }}
-                  />
+                  
+                  <span style={{ fontSize: '4em', marginRight:'1em' }}>🚀</span>
                 </ListItemIcon>
                 <ListItemText
                   primaryTypographyProps={
                     matches ? { variant: 'body1' } : { variant: 'h6' }
                   }
-                  primary='The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.'
+                  primary={point}
                 />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <Icon
-                    className='fa fa-cube'
-                    color='primary'
-                    style={{ fontSize: '2em' }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primaryTypographyProps={
-                    matches ? { variant: 'body1' } : { variant: 'h6' }
-                  }
-                  primary='Suitable for groups of 2-12 participants, in all ages (6-80).'
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <Icon
-                    className='fa fa-cube'
-                    color='primary'
-                    style={{ fontSize: '2em' }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primaryTypographyProps={
-                    matches ? { variant: 'body1' } : { variant: 'h6' }
-                  }
-                  primary='Professional guidence by our emphatic instructors.'
-                />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <Icon
-                    className='fa fa-cube'
-                    color='primary'
-                    style={{ fontSize: '2em' }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primaryTypographyProps={
-                    matches ? { variant: 'body1' } : { variant: 'h6' }
-                  }
-                  primary='Our place or yours? We will be happy to advice you. Just contact us.'
-                />
-              </ListItem>
+              </ListItem>)}
             </List>
           </Grid>
         </Grid>
@@ -235,7 +183,7 @@ const HomePage = props => {
         alignContent='center'
         className={classes.contentBlock}
       >
-        <VideoBlock />
+        <VideoBlock article={siteData.articles[0]} button={siteData.pages.revolution} />
       </Grid>
       <Grid
         item
@@ -249,7 +197,7 @@ const HomePage = props => {
         }}
       >
         {/* <Cardblock /> */}
-        <CardsSlider />
+        <CardsSlider elements={siteData.qoutes}/>
       </Grid>
       <Grid
         item
@@ -282,17 +230,13 @@ const HomePage = props => {
               </Grid>
               <Grid item>
                 <Typography variant='h4'>
-                  WE ARE <strong>VR FUN TEAM</strong>
+                {siteData.weAre.heading}
                 </Typography>
                 <Divider />
               </Grid>
               <Grid item>
                 <Typography variant='body1' align='justify'>
-                  A team of tech geeks and training instructors, who loves to
-                  escort groups in conseptual trips into the Virtual Reality
-                  world. Our mentors will guide you hand by hand into the new
-                  world, and will know to take a step back when you'll be flying
-                  on your own.
+                {siteData.weAre.text1}
                 </Typography>
                 <Divider />
               </Grid>
@@ -308,7 +252,7 @@ const HomePage = props => {
                         marginTop: '1em',
                       }}
                     >
-                      About Us
+                      {siteData.pages.about}
                     </Button>
                   </Grid>
                   <Grid item>
@@ -322,7 +266,7 @@ const HomePage = props => {
                         backgroundColor: 'white',
                       }}
                     >
-                      Contact Us
+                       {siteData.pages.contact}
                     </Button>
                   </Grid>
                 </Grid>

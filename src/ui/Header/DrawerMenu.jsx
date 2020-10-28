@@ -25,6 +25,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 import { usePagesContext } from '../../contexts/PagesContext'
 import DarkModeListSwitch from '../DarkModeListSwitch'
 import { event as GAevent } from '../../functions/gtag'
+import { useLanguageContext } from '../../contexts/LangContext'
 
 // const iconMapping = {
 //   SendIcon,HomeIcon,AppsIcon,AllInclusiveIcon,InfoIcon,AccountBalanceWalletIcon,GroupIcon,BusinessIcon,EmojiEventsIcon
@@ -102,6 +103,7 @@ const DrawerMenu = props => {
     setMenuOpen(false)
     setCurrentPageIndecies([parentIndex, index])
   }
+  const { siteData, language } = useLanguageContext()
   return (
     <>
       <IconButton
@@ -152,7 +154,7 @@ const DrawerMenu = props => {
                   {iconMapping[page.icon]}
                 </ListItemIcon>
                 <ListItemText className={classes.drawerItem} disableTypography>
-                  {page.name}
+                  {page.nameLang[language]}
                 </ListItemText>
                 {page.children.length > 0 ? (
                   menuOpen ? (
@@ -217,7 +219,7 @@ const DrawerMenu = props => {
                           className={classes.drawerItem}
                           disableTypography
                         >
-                          {childPage.name}
+                          {childPage.nameLang[language]}
                         </ListItemText>
                       </ListItem>
                     ))}

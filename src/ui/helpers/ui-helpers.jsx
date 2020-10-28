@@ -3,6 +3,10 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import PropTypes from 'prop-types'
 // import { withRouter } from 'react-router-dom'
 
+export function shortenText(string, numOfChars){
+  return string.substring(0,numOfChars) + '...'
+}
+
 export function ElevationScroll(props) {
   const { children } = props
   const trigger = useScrollTrigger({

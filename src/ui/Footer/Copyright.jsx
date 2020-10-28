@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Grid, Typography, useTheme } from '@material-ui/core'
+import { useLanguageContext } from '../../contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   copyfooter: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles(theme => ({
 const Copyright = props => {
   const classes = useStyles()
   const theme = useTheme()
+  const { siteData } = useLanguageContext()
 
   return (
     <Grid
@@ -25,7 +27,7 @@ const Copyright = props => {
       className={classes.copyfooter}
     >
       <Grid item>
-        <Typography variant='caption'>Dev&Des by Chikoom |</Typography>
+        <Typography variant='caption'>{siteData.copyright} |</Typography>
       </Grid>
       <Grid
         item

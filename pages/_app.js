@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeContextProvider } from '../src/contexts/ThemeContext'
 import { PagesProvider } from '../src/contexts/PagesContext'
+import { LangProvider } from '../src/contexts/LangContext'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from '../src/ui/Header/Header'
 import Footer from '../src/ui/Footer/Footer'
@@ -24,10 +25,12 @@ export default function MyApp(props) {
     <React.Fragment>
       <PagesProvider>
         <ThemeContextProvider>
-          <CssBaseline />
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
+          <LangProvider>
+            <CssBaseline />
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </LangProvider>
         </ThemeContextProvider>
       </PagesProvider>
     </React.Fragment>

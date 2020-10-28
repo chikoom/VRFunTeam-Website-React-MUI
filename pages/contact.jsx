@@ -15,6 +15,7 @@ import ContactForm from '../src/ui/parts/ContactForm'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import QnA from '../src/ui/parts/QnA'
 import PageHeader from '../src/ui/PageHeader'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -32,8 +33,9 @@ const Contact = props => {
   useEffect(() => {
     setPageIndecies('/contact')
   }, [])
+  const { siteData, language } = useLanguageContext()
   return (
-    <PageHeader header='Contact Us'>
+    <PageHeader header={siteData.pages.contact}>
       <Head>
         <title key='title'>
           Contact us and order your VR event | VRFunTeam
@@ -72,7 +74,7 @@ const Contact = props => {
         >
           <Grid item style={{ width: '80%', maxWidth: '400px' }}>
             <Typography variant='subtitle1'>
-              We're eager to make you fly
+              {siteData.contactForm.heading}
             </Typography>
           </Grid>
           <Divider />
@@ -123,7 +125,7 @@ const Contact = props => {
         >
           <Grid item style={{ width: '90%', maxWidth: '500px' }}>
             <Grid item>
-              <Typography variant='h4'>FAQ</Typography>
+              <Typography variant='h4'>{siteData.faq.title}</Typography>
             </Grid>
             <Divider />
             <QnA />

@@ -5,37 +5,34 @@ import { Grid, makeStyles } from '@material-ui/core'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import RevolutionArticle from '../src/ui/parts/RevolutionArticle'
 import PageHeader from '../src/ui/PageHeader'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const articles = [
   {
-    title: 'Oculus Quest - The most advanced VR goggles',
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
   },
   {
-    title: 'Oculus Quest - The most advanced VR goggles',
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
-  },
-  {
-    title: 'Oculus Quest - The most advanced VR goggles',
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
+  },{
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
-  },
-  {
-    title: 'Oculus Quest - The most advanced VR goggles',
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
+  },{
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
-  },
-  {
-    title: 'Oculus Quest - The most advanced VR goggles',
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
+  },{
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
-  },
-  {
-    title: 'Oculus Quest - The most advanced VR goggles',
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
+  },{
     video: 'cmZ-4BsCoIA',
-    text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`,
+    title: {en:`Oculus Quest - The most advanced VR goggles`, he: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`},
+    text: {en:`It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`, he:`מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`},
   },
 ]
 
@@ -48,8 +45,10 @@ const Revolution = props => {
   useEffect(() => {
     setPageIndecies('/revolution')
   }, [])
+  const { siteData, language } = useLanguageContext()
+
   return (
-    <PageHeader header='VR Revolution'>
+    <PageHeader header={siteData.pages.revolution}>
       <Head>
         <title key='title'>VR content videos and more | VRFunTeam</title>
         <meta
@@ -74,7 +73,7 @@ const Revolution = props => {
         />
       </Head>
       <Grid container direction='column'>
-        {articles.map((article, index) => (
+        {siteData.articles.map((article, index) => (
           <RevolutionArticle
             index={index}
             key={index}

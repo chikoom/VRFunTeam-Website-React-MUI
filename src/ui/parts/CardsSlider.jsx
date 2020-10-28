@@ -9,21 +9,21 @@ import { Card, CardContent, Divider, Grid, Typography } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({}))
 var timeOutHandler
 
-const elements = [
-  {
-    content: `It is a long established fact that a reader will be distracted
-    by the readable content of a page when looking at its layout.`,
-    subContent: `Idan Baron | SEO Chikoom inc`,
-  },
-  {
-    content: `Mow Mow Mow.`,
-    subContent: `Kundofoni | SEO FancyFeast inc`,
-  },
-  {
-    content: `lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum `,
-    subContent: `Moshiko MushMush | SEO DigiDigi inc`,
-  },
-]
+// const elements = [
+//   {
+//     content: `It is a long established fact that a reader will be distracted
+//     by the readable content of a page when looking at its layout.`,
+//     subContent: `Idan Baron | SEO Chikoom inc`,
+//   },
+//   {
+//     content: `Mow Mow Mow.`,
+//     subContent: `Kundofoni | SEO FancyFeast inc`,
+//   },
+//   {
+//     content: `lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum `,
+//     subContent: `Moshiko MushMush | SEO DigiDigi inc`,
+//   },
+// ]
 
 const CardsSlider = props => {
   const classes = useStyles()
@@ -35,6 +35,7 @@ const CardsSlider = props => {
       clearTimeout(timeOutHandler)
     }
   }, [])
+  const {elements} = props
   return (
     <Grid
       container

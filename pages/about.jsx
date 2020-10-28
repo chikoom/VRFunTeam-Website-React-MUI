@@ -4,58 +4,59 @@ import { Grid, makeStyles, Typography } from '@material-ui/core'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import PersonBlock from '../src/ui/parts/PersonBlock'
 import PageHeader from '../src/ui/PageHeader'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const managers = [
   {
     image: '/assets/idan.jpg',
-    name: 'Idan Baron',
-    title: 'Founder & CTO',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Idan Baron', he:'עידן בראון' },
+    title: {en:`Founder & CTO`, he:`Founder & CTO` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/lihoo.jpg',
-    name: 'Lihoo Zaid',
-    title: 'Founder & CEO',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Lihoo Zaid', he:'ליהוא זייד' },
+    title: {en:`Founder & CEO`, he:`Founder & CEO` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
 ]
 
 const instructors = [
   {
     image: '/assets/dana.jpg',
-    name: 'Dana Ganesh',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/david.jpg',
-    name: 'David Forman',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/michael.jpg',
-    name: 'Michael Strauss',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/ossy.jpg',
-    name: 'Ossy Biton',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/ron.jpg',
-    name: 'Ron Bauman',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
   {
     image: '/assets/tammy.jpg',
-    name: 'Tammy Fine',
-    title: 'Instructor',
-    text: 'Lorem ipsum bla bla',
+    name: {en:'Dana Ganesh', he:'דנה גנאס' },
+    title: {en:`Instructor`, he:`מדריכה` },
+    text: {en:`Lorem ipsum bla bla`, he:`הדרושה לרמת לפיתוחה דעת והלאה` },
   },
 ]
 
@@ -68,8 +69,10 @@ const About = props => {
   useEffect(() => {
     setPageIndecies('/about')
   }, [])
+  const { siteData, language } = useLanguageContext()
+
   return (
-    <PageHeader header='About Us'>
+    <PageHeader header={siteData.pages.about}>
       <Head>
         <title key='title'>About Us - Company & Team | VRFunTeam</title>
         <meta
@@ -96,7 +99,7 @@ const About = props => {
       <Grid container direction='column'>
         <Grid item style={{ marginBottom: '3em' }}>
           <Typography variant='h4' align='center' gutterBottom>
-            We Are VRFunTeam
+            {siteData.weAre.heading}
           </Typography>
         </Grid>
         <Grid item container direction='row' justify='center'>
@@ -126,26 +129,16 @@ const About = props => {
           </Grid>
           <Grid item xs={12} md={4}>
             <Typography variant='body1' style={{ marginTop: '2em' }}>
-              A team of tech geeks and training instructors, who loves to escort
-              groups in conseptual trips into the Virtual Reality world. Our
-              mentors will guide you hand by hand into the new world, and will
-              know to take a step back when you'll be flying on your own.
+            {siteData.weAre.text1}
             </Typography>
             <Typography variant='body1' style={{ marginTop: '2em' }}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy.
+            {siteData.weAre.text2}
             </Typography>
           </Grid>
         </Grid>
         <Grid item style={{ marginBottom: '3em', marginTop: '5em' }}>
           <Typography variant='h4' align='center' gutterBottom>
-            The Team
+          {siteData.theTeam.heading}
           </Typography>
         </Grid>
         <Grid item>
@@ -156,12 +149,12 @@ const About = props => {
             style={{ marginBottom: '3em' }}
           >
             {managers.map(person => (
-              <Grid item key={person.name}>
+              <Grid item key={person.name['en']}>
                 <PersonBlock
                   image={person.image}
-                  name={person.name}
-                  title={person.title}
-                  text={person.text}
+                  name={person.name[language]}
+                  title={person.title[language]}
+                  text={person.text[language]}
                 />
               </Grid>
             ))}
@@ -173,12 +166,12 @@ const About = props => {
             style={{ marginBottom: '5em' }}
           >
             {instructors.map(person => (
-              <Grid item key={person.name}>
+              <Grid item key={person.name['en']}>
                 <PersonBlock
                   image={person.image}
-                  name={person.name}
-                  title={person.title}
-                  text={person.text}
+                  name={person.name[language]}
+                  title={person.title[language]}
+                  text={person.text[language]}
                 />
               </Grid>
             ))}

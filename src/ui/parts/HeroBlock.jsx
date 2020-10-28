@@ -4,6 +4,7 @@ import { useTheme, Grid, Typography, Button } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import Link from '../../Link'
 import { Link as ScrollLink } from 'react-scroll'
+import { useLanguageContext } from '../../contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 const HeroBlock = props => {
   const classes = useStyles()
   const theme = useTheme()
-
+  const { siteData } = useLanguageContext()
   return (
     <Grid container className={classes.heroContainer}>
       <Grid container className={classes.heroBackdrop} alignContent='center'>
@@ -74,9 +75,10 @@ const HeroBlock = props => {
                 className={classes.heroHeader}
                 gutterBottom
               >
-                Team Experience
+                {siteData.heroHeader}
+                {/* Team Experience
                 <br />
-                in Virtual Reality
+                in Virtual Reality */}
               </Typography>
             </Grid>
             <Grid item>
@@ -85,10 +87,7 @@ const HeroBlock = props => {
                 align='justify'
                 className={classes.heroText}
               >
-                Virtual Reality events are stirring the world - the experience
-                is emmersive and mind blowing, with no cables or clumsy
-                equipment. Take your team, family or friends to an unforgettable
-                jurney of consolidation, creative thinking and pure fun.
+                {siteData.heroText}
               </Typography>
             </Grid>
             <Grid container justify='center'>
@@ -100,7 +99,7 @@ const HeroBlock = props => {
                   component={Link}
                   href='/estimate'
                 >
-                  Price Estimate
+                  {siteData.priceEstimate}
                 </Button>
                 <Button
                   variant='outlined'
@@ -112,7 +111,7 @@ const HeroBlock = props => {
                   smooth={true}
                   offset={-70}
                 >
-                  Learn More
+                  {siteData.learnMore}
                 </Button>
               </Grid>
             </Grid>

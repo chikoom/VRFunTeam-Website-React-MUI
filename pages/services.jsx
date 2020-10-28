@@ -11,6 +11,7 @@ import {
 import { usePagesContext } from '../src/contexts/PagesContext'
 import Link from '../src/Link'
 import PageHeader from '../src/ui/PageHeader'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -25,8 +26,9 @@ const Services = props => {
   useEffect(() => {
     setPageIndecies('/services')
   }, [])
+  const { siteData } = useLanguageContext()
   return (
-    <PageHeader header='Our Services'>
+    <PageHeader header={siteData.pages.services}>
       <Head>
         <title key='title'>
           VR events for families, companies and conferences | VRFunTeam
@@ -62,14 +64,10 @@ const Services = props => {
             />
           </Grid>
           <Grid item xs={12} md={4} style={{ marginLeft: '4em' }}>
-            <Typography variant='h4'>Family & Friends</Typography>
+            <Typography variant='h4'>{siteData.services.private.title}</Typography>
             <Divider />
             <Typography variant='body1'>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+            {siteData.services.private.text}
             </Typography>
             <Button
               variant='text'
@@ -78,7 +76,7 @@ const Services = props => {
               href={'/services/private'}
               style={{ padding: 0 }}
             >
-              Learn More
+              {siteData.learnMore}
             </Button>
           </Grid>
         </Grid>
@@ -91,14 +89,10 @@ const Services = props => {
             />
           </Grid>
           <Grid item xs={12} md={4} style={{ marginLeft: '4em' }}>
-            <Typography variant='h4'>Company & Teams</Typography>
+            <Typography variant='h4'>{siteData.services.company.title}</Typography>
             <Divider />
             <Typography variant='body1'>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+            {siteData.services.company.text}
             </Typography>
             <Button
               variant='text'
@@ -107,7 +101,7 @@ const Services = props => {
               href={'/services/company'}
               style={{ padding: 0 }}
             >
-              Learn More
+              {siteData.learnMore}
             </Button>
           </Grid>
         </Grid>
@@ -126,14 +120,10 @@ const Services = props => {
             />
           </Grid>
           <Grid item xs={12} md={4} style={{ marginLeft: '4em' }}>
-            <Typography variant='h4'>Exhibitions & Conferences</Typography>
+            <Typography variant='h4'>{siteData.services.events.title}</Typography>
             <Divider />
             <Typography variant='body1'>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.
+            {siteData.services.events.text}
             </Typography>
             <Button
               variant='text'
@@ -142,7 +132,7 @@ const Services = props => {
               href={'/services/events'}
               style={{ padding: 0 }}
             >
-              Learn More
+              {siteData.learnMore}
             </Button>
           </Grid>
         </Grid>

@@ -16,6 +16,10 @@ const createPagePathMap = pages => {
 const pages = [
   {
     name: 'Home',
+    nameLang: {
+      en: 'Home',
+      he: 'בית',
+    },
     path: '/',
     special: false,
     icon: 'HomeIcon',
@@ -23,12 +27,20 @@ const pages = [
   },
   {
     name: 'Services',
+    nameLang: {
+      en: 'Services',
+      he: 'אירועים',
+    },
     path: '/services',
     special: false,
     icon: 'AppsIcon',
     children: [
       {
         name: 'Private',
+        nameLang: {
+          en: 'Private',
+          he: 'פרטיים',
+        },
         path: '/services/private',
         children: [],
         special: false,
@@ -36,6 +48,10 @@ const pages = [
       },
       {
         name: 'Company',
+        nameLang: {
+          en: 'Company',
+          he: 'חברות',
+        },
         path: '/services/company',
         children: [],
         special: false,
@@ -43,6 +59,10 @@ const pages = [
       },
       {
         name: 'Events',
+        nameLang: {
+          en: 'Events',
+          he: 'כנסים',
+        },
         path: '/services/events',
         children: [],
         special: false,
@@ -52,6 +72,10 @@ const pages = [
   },
   {
     name: 'Revolution',
+    nameLang: {
+      en: 'Revolution',
+      he: 'המהפכה',
+    },
     path: '/revolution',
     special: false,
     icon: 'AllInclusiveIcon',
@@ -59,6 +83,10 @@ const pages = [
   },
   {
     name: 'About',
+    nameLang: {
+      en: 'About',
+      he: 'עלינו',
+    },
     path: '/about',
     special: false,
     icon: 'InfoIcon',
@@ -70,6 +98,10 @@ const pages = [
   },
   {
     name: 'Contact',
+    nameLang: {
+      en: 'Contact',
+      he: 'יצירת קשר',
+    },
     path: '/contact',
     special: false,
     icon: 'SendIcon',
@@ -77,6 +109,10 @@ const pages = [
   },
   {
     name: 'Estimate',
+    nameLang: {
+      en: 'Estimate',
+      he: 'הערכת מחיר',
+    },
     path: '/estimate',
     special: true,
     icon: 'AccountBalanceWalletIcon',

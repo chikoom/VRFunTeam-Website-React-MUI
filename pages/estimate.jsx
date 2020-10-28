@@ -8,6 +8,7 @@ import { usePagesContext } from '../src/contexts/PagesContext'
 // import estimateAnimation from '../src/animations/estimate.json'
 import ContactForm from '../src/ui/parts/ContactForm'
 import PageHeader from '../src/ui/PageHeader'
+import { useLanguageContext } from '../src/contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   animationContainer: {
@@ -52,13 +53,13 @@ const useStyles = makeStyles(theme => ({
 const questions = [
   {
     id: 1,
-    title: 'What are you looking for?',
+    title: {en:`What are you looking for?`, he:`What are you looking for?`},
     subtitle: null,
     active: true,
     options: [
       {
         id: 1,
-        title: 'Private & Family',
+        title: {en:`Private & Family`, he:`משפחה או חברים`},
         subtitle: null,
         icon: '/assets/icon-teamwork.svg',
         iconAlt: 'Private & Family',
@@ -67,7 +68,7 @@ const questions = [
       },
       {
         id: 2,
-        title: 'Comapny Events',
+        title: {en:`Comapny Events`, he:`חברה או קבוצה`},
         subtitle: null,
         icon: '/assets/icon-creative.svg',
         iconAlt: 'Comapny Events',
@@ -76,7 +77,7 @@ const questions = [
       },
       {
         id: 3,
-        title: `Exhibition & Conference`,
+        title: {en:`Exhibition & Conference`, he:`אירועים או כנסים`},
         subtitle: null,
         icon: '/assets/icon-fun.svg',
         iconAlt: `Exhibition & Conference`,
@@ -143,17 +144,23 @@ const Estimate = props => {
     hours: 1,
   })
 
-  const createMsg = () => {
-    return `Hello VRFunTeam! I would like more details about a ${
+  const createMsg = (language) => {
+    return language==='en'?`Hello VRFunTeam! I would like more details about a ${
       priceData.eventType
     } event, with ${priceData.players} participants, for ${
       priceData.hours
     } hours. I got a price estimate of $${calculatePrice()}. Thank you!`
+    :
+    `היי VRFunTeam! ברצוני לשמוע פרטים נוספים על ${
+      priceData.eventType
+    }, עבור ${priceData.players} משתתפים, למשך ${
+      priceData.hours
+    } שעות. קיבלתי הערכת מחיר של ₪${calculatePrice()}. תודה רבה!`
   }
 
-  const calculatePrice = () => {
+  const calculatePrice = (language) => {
     const { eventCost, players, hours } = priceData
-    return Math.floor(eventCost * players * 25 * hours)
+    return language==='en' ? Math.floor(eventCost * players * 25 * hours) : Math.floor(eventCost * players * 25 * hours * 3.7) 
   }
   const participantLabel = value => {
     const playerImg =
@@ -185,8 +192,10 @@ const Estimate = props => {
   useEffect(() => {
     setPageIndecies('/estimate')
   }, [])
+  const { siteData, language } = useLanguageContext()
+
   return (
-    <PageHeader header='Price Estimate'>
+    <PageHeader header={siteData.pages.estimate}>
       <Head>
         <title key='title'>Price Estimate for VR events | VRFunTeam</title>
         <meta
@@ -211,10 +220,10 @@ const Estimate = props => {
         />
       </Head>
       <Grid container justify='center'>
-        <Grid item container direction='column' md={3}>
+        {/* <Grid item container direction='column' md={3}>
           <Grid item className={classes.animationContainer}>
             <Grid item className={classes.animation}>
-              {/* <Lottie
+              <Lottie
                 loop
                 rendererSettings={{
                   preserveAspectRatio: 'xMidYMin meet',
@@ -223,10 +232,10 @@ const Estimate = props => {
                 animationData={estimateAnimation}
                 play
                 style={{ width: '70%', height: '50%' }}
-              /> */}
+              />
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> */}
         <Grid item container direction='column' md={7}>
           {questions
             .filter(question => question.active === true)
@@ -239,7 +248,7 @@ const Estimate = props => {
                     className={classes.subHeading}
                     gutterBottom
                   >
-                    Choose your type of event
+                    {siteData.estimate.heading1}
                   </Typography>
                 </Grid>
                 <Grid item container justify='center'>
@@ -253,7 +262,7 @@ const Estimate = props => {
                         [classes.optionSelected]: selectedId === option.id,
                       })}
                       onClick={() =>
-                        handleOptionClick(option.id, option.cost, option.title)
+                        handleOptionClick(option.id, option.cost, option.title[language])
                       }
                       key={option.id}
                       style={{ maxWidth: '250px', padding: '1em' }}
@@ -264,7 +273,7 @@ const Estimate = props => {
                           align='center'
                           className={classes.optionTitle}
                         >
-                          {option.title}
+                          {option.title[language]}
                         </Typography>
                       </Grid>
                       <Grid item>
@@ -287,7 +296,7 @@ const Estimate = props => {
               className={classes.subHeading}
               gutterBottom
             >
-              How many players?
+              {siteData.estimate.heading2}
             </Typography>
           </Grid>
           <Grid item container alignItems='center' justify='center'>
@@ -326,7 +335,7 @@ const Estimate = props => {
               className={classes.subHeading}
               gutterBottom
             >
-              How long would you play?
+              {siteData.estimate.heading3}
             </Typography>
           </Grid>
           <Grid item container justify='center' style={{ marginTop: '2em' }}>
@@ -359,18 +368,14 @@ const Estimate = props => {
           >
             <Grid item>
               <Typography variant='h5' align='center' gutterBottom>
-                Price Est:
+              {siteData.estimate.price}{calculatePrice(language)}
               </Typography>
             </Grid>
-            <Grid item>
-              <Typography variant='h5' align='center' gutterBottom>
-                {`$${calculatePrice()}`}
-              </Typography>
-            </Grid>
+            
           </Grid>
           <Grid item container justify='center' style={{ marginBottom: '5em' }}>
             <Grid item xs={10} md={8}>
-              <ContactForm message={createMsg()} />
+              <ContactForm message={createMsg(language)} />
             </Grid>
           </Grid>
         </Grid>

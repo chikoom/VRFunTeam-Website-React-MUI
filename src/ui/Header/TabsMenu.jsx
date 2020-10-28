@@ -15,6 +15,8 @@ import {
 } from '@material-ui/core/'
 import { usePagesContext } from '../../contexts/PagesContext'
 import { event as GAevent } from '../../functions/gtag'
+import LanguageButton from '../LanguageButton'
+import { useLanguageContext } from '../../contexts/LangContext'
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -86,6 +88,7 @@ const TabsMenu = props => {
     setMenuOpen(false)
     // setCurrentPageIndecies([parentIndex, index])
   }
+  const { siteData, language } = useLanguageContext()
   return (
     <>
       <Tabs
@@ -104,7 +107,7 @@ const TabsMenu = props => {
               onMouseOver={
                 hasChildren ? event => handleMenuClick(event) : undefined
               }
-              label={page.name}
+              label={page.nameLang[language]}
               className={classes.tab}
               component={Link}
               href={page.path}
@@ -172,7 +175,7 @@ const TabsMenu = props => {
                             index === currentPageIndecies[0]
                           }
                         >
-                          {childPage.name}
+                          {childPage.nameLang[language]}
                         </MenuItem>
                       ))}
                     </MenuList>
@@ -186,6 +189,7 @@ const TabsMenu = props => {
         )
       })}
       <DarkModeButton />
+      <LanguageButton />
       <Button
         component={Link}
         href='/estimate'
@@ -201,7 +205,7 @@ const TabsMenu = props => {
           })
         }
       >
-        Price Estimate
+        {siteData.priceEstimate}
       </Button>
     </>
   )
