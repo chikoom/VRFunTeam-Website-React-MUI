@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Header from '../src/ui/Header/Header'
 import Footer from '../src/ui/Footer/Footer'
 import Router from 'next/router'
+import LangWrapper from '../src/LangWrapper'
 import * as gtag from '../src/functions/gtag'
 Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
@@ -26,10 +27,12 @@ export default function MyApp(props) {
       <PagesProvider>
         <ThemeContextProvider>
           <LangProvider>
-            <CssBaseline />
-            <Header />
-            <Component {...pageProps} />
-            <Footer />
+            <LangWrapper>
+              <CssBaseline />
+              <Header />
+              <Component {...pageProps} />
+              <Footer />
+            </LangWrapper>
           </LangProvider>
         </ThemeContextProvider>
       </PagesProvider>

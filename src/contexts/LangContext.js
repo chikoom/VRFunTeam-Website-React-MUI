@@ -7,8 +7,16 @@ export function useLanguageContext() {
   return useContext(LangContext)
 }
 
+const getQueryLanguage = qString => {
+  return qString.includes('ln=he') ? 'he' : 'en'
+}
+
 export function LangProvider({ children }) {
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState(
+    typeof window !== 'undefined'
+      ? getQueryLanguage(window.location.search)
+      : 'en'
+  )
   const changeLanguageTo = langString => {
     console.log('Changing language to ', langString)
     setLanguage(langString)

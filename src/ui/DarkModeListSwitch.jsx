@@ -5,6 +5,7 @@ import {
   ListItemText,
   Switch,
   ListItemSecondaryAction,
+  useTheme,
 } from '@material-ui/core'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Brightness4OutlinedIcon from '@material-ui/icons/Brightness4Outlined'
@@ -19,8 +20,9 @@ const useStyles = makeStyles(theme => ({
 const DarkModeListSwitch = props => {
   const classes = useStyles()
   const darkTheme = useUpdateTheme()
+  const theme = useTheme()
   return (
-    <ListItem>
+    <ListItem style={{direction: theme.direction}}>
       <ListItemIcon>
         <Brightness4OutlinedIcon />
       </ListItemIcon>

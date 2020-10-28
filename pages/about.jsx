@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Head from 'next/Head'
-import { Grid, makeStyles, Typography } from '@material-ui/core'
+import { Grid, makeStyles, Typography, useTheme } from '@material-ui/core'
 import { usePagesContext } from '../src/contexts/PagesContext'
 import PersonBlock from '../src/ui/parts/PersonBlock'
 import PageHeader from '../src/ui/PageHeader'
@@ -65,7 +65,8 @@ const useStyles = makeStyles(theme => ({}))
 const About = props => {
   const classes = useStyles()
   const { setPageIndecies, getPageMeta } = usePagesContext()
-
+  const theme = useTheme()
+  
   useEffect(() => {
     setPageIndecies('/about')
   }, [])

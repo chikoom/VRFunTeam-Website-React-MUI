@@ -11,7 +11,12 @@ import { makeStyles } from '@material-ui/core'
 const useStyles = makeStyles(theme => ({
   flag:{
     width:'30px'
-  }
+  },
+  flagButton:{
+  minWidth:'0',
+  padding:0,
+  width:'30px'
+}
 }))
 
 const LanguageButton = props => {
@@ -41,8 +46,9 @@ const LanguageButton = props => {
         aria-controls='simple-menu'
         aria-haspopup='true'
         onClick={handleClick}
+        className={classes.flagButton}
       >
-        <img className={classes.flag} src={`./assets/flags/${language}.svg`} alt={`${language} flag`} />
+        <img className={classes.flag} src={`../assets/flags/${language}.svg`} alt={`${language} flag`} />
       </Button>
       <Menu
         id='simple-menu'
@@ -59,7 +65,7 @@ const LanguageButton = props => {
             href={`${router.pathname}?ln=${savedLanguage}`}
             onClick={() => handleSelect(savedLanguage)}
           >
-            <img className={classes.flag} src={`./assets/flags/${savedLanguage}.svg`} alt={`${savedLanguage} flag`} />
+            <img className={classes.flag} src={`../assets/flags/${savedLanguage}.svg`} alt={`${savedLanguage}`} />
           </MenuItem>
         ))}
       </Menu>

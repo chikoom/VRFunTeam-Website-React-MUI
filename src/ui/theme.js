@@ -4,6 +4,11 @@ const vrPink = '#d84987'
 const vrBlue = '#306ca0'
 
 const he_typography = {
+  direction: 'rtl',
+  langStyles: {
+    direction: 'rtl',
+    textAlign: 'right',
+  },
   typography: {
     h1: {
       fontWeight: 900,
@@ -35,7 +40,7 @@ const he_typography = {
       fontSize: '1rem',
     },
     estimate: {
-      fontFamily: 'Pacifico',
+      fontFamily: 'Rubik',
       fontSize: '1rem',
       textTransform: 'none',
     },
@@ -48,6 +53,11 @@ const he_typography = {
 }
 
 const en_typography = {
+  direction: 'ltr',
+  langStyles: {
+    direction: 'ltr',
+    textAlign: 'left',
+  },
   typography: {
     h1: {
       fontWeight: 900,

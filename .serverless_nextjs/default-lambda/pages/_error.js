@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "BK31");
+/******/ 	return __webpack_require__(__webpack_require__.s = "JUiV");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -5127,7 +5127,60 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 const vrPink = '#d84987';
 const vrBlue = '#306ca0';
-const themeAll = {
+const he_typography = {
+  direction: 'rtl',
+  langStyles: {
+    direction: 'rtl',
+    textAlign: 'right'
+  },
+  typography: {
+    h1: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    h2: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    h3: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    h4: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    h5: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    h6: {
+      fontWeight: 900,
+      fontFamily: 'Rubik'
+    },
+    tab: {
+      fontFamily: 'Rubik',
+      fontWeight: '700',
+      fontSize: '1rem'
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none'
+    },
+    listIcon: {
+      fontSize: '2em',
+      transform: 'rotate(-15deg)',
+      textShadow: '0px 0px 23px #555'
+    }
+  }
+};
+const en_typography = {
+  direction: 'ltr',
+  langStyles: {
+    direction: 'ltr',
+    textAlign: 'left'
+  },
   typography: {
     h1: {
       fontWeight: 900,
@@ -5168,7 +5221,42 @@ const themeAll = {
       transform: 'rotate(-15deg)',
       textShadow: '0px 0px 23px #555'
     }
-  },
+  }
+};
+const lightPallete = {
+  palette: {
+    common: {
+      digiPink: vrPink,
+      digiBlue: vrBlue
+    },
+    primary: {
+      main: vrBlue
+    },
+    secondary: {
+      main: vrPink
+    }
+  }
+};
+const darkPallete = {
+  palette: {
+    type: 'dark',
+    common: {
+      digiPink: vrPink,
+      digiBlue: vrBlue
+    },
+    primary: {
+      main: vrPink
+    },
+    secondary: {
+      main: vrBlue
+    },
+    background: {
+      paper: '#424242',
+      default: '#303030'
+    }
+  }
+};
+const themeAll = {
   overrides: {
     MuiInputLabel: {
       root: {
@@ -5196,43 +5284,18 @@ const themeAll = {
     }
   }
 };
-let dLightTheme = Object(createMuiTheme["a" /* default */])(_objectSpread({
-  palette: {
-    common: {
-      digiPink: vrPink,
-      digiBlue: vrBlue
-    },
-    primary: {
-      main: vrBlue
-    },
-    secondary: {
-      main: vrPink
-    }
-  }
-}, themeAll));
+let dLightTheme = Object(createMuiTheme["a" /* default */])(_objectSpread(_objectSpread(_objectSpread({}, en_typography), lightPallete), themeAll));
 dLightTheme = Object(responsiveFontSizes["a" /* default */])(dLightTheme);
 const lightTheme = dLightTheme;
-let dDarkTheme = Object(createMuiTheme["a" /* default */])(_objectSpread({
-  palette: {
-    type: 'dark',
-    common: {
-      digiPink: vrPink,
-      digiBlue: vrBlue
-    },
-    primary: {
-      main: vrPink
-    },
-    secondary: {
-      main: vrBlue
-    },
-    background: {
-      paper: '#424242',
-      default: '#303030'
-    }
-  }
-}, themeAll));
+let dLightTheme_he = Object(createMuiTheme["a" /* default */])(_objectSpread(_objectSpread(_objectSpread({}, he_typography), lightPallete), themeAll));
+dLightTheme_he = Object(responsiveFontSizes["a" /* default */])(dLightTheme_he);
+const lightTheme_he = dLightTheme_he;
+let dDarkTheme = Object(createMuiTheme["a" /* default */])(_objectSpread(_objectSpread(_objectSpread({}, en_typography), darkPallete), themeAll));
 dDarkTheme = Object(responsiveFontSizes["a" /* default */])(dDarkTheme);
 const theme_darkTheme = dDarkTheme;
+let dDarkTheme_he = Object(createMuiTheme["a" /* default */])(_objectSpread(_objectSpread(_objectSpread({}, he_typography), darkPallete), themeAll));
+dDarkTheme_he = Object(responsiveFontSizes["a" /* default */])(dDarkTheme_he);
+const darkTheme_he = dDarkTheme_he;
 // CONCATENATED MODULE: ./src/contexts/ThemeContext.js
 var __jsx = react_default.a.createElement;
 
@@ -5242,6 +5305,11 @@ const ThemeUpdateContext = /*#__PURE__*/react_default.a.createContext();
 function useUpdateTheme() {
   return Object(react["useContext"])(ThemeUpdateContext);
 }
+
+const getQueryLanguage = qString => {
+  return qString.includes('ln=he') ? 'he' : 'en';
+};
+
 function ThemeContextProvider({
   children
 }) {
@@ -5249,24 +5317,47 @@ function ThemeContextProvider({
     0: isDarkTheme,
     1: setIsDarkTheme
   } = Object(react["useState"])(false);
+  const {
+    0: currentTheme,
+    1: setCurrentTheme
+  } = Object(react["useState"])( false ? undefined : {
+    dark: theme_darkTheme,
+    light: lightTheme
+  });
+  Object(react["useEffect"])(() => {});
+  const themes = {
+    he: {
+      dark: darkTheme_he,
+      light: lightTheme_he
+    },
+    en: {
+      dark: theme_darkTheme,
+      light: lightTheme
+    }
+  };
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
 
+  const changeThemeLanguage = language => {
+    setCurrentTheme(themes[language]);
+  };
+
   return __jsx(ThemeUpdateContext.Provider, {
     value: {
       toggleTheme,
-      isDarkTheme
+      isDarkTheme,
+      changeThemeLanguage
     }
   }, __jsx(_material_ui_styles["ThemeProvider"], {
-    theme: isDarkTheme ? theme_darkTheme : lightTheme
+    theme: isDarkTheme ? currentTheme.dark : currentTheme.light
   }, children));
 }
 // EXTERNAL MODULE: ./src/contexts/PagesContext.js
 var PagesContext = __webpack_require__("oN2N");
 
-// EXTERNAL MODULE: ./src/contexts/LangContext.js
+// EXTERNAL MODULE: ./src/contexts/LangContext.js + 1 modules
 var LangContext = __webpack_require__("jiai");
 
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/CssBaseline/CssBaseline.js
@@ -5401,6 +5492,7 @@ function DrawerMenu_defineProperty(obj, key, value) { if (key in obj) { Object.d
 
 
 
+
  // const iconMapping = {
 //   SendIcon,HomeIcon,AppsIcon,AllInclusiveIcon,InfoIcon,AccountBalanceWalletIcon,GroupIcon,BusinessIcon,EmojiEventsIcon
 // }
@@ -5480,6 +5572,10 @@ const DrawerMenu = props => {
     setCurrentPageIndecies([parentIndex, index]);
   };
 
+  const {
+    siteData,
+    language
+  } = Object(LangContext["b" /* useLanguageContext */])();
   return DrawerMenu_jsx(react_default.a.Fragment, null, DrawerMenu_jsx(core["IconButton"], {
     className: classes.menuIconContainer,
     onClick: () => setDrawerOpen(!drawerOpen),
@@ -5529,7 +5625,7 @@ const DrawerMenu = props => {
   }, iconMapping[page.icon]), DrawerMenu_jsx(core["ListItemText"], {
     className: classes.drawerItem,
     disableTypography: true
-  }, page.name), page.children.length > 0 ? menuOpen ? DrawerMenu_jsx(core["IconButton"], {
+  }, page.nameLang[language]), page.children.length > 0 ? menuOpen ? DrawerMenu_jsx(core["IconButton"], {
     className: classes.menuIconContainer,
     onClick: e => {
       e.preventDefault();
@@ -5579,36 +5675,13 @@ const DrawerMenu = props => {
   }, iconMapping[childPage.icon]), DrawerMenu_jsx(core["ListItemText"], {
     className: classes.drawerItem,
     disableTypography: true
-  }, childPage.name))))) : null)))));
+  }, childPage.nameLang[language]))))) : null)))));
 };
 
 /* harmony default export */ var Header_DrawerMenu = (DrawerMenu);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/useScrollTrigger/useScrollTrigger.js
-var useScrollTrigger = __webpack_require__("9NZZ");
+// EXTERNAL MODULE: ./src/ui/helpers/ui-helpers.jsx
+var ui_helpers = __webpack_require__("f8Eu");
 
-// CONCATENATED MODULE: ./src/ui/helpers/ui-helpers.jsx
-
-
-// import { withRouter } from 'react-router-dom'
-function ElevationScroll(props) {
-  const {
-    children
-  } = props;
-  const trigger = Object(useScrollTrigger["a" /* default */])({
-    disableHysteresis: true,
-    threshold: 0
-  });
-  return /*#__PURE__*/react_default.a.cloneElement(children, {
-    elevation: trigger ? 4 : 0
-  });
-} // class ScrollToTop extends PureComponent {
-//   componentDidMount = () => window.scrollTo(0, 0)
-//   componentDidUpdate = prevProps => {
-//     if (this.props.location !== prevProps.location) window.scrollTo(0, 0)
-//   }
-//   render = () => this.props.children
-// }
-// export default withRouter(ScrollToTop)
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/IconButton/IconButton.js
 var IconButton = __webpack_require__("PsDL");
 
@@ -5645,6 +5718,10 @@ var Menu_Menu = __webpack_require__("gd/W");
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/MenuItem/MenuItem.js
 var MenuItem = __webpack_require__("jjAL");
 
+// EXTERNAL MODULE: ./node_modules/next/dist/client/router.js
+var client_router = __webpack_require__("nOHt");
+var router_default = /*#__PURE__*/__webpack_require__.n(client_router);
+
 // CONCATENATED MODULE: ./src/ui/LanguageButton.jsx
 var LanguageButton_jsx = react_default.a.createElement;
 
@@ -5654,13 +5731,26 @@ var LanguageButton_jsx = react_default.a.createElement;
 
 
 
+
+
+const LanguageButton_useStyles = Object(core["makeStyles"])(theme => ({
+  flag: {
+    width: '30px'
+  }
+}));
+
 const LanguageButton = props => {
   const [anchorEl, setAnchorEl] = react_default.a.useState(null);
+  const router = Object(client_router["useRouter"])();
   const {
     language,
     languages,
     changeLanguageTo
   } = Object(LangContext["b" /* useLanguageContext */])();
+  const {
+    changeThemeLanguage
+  } = useUpdateTheme();
+  const classes = LanguageButton_useStyles();
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -5673,13 +5763,18 @@ const LanguageButton = props => {
   const handleSelect = lang => {
     setAnchorEl(null);
     changeLanguageTo(lang);
+    changeThemeLanguage(lang);
   };
 
   return LanguageButton_jsx("div", null, LanguageButton_jsx(Button["a" /* default */], {
     "aria-controls": "simple-menu",
     "aria-haspopup": "true",
     onClick: handleClick
-  }, language), LanguageButton_jsx(Menu_Menu["a" /* default */], {
+  }, LanguageButton_jsx("img", {
+    className: classes.flag,
+    src: `../assets/flags/${language}.svg`,
+    alt: `${language} flag`
+  })), LanguageButton_jsx(Menu_Menu["a" /* default */], {
     id: "simple-menu",
     anchorEl: anchorEl,
     keepMounted: true,
@@ -5691,9 +5786,13 @@ const LanguageButton = props => {
   }, languages.map(savedLanguage => LanguageButton_jsx(MenuItem["a" /* default */], {
     key: savedLanguage,
     component: Link["a" /* default */],
-    href: `?lang=${savedLanguage}`,
+    href: `${router.pathname}?ln=${savedLanguage}`,
     onClick: () => handleSelect(savedLanguage)
-  }, savedLanguage))));
+  }, LanguageButton_jsx("img", {
+    className: classes.flag,
+    src: `../assets/flags/${savedLanguage}.svg`,
+    alt: `${savedLanguage}`
+  })))));
 };
 
 /* harmony default export */ var ui_LanguageButton = (LanguageButton);
@@ -5707,6 +5806,7 @@ function TabsMenu_ownKeys(object, enumerableOnly) { var keys = Object.keys(objec
 function TabsMenu_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { TabsMenu_ownKeys(Object(source), true).forEach(function (key) { TabsMenu_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { TabsMenu_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function TabsMenu_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5789,6 +5889,10 @@ const TabsMenu = props => {
     setMenuOpen(false); // setCurrentPageIndecies([parentIndex, index])
   };
 
+  const {
+    siteData,
+    language
+  } = Object(LangContext["b" /* useLanguageContext */])();
   return TabsMenu_jsx(react_default.a.Fragment, null, TabsMenu_jsx(core["Tabs"], {
     value: currentPageIndecies[0],
     onChange: handleTabChange,
@@ -5799,7 +5903,7 @@ const TabsMenu = props => {
       "aria-owns": hasChildren && anchorEl ? `menu-${page.name}` : undefined,
       "aria-haspopup": hasChildren && anchorEl ? true : undefined,
       onMouseOver: hasChildren ? event => handleMenuClick(event) : undefined,
-      label: page.name,
+      label: page.nameLang[language],
       className: classes.tab,
       component: Link["a" /* default */],
       href: page.path,
@@ -5860,7 +5964,7 @@ const TabsMenu = props => {
         root: classes.menuItem
       },
       selected: childIndex === currentPageIndecies[1] && index === currentPageIndecies[0]
-    }, childPage.name))))))) : '';
+    }, childPage.nameLang[language]))))))) : '';
   }), TabsMenu_jsx(DarkModeButton, null), TabsMenu_jsx(ui_LanguageButton, null), TabsMenu_jsx(core["Button"], {
     component: Link["a" /* default */],
     href: "/estimate",
@@ -5873,7 +5977,7 @@ const TabsMenu = props => {
       label: 'Website Actions',
       value: '0'
     })
-  }, "Price Estimate"));
+  }, siteData.priceEstimate));
 };
 
 /* harmony default export */ var Header_TabsMenu = (TabsMenu);
@@ -5940,7 +6044,7 @@ const Header = props => {
     setCurrentPageIndecies([value, null]);
   };
 
-  return Header_jsx(react_default.a.Fragment, null, Header_jsx(ElevationScroll, null, Header_jsx(core["AppBar"], {
+  return Header_jsx(react_default.a.Fragment, null, Header_jsx(ui_helpers["a" /* ElevationScroll */], null, Header_jsx(core["AppBar"], {
     position: "fixed",
     className: classes.appBar
   }, Header_jsx(core["Toolbar"], {
@@ -6843,6 +6947,7 @@ var Copyright_jsx = react_default.a.createElement;
 
 
 
+
 const Copyright_useStyles = Object(makeStyles["a" /* default */])(theme => ({
   copyfooter: {
     backgroundColor: theme.palette.primary.dark,
@@ -6857,6 +6962,9 @@ const Copyright_useStyles = Object(makeStyles["a" /* default */])(theme => ({
 const Copyright = props => {
   const classes = Copyright_useStyles();
   const theme = Object(core["useTheme"])();
+  const {
+    siteData
+  } = Object(LangContext["b" /* useLanguageContext */])();
   return Copyright_jsx(core["Grid"], {
     container: true,
     justify: "center",
@@ -6866,7 +6974,7 @@ const Copyright = props => {
     item: true
   }, Copyright_jsx(core["Typography"], {
     variant: "caption"
-  }, "Dev&Des by Chikoom |")), Copyright_jsx(core["Grid"], {
+  }, siteData.copyright, " |")), Copyright_jsx(core["Grid"], {
     item: true,
     style: {
       display: 'grid',
@@ -6923,6 +7031,8 @@ var Footer_jsx = react_default.a.createElement;
 
 
 
+
+
 const Footer_useStyles = Object(makeStyles["a" /* default */])(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
@@ -6937,6 +7047,7 @@ const Footer_useStyles = Object(makeStyles["a" /* default */])(theme => ({
   gridLink: {
     fontFamily: theme.typography.fontFamily,
     textDecoration: 'none',
+    color: '#fafafa',
     '&:visited': {
       color: '#fafafa'
     }
@@ -6971,13 +7082,15 @@ const GridLink = props => {
 
 const Footer = props => {
   const classes = Footer_useStyles();
+  const {
+    siteData,
+    language
+  } = Object(LangContext["b" /* useLanguageContext */])();
   return Footer_jsx("footer", {
     className: classes.footer
   }, Footer_jsx(Grid["a" /* default */], {
     container: true,
     justify: "center"
-  }, Footer_jsx(Hidden["a" /* default */], {
-    mdDown: true
   }, Footer_jsx(Grid["a" /* default */], {
     item: true,
     className: classes.gridColumn
@@ -6987,10 +7100,14 @@ const Footer = props => {
     spacing: 2
   }, Footer_jsx(GridLink, {
     path: '/',
-    text: 'Home'
-  })))), Footer_jsx(Hidden["a" /* default */], {
-    mdDown: true
-  }, Footer_jsx(Grid["a" /* default */], {
+    text: siteData.pages.home
+  }), Footer_jsx(GridLink, {
+    path: '/about',
+    text: siteData.pages.about
+  }), Footer_jsx(GridLink, {
+    path: '/contact',
+    text: siteData.pages.contact
+  }))), Footer_jsx(Grid["a" /* default */], {
     item: true,
     className: classes.gridColumn
   }, Footer_jsx(Grid["a" /* default */], {
@@ -6998,18 +7115,15 @@ const Footer = props => {
     direction: "column",
     spacing: 2
   }, Footer_jsx(GridLink, {
-    path: '/services',
-    text: 'Our Services'
-  }), Footer_jsx(GridLink, {
     path: '/services/private',
-    text: 'Personal & Family'
+    text: siteData.pages.private
   }), Footer_jsx(GridLink, {
     path: '/services/company',
-    text: 'Companies & Teams'
+    text: siteData.pages.company
   }), Footer_jsx(GridLink, {
     path: '/services/events',
-    text: 'Conferences & Events'
-  })))), Footer_jsx(Hidden["a" /* default */], {
+    text: siteData.pages.events
+  }))), Footer_jsx(Hidden["a" /* default */], {
     mdDown: true
   }, Footer_jsx(Grid["a" /* default */], {
     item: true,
@@ -7020,13 +7134,10 @@ const Footer = props => {
     spacing: 2
   }, Footer_jsx(GridLink, {
     path: '/revolution',
-    text: 'The Revolution'
+    text: siteData.pages.revolution
   }), Footer_jsx(GridLink, {
     path: '/revolution',
-    text: 'VR Blog'
-  }), Footer_jsx(GridLink, {
-    path: '/revolution',
-    text: 'New'
+    text: siteData.pages.blog
   })))), Footer_jsx(Grid["a" /* default */], {
     item: true,
     className: classes.gridColumn
@@ -7034,22 +7145,66 @@ const Footer = props => {
     container: true,
     direction: "column",
     spacing: 2
-  }, Footer_jsx(GridLink, {
-    path: '/about',
-    text: 'About'
+  }, Footer_jsx(core["Typography"], {
+    variant: "h6"
+  }, "VRFunTeam"), Footer_jsx(GridLink, {
+    path: 'tel:972528228640',
+    text: '052-8228640'
   }), Footer_jsx(GridLink, {
-    path: '/contact',
-    text: 'Contact Us'
+    path: 'mailto:studio@vrfunteam.com',
+    text: 'studio@vrfunteam.com'
   })))), Footer_jsx(Footer_Copyright, null), Footer_jsx(ContactButton, null));
 };
 
 /* harmony default export */ var Footer_Footer = (Footer);
-// EXTERNAL MODULE: ./node_modules/next/dist/client/router.js
-var router = __webpack_require__("nOHt");
-var router_default = /*#__PURE__*/__webpack_require__.n(router);
+// EXTERNAL MODULE: ./node_modules/jss/dist/jss.cjs.js
+var jss_cjs = __webpack_require__("54NK");
 
+// EXTERNAL MODULE: ./node_modules/jss-rtl/lib/main.js
+var main = __webpack_require__("elw/");
+var main_default = /*#__PURE__*/__webpack_require__.n(main);
+
+// CONCATENATED MODULE: ./src/LangWrapper.jsx
+var LangWrapper_jsx = react_default.a.createElement;
+
+function LangWrapper_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function LangWrapper_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { LangWrapper_ownKeys(Object(source), true).forEach(function (key) { LangWrapper_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { LangWrapper_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function LangWrapper_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+ // Configure JSS
+
+const jss = Object(jss_cjs["create"])({
+  plugins: [...Object(_material_ui_styles["jssPreset"])().plugins, main_default()()]
+});
+
+const LangWrapper = ({
+  children
+}) => {
+  const {
+    0: styles,
+    1: setStyles
+  } = Object(react["useState"])({});
+  const theme = Object(core["useTheme"])();
+  Object(react["useEffect"])(() => {
+    setStyles(LangWrapper_objectSpread({}, theme.langStyles));
+  }, [theme]);
+  return LangWrapper_jsx("div", {
+    style: styles
+  }, LangWrapper_jsx(_material_ui_styles["StylesProvider"], {
+    jss: jss
+  }, children));
+};
+
+/* harmony default export */ var src_LangWrapper = (LangWrapper);
 // CONCATENATED MODULE: ./pages/_app.js
 var _app_jsx = react_default.a.createElement;
+
 
 
 
@@ -7073,7 +7228,7 @@ function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  return _app_jsx(react_default.a.Fragment, null, _app_jsx(PagesContext["a" /* PagesProvider */], null, _app_jsx(ThemeContextProvider, null, _app_jsx(LangContext["a" /* LangProvider */], null, _app_jsx(CssBaseline["a" /* default */], null), _app_jsx(Header_Header, null), _app_jsx(Component, pageProps), _app_jsx(Footer_Footer, null)))));
+  return _app_jsx(react_default.a.Fragment, null, _app_jsx(PagesContext["a" /* PagesProvider */], null, _app_jsx(ThemeContextProvider, null, _app_jsx(LangContext["a" /* LangProvider */], null, _app_jsx(src_LangWrapper, null, _app_jsx(CssBaseline["a" /* default */], null), _app_jsx(Header_Header, null), _app_jsx(Component, pageProps), _app_jsx(Footer_Footer, null))))));
 }
 
 /***/ }),
@@ -11983,7 +12138,10 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
   render() {
     return __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Html"], {
       lang: "en"
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("style", {
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], null, __jsx("link", {
+      href: "https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap",
+      rel: "stylesheet"
+    }), __jsx("style", {
       dangerouslySetInnerHTML: {
         __html: `
                 
@@ -17086,321 +17244,6 @@ function exactProp(propTypes) {
 
 /***/ }),
 
-/***/ "BK31":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticProps", function() { return getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticPaths", function() { return getStaticPaths; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { return getServerSideProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticPaths", function() { return unstable_getStaticPaths; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getServerProps", function() { return unstable_getServerProps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return _app; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
-/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
-/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
-
-    
-    
-    
-    const {isResSent} = __webpack_require__("g/15");
-
-    
-    const { processEnv } = __webpack_require__("fXeI")
-    processEnv([])
-  
-    
-    const runtimeConfig = {}
-    const {parse: parseUrl, format: formatUrl} = __webpack_require__("bzos")
-    const {parse: parseQs} = __webpack_require__("8xkj")
-    const { renderToHTML } = __webpack_require__("/bjS");
-    const { tryGetPreviewData } = __webpack_require__("PCLx");
-    const { denormalizePagePath } = __webpack_require__("wkBG")
-    const { setLazyProp, getCookieParser } = __webpack_require__("PCLx")
-    const {sendPayload} = __webpack_require__("KyNf");
-    const buildManifest = __webpack_require__("LZ9C");
-    const reactLoadableManifest = __webpack_require__("67Bq");
-    const Document = __webpack_require__("5w0S").default;
-    const Error = __webpack_require__("Y0NT").default;
-    const App = __webpack_require__("1TCz").default;
-
-    
-    
-    const { rewrites } = __webpack_require__("Skye")
-    const { pathToRegexp, default: pathMatch } = __webpack_require__("N6Fi")
-  
-
-    const ComponentInfo = __webpack_require__("Y0NT")
-
-    const Component = ComponentInfo.default
-    /* harmony default export */ __webpack_exports__["default"] = (Component);
-    const unstable_getStaticParams = ComponentInfo['unstable_getStaticParam' + 's']
-    const getStaticProps = ComponentInfo['getStaticProp' + 's']
-    const getStaticPaths = ComponentInfo['getStaticPath' + 's']
-    const getServerSideProps = ComponentInfo['getServerSideProp' + 's']
-
-    // kept for detecting legacy exports
-    const unstable_getStaticProps = ComponentInfo['unstable_getStaticProp' + 's']
-    const unstable_getStaticPaths = ComponentInfo['unstable_getStaticPath' + 's']
-    const unstable_getServerProps = ComponentInfo['unstable_getServerProp' + 's']
-
-    
-    
-    
-    
-    const getCustomRouteMatcher = pathMatch(true)
-    const prepareDestination = __webpack_require__("6mnf").default
-
-    function handleRewrites(parsedUrl) {
-      for (const rewrite of rewrites) {
-        const matcher = getCustomRouteMatcher(rewrite.source)
-        const params = matcher(parsedUrl.pathname)
-
-        if (params) {
-          const { parsedDestination } = prepareDestination(
-            rewrite.destination,
-            params,
-            parsedUrl.query,
-            true,
-            ""
-          )
-
-          Object.assign(parsedUrl.query, parsedDestination.query)
-          delete parsedDestination.query
-
-          Object.assign(parsedUrl, parsedDestination)
-
-          if (parsedUrl.pathname === '/_error'){
-            break
-          }
-          
-        }
-      }
-
-      return parsedUrl
-    }
-  
-
-    const config = ComponentInfo['confi' + 'g'] || {}
-    const _app = App
-    async function renderReqToHTML(req, res, renderMode, _renderOpts, _params) {
-      const fromExport = renderMode === 'export' || renderMode === true;
-      const nextStartMode = renderMode === 'passthrough'
-
-      setLazyProp({ req }, 'cookies', getCookieParser(req))
-
-      const options = {
-        App,
-        Document,
-        buildManifest,
-        getStaticProps,
-        getServerSideProps,
-        getStaticPaths,
-        reactLoadableManifest,
-        canonicalBase: "",
-        buildId: "GchRG7l3miHXPeqfxue8t",
-        assetPrefix: "",
-        runtimeConfig: runtimeConfig.publicRuntimeConfig || {},
-        previewProps: {previewModeId:"86a67d4890d320ef1b43f70cd373defc",previewModeSigningKey:"04216a7b2c67b81d1111532c169507a37923f8844418d7d410572239d29e94ef",previewModeEncryptionKey:"7430d03ba0dbcb2336eb2a1f317a4cdc800ef9ddc3a61ef6cbcb1c2e3cc7a8bf"},
-        env: process.env,
-        basePath: "",
-        ..._renderOpts
-      }
-      let _nextData = false
-      let parsedUrl
-
-      try {
-        // We need to trust the dynamic route params from the proxy
-        // to ensure we are using the correct values
-        const trustQuery = !getStaticProps && req.headers['x-vercel-id']
-        let parsedUrl = parseUrl(req.url, true)
-        let routeNoAssetPath = parsedUrl.pathname
-        const origQuery = Object.assign({}, parsedUrl.query)
-
-        parsedUrl = handleRewrites(parsedUrl)
-
-        
-
-        if (parsedUrl.pathname.match(/_next\/data/)) {
-          const {
-            default: getrouteNoAssetPath,
-          } = __webpack_require__("1Ej0");
-          _nextData = true;
-          parsedUrl.pathname = getrouteNoAssetPath(
-            parsedUrl.pathname.replace(
-              new RegExp('/_next/data/GchRG7l3miHXPeqfxue8t/'),
-              '/'
-            ),
-            '.json'
-          );
-          routeNoAssetPath = parsedUrl.pathname
-        }
-
-        
-      const i18n = {}
-      const detectedLocale = undefined
-    
-
-        const renderOpts = Object.assign(
-          {
-            Component,
-            pageConfig: config,
-            nextExport: fromExport,
-            isDataReq: _nextData,
-            locale: detectedLocale,
-            locales: i18n.locales,
-            defaultLocale: i18n.defaultLocale,
-          },
-          options,
-        )
-
-        
-          if (!res.statusCode) {
-            res.statusCode = 404
-          }
-        
-
-        const params = {};
-        const nowParams = null;
-
-        // make sure to set renderOpts to the correct params e.g. _params
-        // if provided from worker or params if we're parsing them here
-        renderOpts.params = _params || params
-
-        // make sure to normalize req.url on Vercel to strip dynamic params
-        // from the query which are added during routing
-        
-
-        // normalize request URL/asPath for fallback/revalidate pages since the
-        // proxy sets the request URL to the output's path for fallback pages
-        
-
-        // make sure to normalize asPath for revalidate and _next/data requests
-        // since the asPath should match what is shown on the client
-        if (
-          !fromExport &&
-          (getStaticProps || getServerSideProps)
-        ) {
-          
-
-          parsedUrl.pathname = denormalizePagePath(parsedUrl.pathname)
-          renderOpts.resolvedUrl = formatUrl({
-            ...parsedUrl,
-            query: origQuery
-          })
-
-          // For getServerSideProps we need to ensure we use the original URL
-          // and not the resolved URL to prevent a hydration mismatch on asPath
-          renderOpts.resolvedAsPath = getServerSideProps
-            ? formatUrl({
-              ...parsedUrl,
-              pathname: routeNoAssetPath,
-              query: origQuery,
-            })
-            : renderOpts.resolvedUrl
-        }
-
-        const isFallback = parsedUrl.query.__nextFallback
-
-        const previewData = tryGetPreviewData(req, res, options.previewProps)
-        const isPreviewMode = previewData !== false
-
-        if (false) {}
-        let result = await renderToHTML(req, res, "/_error", Object.assign({}, getStaticProps ? { ...(parsedUrl.query.amp ? { amp: '1' } : {}) } : parsedUrl.query, nowParams ? nowParams : params, _params, isFallback ? { __nextFallback: 'true' } : {}), renderOpts)
-
-        if (!renderMode) {
-          if (_nextData || getStaticProps || getServerSideProps) {
-            sendPayload(req, res, _nextData ? JSON.stringify(renderOpts.pageData) : result, _nextData ? 'json' : 'html', true, {
-              private: isPreviewMode,
-              stateful: !!getServerSideProps,
-              revalidate: renderOpts.revalidate,
-            })
-            return null
-          }
-        } else if (isPreviewMode) {
-          res.setHeader(
-            'Cache-Control',
-            'private, no-cache, no-store, max-age=0, must-revalidate'
-          )
-        }
-
-        if (renderMode) return { html: result, renderOpts }
-        return result
-      } catch (err) {
-        if (!parsedUrl) {
-          parsedUrl = parseUrl(req.url, true)
-        }
-
-        if (err.code === 'ENOENT') {
-          res.statusCode = 404
-        } else if (err.code === 'DECODE_FAILED') {
-          // TODO: better error?
-          res.statusCode = 400
-        } else {
-          console.error('Unhandled error during request:', err)
-
-          // Backwards compat (call getInitialProps in custom error):
-          try {
-            await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-              getStaticProps: undefined,
-              getStaticPaths: undefined,
-              getServerSideProps: undefined,
-              Component: Error,
-              err: err,
-              // Short-circuit rendering:
-              isDataReq: true
-            }))
-          } catch (underErrorErr) {
-            console.error('Failed call /_error subroutine, continuing to crash function:', underErrorErr)
-          }
-
-          // Throw the error to crash the serverless function
-          if (isResSent(res)) {
-            console.error('!!! WARNING !!!')
-            console.error(
-              'Your function crashed, but closed the response before allowing the function to exit.\n' +
-              'This may cause unexpected behavior for the next request.'
-            )
-            console.error('!!! WARNING !!!')
-          }
-          throw err
-        }
-
-        const result = await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
-          getStaticProps: undefined,
-          getStaticPaths: undefined,
-          getServerSideProps: undefined,
-          Component: Error,
-          err: res.statusCode === 404 ? undefined : err
-        }))
-        return result
-      }
-    }
-    async function render (req, res) {
-      try {
-        await Object(next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"])()
-        const html = await renderReqToHTML(req, res)
-        if (html) {
-          sendPayload(req, res, html, 'html', {generateEtags: true, poweredByHeader: true})
-        }
-      } catch(err) {
-        console.error(err)
-        await Object(next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"])(err)
-        // Throw the error to crash the serverless function
-        throw err
-      }
-    }
-  
-
-/***/ }),
-
 /***/ "Betk":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21224,6 +21067,321 @@ throw new SerializableError(page,method,path,'`'+type+'`'+(type==='object'?` ("$
 
 /***/ }),
 
+/***/ "JUiV":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticParams", function() { return unstable_getStaticParams; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticProps", function() { return getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStaticPaths", function() { return getStaticPaths; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { return getServerSideProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticProps", function() { return unstable_getStaticProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getStaticPaths", function() { return unstable_getStaticPaths; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unstable_getServerProps", function() { return unstable_getServerProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_app", function() { return _app; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "renderReqToHTML", function() { return renderReqToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony import */ var next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GX0O");
+/* harmony import */ var next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KqAr");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("fkL1");
+/* harmony import */ var next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_next_server_server_node_polyfill_fetch__WEBPACK_IMPORTED_MODULE_2__);
+
+    
+    
+    
+    const {isResSent} = __webpack_require__("g/15");
+
+    
+    const { processEnv } = __webpack_require__("fXeI")
+    processEnv([])
+  
+    
+    const runtimeConfig = {}
+    const {parse: parseUrl, format: formatUrl} = __webpack_require__("bzos")
+    const {parse: parseQs} = __webpack_require__("8xkj")
+    const { renderToHTML } = __webpack_require__("/bjS");
+    const { tryGetPreviewData } = __webpack_require__("PCLx");
+    const { denormalizePagePath } = __webpack_require__("wkBG")
+    const { setLazyProp, getCookieParser } = __webpack_require__("PCLx")
+    const {sendPayload} = __webpack_require__("KyNf");
+    const buildManifest = __webpack_require__("LZ9C");
+    const reactLoadableManifest = __webpack_require__("67Bq");
+    const Document = __webpack_require__("5w0S").default;
+    const Error = __webpack_require__("Y0NT").default;
+    const App = __webpack_require__("1TCz").default;
+
+    
+    
+    const { rewrites } = __webpack_require__("Skye")
+    const { pathToRegexp, default: pathMatch } = __webpack_require__("N6Fi")
+  
+
+    const ComponentInfo = __webpack_require__("Y0NT")
+
+    const Component = ComponentInfo.default
+    /* harmony default export */ __webpack_exports__["default"] = (Component);
+    const unstable_getStaticParams = ComponentInfo['unstable_getStaticParam' + 's']
+    const getStaticProps = ComponentInfo['getStaticProp' + 's']
+    const getStaticPaths = ComponentInfo['getStaticPath' + 's']
+    const getServerSideProps = ComponentInfo['getServerSideProp' + 's']
+
+    // kept for detecting legacy exports
+    const unstable_getStaticProps = ComponentInfo['unstable_getStaticProp' + 's']
+    const unstable_getStaticPaths = ComponentInfo['unstable_getStaticPath' + 's']
+    const unstable_getServerProps = ComponentInfo['unstable_getServerProp' + 's']
+
+    
+    
+    
+    
+    const getCustomRouteMatcher = pathMatch(true)
+    const prepareDestination = __webpack_require__("6mnf").default
+
+    function handleRewrites(parsedUrl) {
+      for (const rewrite of rewrites) {
+        const matcher = getCustomRouteMatcher(rewrite.source)
+        const params = matcher(parsedUrl.pathname)
+
+        if (params) {
+          const { parsedDestination } = prepareDestination(
+            rewrite.destination,
+            params,
+            parsedUrl.query,
+            true,
+            ""
+          )
+
+          Object.assign(parsedUrl.query, parsedDestination.query)
+          delete parsedDestination.query
+
+          Object.assign(parsedUrl, parsedDestination)
+
+          if (parsedUrl.pathname === '/_error'){
+            break
+          }
+          
+        }
+      }
+
+      return parsedUrl
+    }
+  
+
+    const config = ComponentInfo['confi' + 'g'] || {}
+    const _app = App
+    async function renderReqToHTML(req, res, renderMode, _renderOpts, _params) {
+      const fromExport = renderMode === 'export' || renderMode === true;
+      const nextStartMode = renderMode === 'passthrough'
+
+      setLazyProp({ req }, 'cookies', getCookieParser(req))
+
+      const options = {
+        App,
+        Document,
+        buildManifest,
+        getStaticProps,
+        getServerSideProps,
+        getStaticPaths,
+        reactLoadableManifest,
+        canonicalBase: "",
+        buildId: "5M81rLu7iQWX5Cntt5uH6",
+        assetPrefix: "",
+        runtimeConfig: runtimeConfig.publicRuntimeConfig || {},
+        previewProps: {previewModeId:"4171cb0d55104d4a1d454afce3c28634",previewModeSigningKey:"938d7aeafa2d06718c8ac55e8ca4957a0d57433490fbf646135b61240a11badd",previewModeEncryptionKey:"cbad0fd16c9a0f4199e4bdd84cc03e6b679369228bfab13c00fe707b09708127"},
+        env: process.env,
+        basePath: "",
+        ..._renderOpts
+      }
+      let _nextData = false
+      let parsedUrl
+
+      try {
+        // We need to trust the dynamic route params from the proxy
+        // to ensure we are using the correct values
+        const trustQuery = !getStaticProps && req.headers['x-vercel-id']
+        let parsedUrl = parseUrl(req.url, true)
+        let routeNoAssetPath = parsedUrl.pathname
+        const origQuery = Object.assign({}, parsedUrl.query)
+
+        parsedUrl = handleRewrites(parsedUrl)
+
+        
+
+        if (parsedUrl.pathname.match(/_next\/data/)) {
+          const {
+            default: getrouteNoAssetPath,
+          } = __webpack_require__("1Ej0");
+          _nextData = true;
+          parsedUrl.pathname = getrouteNoAssetPath(
+            parsedUrl.pathname.replace(
+              new RegExp('/_next/data/5M81rLu7iQWX5Cntt5uH6/'),
+              '/'
+            ),
+            '.json'
+          );
+          routeNoAssetPath = parsedUrl.pathname
+        }
+
+        
+      const i18n = {}
+      const detectedLocale = undefined
+    
+
+        const renderOpts = Object.assign(
+          {
+            Component,
+            pageConfig: config,
+            nextExport: fromExport,
+            isDataReq: _nextData,
+            locale: detectedLocale,
+            locales: i18n.locales,
+            defaultLocale: i18n.defaultLocale,
+          },
+          options,
+        )
+
+        
+          if (!res.statusCode) {
+            res.statusCode = 404
+          }
+        
+
+        const params = {};
+        const nowParams = null;
+
+        // make sure to set renderOpts to the correct params e.g. _params
+        // if provided from worker or params if we're parsing them here
+        renderOpts.params = _params || params
+
+        // make sure to normalize req.url on Vercel to strip dynamic params
+        // from the query which are added during routing
+        
+
+        // normalize request URL/asPath for fallback/revalidate pages since the
+        // proxy sets the request URL to the output's path for fallback pages
+        
+
+        // make sure to normalize asPath for revalidate and _next/data requests
+        // since the asPath should match what is shown on the client
+        if (
+          !fromExport &&
+          (getStaticProps || getServerSideProps)
+        ) {
+          
+
+          parsedUrl.pathname = denormalizePagePath(parsedUrl.pathname)
+          renderOpts.resolvedUrl = formatUrl({
+            ...parsedUrl,
+            query: origQuery
+          })
+
+          // For getServerSideProps we need to ensure we use the original URL
+          // and not the resolved URL to prevent a hydration mismatch on asPath
+          renderOpts.resolvedAsPath = getServerSideProps
+            ? formatUrl({
+              ...parsedUrl,
+              pathname: routeNoAssetPath,
+              query: origQuery,
+            })
+            : renderOpts.resolvedUrl
+        }
+
+        const isFallback = parsedUrl.query.__nextFallback
+
+        const previewData = tryGetPreviewData(req, res, options.previewProps)
+        const isPreviewMode = previewData !== false
+
+        if (false) {}
+        let result = await renderToHTML(req, res, "/_error", Object.assign({}, getStaticProps ? { ...(parsedUrl.query.amp ? { amp: '1' } : {}) } : parsedUrl.query, nowParams ? nowParams : params, _params, isFallback ? { __nextFallback: 'true' } : {}), renderOpts)
+
+        if (!renderMode) {
+          if (_nextData || getStaticProps || getServerSideProps) {
+            sendPayload(req, res, _nextData ? JSON.stringify(renderOpts.pageData) : result, _nextData ? 'json' : 'html', true, {
+              private: isPreviewMode,
+              stateful: !!getServerSideProps,
+              revalidate: renderOpts.revalidate,
+            })
+            return null
+          }
+        } else if (isPreviewMode) {
+          res.setHeader(
+            'Cache-Control',
+            'private, no-cache, no-store, max-age=0, must-revalidate'
+          )
+        }
+
+        if (renderMode) return { html: result, renderOpts }
+        return result
+      } catch (err) {
+        if (!parsedUrl) {
+          parsedUrl = parseUrl(req.url, true)
+        }
+
+        if (err.code === 'ENOENT') {
+          res.statusCode = 404
+        } else if (err.code === 'DECODE_FAILED') {
+          // TODO: better error?
+          res.statusCode = 400
+        } else {
+          console.error('Unhandled error during request:', err)
+
+          // Backwards compat (call getInitialProps in custom error):
+          try {
+            await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+              getStaticProps: undefined,
+              getStaticPaths: undefined,
+              getServerSideProps: undefined,
+              Component: Error,
+              err: err,
+              // Short-circuit rendering:
+              isDataReq: true
+            }))
+          } catch (underErrorErr) {
+            console.error('Failed call /_error subroutine, continuing to crash function:', underErrorErr)
+          }
+
+          // Throw the error to crash the serverless function
+          if (isResSent(res)) {
+            console.error('!!! WARNING !!!')
+            console.error(
+              'Your function crashed, but closed the response before allowing the function to exit.\n' +
+              'This may cause unexpected behavior for the next request.'
+            )
+            console.error('!!! WARNING !!!')
+          }
+          throw err
+        }
+
+        const result = await renderToHTML(req, res, "/_error", parsedUrl.query, Object.assign({}, options, {
+          getStaticProps: undefined,
+          getStaticPaths: undefined,
+          getServerSideProps: undefined,
+          Component: Error,
+          err: res.statusCode === 404 ? undefined : err
+        }))
+        return result
+      }
+    }
+    async function render (req, res) {
+      try {
+        await Object(next_plugin_loader_middleware_on_init_server___WEBPACK_IMPORTED_MODULE_0__["default"])()
+        const html = await renderReqToHTML(req, res)
+        if (html) {
+          sendPayload(req, res, html, 'html', {generateEtags: true, poweredByHeader: true})
+        }
+      } catch(err) {
+        console.error(err)
+        await Object(next_plugin_loader_middleware_on_error_server___WEBPACK_IMPORTED_MODULE_1__["default"])(err)
+        // Throw the error to crash the serverless function
+        throw err
+      }
+    }
+  
+
+/***/ }),
+
 /***/ "Jqhe":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -21995,7 +22153,7 @@ var grey = {
 /***/ "LZ9C":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"polyfillFiles\":[\"static/chunks/polyfills-c4e17b86567f813ec632.js\"],\"devFiles\":[],\"ampDevFiles\":[],\"lowPriorityFiles\":[\"static/GchRG7l3miHXPeqfxue8t/_buildManifest.js\",\"static/GchRG7l3miHXPeqfxue8t/_ssgManifest.js\"],\"pages\":{\"/\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.df885d12a6348ea4027d.js\",\"static/chunks/pages/index-0ce1cdaaa3469d221db8.js\"],\"/_app\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/_app-0adfb9c322b50b39ce79.js\"],\"/_error\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.db20d99e33e072dd6a57.js\",\"static/chunks/pages/_error-472b4921aa64bebe018c.js\"],\"/about\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.db20d99e33e072dd6a57.js\",\"static/chunks/pages/about-3b6727e3dbe02ec09242.js\"],\"/contact\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.d6a2f42f9bbd909f9b11.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.5693ddaf31518c487739.js\",\"static/chunks/pages/contact-b818ab5ed5a693bc6fd8.js\"],\"/estimate\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.d94a8de8833875048403.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.f8457d154240a5a4928b.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.d6a2f42f9bbd909f9b11.js\",\"static/chunks/pages/estimate-dac7a2ce8c4bf692c923.js\"],\"/revolution\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.df885d12a6348ea4027d.js\",\"static/chunks/pages/revolution-2589d3318d0fa4e7d2d4.js\"],\"/services\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/pages/services-127a911b3f7ea5b71f06.js\"],\"/services/company\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/company-c12a66b81b3e7b64e6a1.js\"],\"/services/events\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/events-990af6fdef7572ab2f3f.js\"],\"/services/private\":[\"static/chunks/main-33d90234c2d6349fb20c.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.a36430ce1cc884ef6d09.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d41a39dc7507bcef7430.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.4e365ae40b8ddb1e324a.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.8043da2bdac35aa40552.js\",\"static/chunks/pages/services/private-f56fbf80a4184b232129.js\"]},\"ampFirstPages\":[]}");
+module.exports = JSON.parse("{\"polyfillFiles\":[\"static/chunks/polyfills-1f8e22dc7857e48a2d36.js\"],\"devFiles\":[],\"ampDevFiles\":[],\"lowPriorityFiles\":[\"static/5M81rLu7iQWX5Cntt5uH6/_buildManifest.js\",\"static/5M81rLu7iQWX5Cntt5uH6/_ssgManifest.js\"],\"pages\":{\"/\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.a70725e00122ee9229e8.js\",\"static/chunks/pages/index-551a82f4cb66865b9d59.js\"],\"/_app\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.cda54a5d94c388a9a241.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.f537ec8524d63453c4af.js\",\"static/chunks/pages/_app-3df53780fc5c868d8214.js\"],\"/_error\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.3a7421e8f6bf21e22ce4.js\",\"static/chunks/pages/_error-0a85f782562035e4381f.js\"],\"/about\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/1606c2a9e13d950e65a96137ea7870335b39ec2a.3a7421e8f6bf21e22ce4.js\",\"static/chunks/pages/about-0af9dadd5c4170b286f1.js\"],\"/contact\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.cda54a5d94c388a9a241.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.7db2ad78274d54a6068e.js\",\"static/chunks/a03329c20db0a323d2926cf53db50ea2e1ed12c0.f537ec8524d63453c4af.js\",\"static/chunks/pages/contact-f18b2a9fdac2a687b616.js\"],\"/estimate\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/7396e0dcea3c3aecc48a073acecd29dac58843e0.4a15378c48d2c477c260.js\",\"static/chunks/29b82392f5e2fa30d3b22b815fb247550d8ea5bb.cda54a5d94c388a9a241.js\",\"static/chunks/0ccad1bc4beeffab8f9a34880c01a772ecfe17a1.7db2ad78274d54a6068e.js\",\"static/chunks/pages/estimate-4d04f1705cbbe5feb32f.js\"],\"/revolution\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/b1b03a6ca8f11ec9b396f7e9399c79d701c880b7.a70725e00122ee9229e8.js\",\"static/chunks/pages/revolution-eedba3d7ca1545fb396d.js\"],\"/services\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/pages/services-c47aeefdebfacf0e0794.js\"],\"/services/company\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.5b41a8186b2054999513.js\",\"static/chunks/pages/services/company-3987be92cb24409c9a55.js\"],\"/services/events\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.5b41a8186b2054999513.js\",\"static/chunks/pages/services/events-e2eebba95737c0df6a0a.js\"],\"/services/private\":[\"static/chunks/main-501a59c5f44d0bdbe47f.js\",\"static/chunks/webpack-e067438c4cf4ef2ef178.js\",\"static/chunks/framework.1d36bc031662b4dc4c28.js\",\"static/chunks/commons.79f75f75b8541298fe8e.js\",\"static/chunks/fb241abe32c47f353b7b36e833f6a5ad3074837c.ec42173cecd76a9569f6.js\",\"static/chunks/90bfa01c3de0b46cdf3e64b960cb97dba472cd3f.d43617175c740cd9f7fa.js\",\"static/chunks/56745f9bf64e7b09f616cfa3c862f239d12179bd.13e2197a8bf8e13f07a2.js\",\"static/chunks/621b875be9cd9b7f12711cb486857d32a903aeea.5b41a8186b2054999513.js\",\"static/chunks/pages/services/private-1b7217a6be1fde2ef2b1.js\"]},\"ampFirstPages\":[]}");
 
 /***/ }),
 
@@ -23939,12 +24097,14 @@ function Link(props) {
   const className = clsx__WEBPACK_IMPORTED_MODULE_1___default()(classNameProps, {
     [activeClassName]: router.pathname === pathname && activeClassName
   });
+  const isQuery = href.includes('ln=');
+  const queryParams = href.charAt(0) === '/' && !isQuery ? router.query.ln ? '?ln=' + router.query.ln : '' : '';
 
   if (naked) {
     return __jsx(NextComposed, _extends({
       className: className,
       ref: innerRef,
-      href: href
+      href: href + queryParams
     }, other));
   }
 
@@ -23952,7 +24112,7 @@ function Link(props) {
     component: NextComposed,
     className: className,
     ref: innerRef,
-    href: href
+    href: href + queryParams
   }, other));
 }
 
@@ -24713,6 +24873,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cVXz");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _Select__WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
+
+
+/***/ }),
+
+/***/ "QWDE":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var convert = __webpack_require__("XiWt");
+
+
+
+module.exports = convert.convert;
 
 
 /***/ }),
@@ -29576,6 +29751,518 @@ var Fab = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__["forwardRef"](function
 /* harmony default export */ __webpack_exports__["a"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(styles, {
   name: 'MuiFab'
 })(Fab));
+
+/***/ }),
+
+/***/ "XiWt":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Takes an array of [keyValue1, keyValue2] pairs and creates an object of {keyValue1: keyValue2, keyValue2: keyValue1}
+ * @param {Array} array the array of pairs
+ * @return {Object} the {key, value} pair object
+ */
+function arrayToObject(array) {
+  return array.reduce(function (obj, _ref) {
+    var prop1 = _ref[0],
+        prop2 = _ref[1];
+    obj[prop1] = prop2;
+    obj[prop2] = prop1;
+    return obj;
+  }, {});
+}
+
+function isBoolean(val) {
+  return typeof val === 'boolean';
+}
+
+function isFunction(val) {
+  return typeof val === 'function';
+}
+
+function isNumber(val) {
+  return typeof val === 'number';
+}
+
+function isNullOrUndefined(val) {
+  return val === null || typeof val === 'undefined';
+}
+
+function isObject(val) {
+  return val && typeof val === 'object';
+}
+
+function isString(val) {
+  return typeof val === 'string';
+}
+
+function includes(inclusive, inclusee) {
+  return inclusive.indexOf(inclusee) !== -1;
+}
+/**
+ * Flip the sign of a CSS value, possibly with a unit.
+ *
+ * We can't just negate the value with unary minus due to the units.
+ *
+ * @private
+ * @param {String} value - the original value (for example 77%)
+ * @return {String} the result (for example -77%)
+ */
+
+
+function flipSign(value) {
+  if (parseFloat(value) === 0) {
+    // Don't mangle zeroes
+    return value;
+  }
+
+  if (value[0] === '-') {
+    return value.slice(1);
+  }
+
+  return "-" + value;
+}
+
+function flipTransformSign(match, prefix, offset, suffix) {
+  return prefix + flipSign(offset) + suffix;
+}
+/**
+ * Takes a percentage for background position and inverts it.
+ * This was copied and modified from CSSJanus:
+ * https://github.com/cssjanus/cssjanus/blob/4245f834365f6cfb0239191a151432fb85abab23/src/cssjanus.js#L152-L175
+ * @param {String} value - the original value (for example 77%)
+ * @return {String} the result (for example 23%)
+ */
+
+
+function calculateNewBackgroundPosition(value) {
+  var idx = value.indexOf('.');
+
+  if (idx === -1) {
+    value = 100 - parseFloat(value) + "%";
+  } else {
+    // Two off, one for the "%" at the end, one for the dot itself
+    var len = value.length - idx - 2;
+    value = 100 - parseFloat(value);
+    value = value.toFixed(len) + "%";
+  }
+
+  return value;
+}
+/**
+ * This takes a list of CSS values and converts it to an array
+ * @param {String} value - something like `1px`, `1px 2em`, or `3pt rgb(150, 230, 550) 40px calc(100% - 5px)`
+ * @return {Array} the split values (for example: `['3pt', 'rgb(150, 230, 550)', '40px', 'calc(100% - 5px)']`)
+ */
+
+
+function getValuesAsList(value) {
+  return value.replace(/ +/g, ' ') // remove all extraneous spaces
+  .split(' ').map(function (i) {
+    return i.trim();
+  }) // get rid of extra space before/after each item
+  .filter(Boolean) // get rid of empty strings
+  // join items which are within parenthese
+  // luckily `calc (100% - 5px)` is invalid syntax and it must be `calc(100% - 5px)`, otherwise this would be even more complex
+  .reduce(function (_ref2, item) {
+    var list = _ref2.list,
+        state = _ref2.state;
+    var openParansCount = (item.match(/\(/g) || []).length;
+    var closedParansCount = (item.match(/\)/g) || []).length;
+
+    if (state.parensDepth > 0) {
+      list[list.length - 1] = list[list.length - 1] + " " + item;
+    } else {
+      list.push(item);
+    }
+
+    state.parensDepth += openParansCount - closedParansCount;
+    return {
+      list: list,
+      state: state
+    };
+  }, {
+    list: [],
+    state: {
+      parensDepth: 0
+    }
+  }).list;
+}
+/**
+ * This is intended for properties that are `top right bottom left` and will switch them to `top left bottom right`
+ * @param {String} value - `1px 2px 3px 4px` for example, but also handles cases where there are too few/too many and
+ * simply returns the value in those cases (which is the correct behavior)
+ * @return {String} the result - `1px 4px 3px 2px` for example.
+ */
+
+
+function handleQuartetValues(value) {
+  var splitValues = getValuesAsList(value);
+
+  if (splitValues.length <= 3 || splitValues.length > 4) {
+    return value;
+  }
+
+  var top = splitValues[0],
+      right = splitValues[1],
+      bottom = splitValues[2],
+      left = splitValues[3];
+  return [top, left, bottom, right].join(' ');
+}
+
+var propertyValueConverters = {
+  padding: function padding(_ref) {
+    var value = _ref.value;
+
+    if (isNumber(value)) {
+      return value;
+    }
+
+    return handleQuartetValues(value);
+  },
+  textShadow: function textShadow(_ref2) {
+    var value = _ref2.value;
+    // intentionally leaving off the `g` flag here because we only want to change the first number (which is the offset-x)
+    return value.replace(/(-*)([.|\d]+)/, function (match, negative, number) {
+      if (number === '0') {
+        return match;
+      }
+
+      var doubleNegative = negative === '' ? '-' : '';
+      return "" + doubleNegative + number;
+    });
+  },
+  borderColor: function borderColor(_ref3) {
+    var value = _ref3.value;
+    return handleQuartetValues(value);
+  },
+  borderRadius: function borderRadius(_ref4) {
+    var value = _ref4.value;
+
+    if (isNumber(value)) {
+      return value;
+    }
+
+    if (includes(value, '/')) {
+      var _value$split = value.split('/'),
+          radius1 = _value$split[0],
+          radius2 = _value$split[1];
+
+      var convertedRadius1 = propertyValueConverters.borderRadius({
+        value: radius1.trim()
+      });
+      var convertedRadius2 = propertyValueConverters.borderRadius({
+        value: radius2.trim()
+      });
+      return convertedRadius1 + " / " + convertedRadius2;
+    }
+
+    var splitValues = getValuesAsList(value);
+
+    switch (splitValues.length) {
+      case 2:
+        {
+          return splitValues.reverse().join(' ');
+        }
+
+      case 4:
+        {
+          var topLeft = splitValues[0],
+              topRight = splitValues[1],
+              bottomRight = splitValues[2],
+              bottomLeft = splitValues[3];
+          return [topRight, topLeft, bottomLeft, bottomRight].join(' ');
+        }
+
+      default:
+        {
+          return value;
+        }
+    }
+  },
+  background: function background(_ref5) {
+    var value = _ref5.value,
+        valuesToConvert = _ref5.valuesToConvert,
+        isRtl = _ref5.isRtl,
+        bgImgDirectionRegex = _ref5.bgImgDirectionRegex,
+        bgPosDirectionRegex = _ref5.bgPosDirectionRegex;
+    // Yeah, this is in need of a refactor 🙃...
+    // but this property is a tough cookie 🍪
+    // get the backgroundPosition out of the string by removing everything that couldn't be the backgroundPosition value
+    var backgroundPositionValue = value.replace(/(url\(.*?\))|(rgba?\(.*?\))|(hsl\(.*?\))|(#[a-fA-F0-9]+)|((^| )(\D)+( |$))/g, '').trim(); // replace that backgroundPosition value with the converted version
+
+    value = value.replace(backgroundPositionValue, propertyValueConverters.backgroundPosition({
+      value: backgroundPositionValue,
+      valuesToConvert: valuesToConvert,
+      isRtl: isRtl,
+      bgPosDirectionRegex: bgPosDirectionRegex
+    })); // do the backgroundImage value replacing on the whole value (because why not?)
+
+    return propertyValueConverters.backgroundImage({
+      value: value,
+      valuesToConvert: valuesToConvert,
+      bgImgDirectionRegex: bgImgDirectionRegex
+    });
+  },
+  backgroundImage: function backgroundImage(_ref6) {
+    var value = _ref6.value,
+        valuesToConvert = _ref6.valuesToConvert,
+        bgImgDirectionRegex = _ref6.bgImgDirectionRegex;
+
+    if (!includes(value, 'url(') && !includes(value, 'linear-gradient(')) {
+      return value;
+    }
+
+    return value.replace(bgImgDirectionRegex, function (match, g1, group2) {
+      return match.replace(group2, valuesToConvert[group2]);
+    });
+  },
+  backgroundPosition: function backgroundPosition(_ref7) {
+    var value = _ref7.value,
+        valuesToConvert = _ref7.valuesToConvert,
+        isRtl = _ref7.isRtl,
+        bgPosDirectionRegex = _ref7.bgPosDirectionRegex;
+    return value // intentionally only grabbing the first instance of this because that represents `left`
+    .replace(isRtl ? /^((-|\d|\.)+%)/ : null, function (match, group) {
+      return calculateNewBackgroundPosition(group);
+    }).replace(bgPosDirectionRegex, function (match) {
+      return valuesToConvert[match];
+    });
+  },
+  backgroundPositionX: function backgroundPositionX(_ref8) {
+    var value = _ref8.value,
+        valuesToConvert = _ref8.valuesToConvert,
+        isRtl = _ref8.isRtl,
+        bgPosDirectionRegex = _ref8.bgPosDirectionRegex;
+
+    if (isNumber(value)) {
+      return value;
+    }
+
+    return propertyValueConverters.backgroundPosition({
+      value: value,
+      valuesToConvert: valuesToConvert,
+      isRtl: isRtl,
+      bgPosDirectionRegex: bgPosDirectionRegex
+    });
+  },
+  transition: function transition(_ref9) {
+    var value = _ref9.value,
+        propertiesToConvert = _ref9.propertiesToConvert;
+    return value.split(/,\s*/g).map(function (transition) {
+      var values = transition.split(' '); // Property is always defined first
+
+      values[0] = propertiesToConvert[values[0]] || values[0];
+      return values.join(' ');
+    }).join(', ');
+  },
+  transitionProperty: function transitionProperty(_ref10) {
+    var value = _ref10.value,
+        propertiesToConvert = _ref10.propertiesToConvert;
+    return value.split(/,\s*/g).map(function (prop) {
+      return propertiesToConvert[prop] || prop;
+    }).join(', ');
+  },
+  transform: function transform(_ref11) {
+    var value = _ref11.value;
+    // This was copied and modified from CSSJanus:
+    // https://github.com/cssjanus/cssjanus/blob/4a40f001b1ba35567112d8b8e1d9d95eda4234c3/src/cssjanus.js#L152-L153
+    var nonAsciiPattern = "[^\\u0020-\\u007e]";
+    var escapePattern = "(?:" + '(?:(?:\\[0-9a-f]{1,6})(?:\\r\\n|\\s)?)' + "|\\\\[^\\r\\n\\f0-9a-f])";
+    var signedQuantPattern = "((?:-?" + ('(?:[0-9]*\\.[0-9]+|[0-9]+)' + "(?:\\s*" + '(?:em|ex|px|cm|mm|in|pt|pc|deg|rad|grad|ms|s|hz|khz|%)' + "|" + ("-?" + ("(?:[_a-z]|" + nonAsciiPattern + "|" + escapePattern + ")") + ("(?:[_a-z0-9-]|" + nonAsciiPattern + "|" + escapePattern + ")") + "*") + ")?") + ")|(?:inherit|auto))";
+    var translateXRegExp = new RegExp("(translateX\\s*\\(\\s*)" + signedQuantPattern + "(\\s*\\))", 'gi');
+    var translateRegExp = new RegExp("(translate\\s*\\(\\s*)" + signedQuantPattern + "((?:\\s*,\\s*" + signedQuantPattern + "){0,1}\\s*\\))", 'gi');
+    var translate3dRegExp = new RegExp("(translate3d\\s*\\(\\s*)" + signedQuantPattern + "((?:\\s*,\\s*" + signedQuantPattern + "){0,2}\\s*\\))", 'gi');
+    var rotateRegExp = new RegExp("(rotate[ZY]?\\s*\\(\\s*)" + signedQuantPattern + "(\\s*\\))", 'gi');
+    return value.replace(translateXRegExp, flipTransformSign).replace(translateRegExp, flipTransformSign).replace(translate3dRegExp, flipTransformSign).replace(rotateRegExp, flipTransformSign);
+  }
+};
+propertyValueConverters.objectPosition = propertyValueConverters.backgroundPosition;
+propertyValueConverters.margin = propertyValueConverters.padding;
+propertyValueConverters.borderWidth = propertyValueConverters.padding;
+propertyValueConverters.boxShadow = propertyValueConverters.textShadow;
+propertyValueConverters.webkitBoxShadow = propertyValueConverters.boxShadow;
+propertyValueConverters.mozBoxShadow = propertyValueConverters.boxShadow;
+propertyValueConverters.WebkitBoxShadow = propertyValueConverters.boxShadow;
+propertyValueConverters.MozBoxShadow = propertyValueConverters.boxShadow;
+propertyValueConverters.borderStyle = propertyValueConverters.borderColor;
+propertyValueConverters.webkitTransform = propertyValueConverters.transform;
+propertyValueConverters.mozTransform = propertyValueConverters.transform;
+propertyValueConverters.WebkitTransform = propertyValueConverters.transform;
+propertyValueConverters.MozTransform = propertyValueConverters.transform;
+propertyValueConverters.transformOrigin = propertyValueConverters.backgroundPosition;
+propertyValueConverters.webkitTransformOrigin = propertyValueConverters.transformOrigin;
+propertyValueConverters.mozTransformOrigin = propertyValueConverters.transformOrigin;
+propertyValueConverters.WebkitTransformOrigin = propertyValueConverters.transformOrigin;
+propertyValueConverters.MozTransformOrigin = propertyValueConverters.transformOrigin;
+propertyValueConverters.webkitTransition = propertyValueConverters.transition;
+propertyValueConverters.mozTransition = propertyValueConverters.transition;
+propertyValueConverters.WebkitTransition = propertyValueConverters.transition;
+propertyValueConverters.MozTransition = propertyValueConverters.transition;
+propertyValueConverters.webkitTransitionProperty = propertyValueConverters.transitionProperty;
+propertyValueConverters.mozTransitionProperty = propertyValueConverters.transitionProperty;
+propertyValueConverters.WebkitTransitionProperty = propertyValueConverters.transitionProperty;
+propertyValueConverters.MozTransitionProperty = propertyValueConverters.transitionProperty; // kebab-case versions
+
+propertyValueConverters['text-shadow'] = propertyValueConverters.textShadow;
+propertyValueConverters['border-color'] = propertyValueConverters.borderColor;
+propertyValueConverters['border-radius'] = propertyValueConverters.borderRadius;
+propertyValueConverters['background-image'] = propertyValueConverters.backgroundImage;
+propertyValueConverters['background-position'] = propertyValueConverters.backgroundPosition;
+propertyValueConverters['background-position-x'] = propertyValueConverters.backgroundPositionX;
+propertyValueConverters['object-position'] = propertyValueConverters.objectPosition;
+propertyValueConverters['border-width'] = propertyValueConverters.padding;
+propertyValueConverters['box-shadow'] = propertyValueConverters.textShadow;
+propertyValueConverters['-webkit-box-shadow'] = propertyValueConverters.textShadow;
+propertyValueConverters['-moz-box-shadow'] = propertyValueConverters.textShadow;
+propertyValueConverters['border-style'] = propertyValueConverters.borderColor;
+propertyValueConverters['-webkit-transform'] = propertyValueConverters.transform;
+propertyValueConverters['-moz-transform'] = propertyValueConverters.transform;
+propertyValueConverters['transform-origin'] = propertyValueConverters.transformOrigin;
+propertyValueConverters['-webkit-transform-origin'] = propertyValueConverters.transformOrigin;
+propertyValueConverters['-moz-transform-origin'] = propertyValueConverters.transformOrigin;
+propertyValueConverters['-webkit-transition'] = propertyValueConverters.transition;
+propertyValueConverters['-moz-transition'] = propertyValueConverters.transition;
+propertyValueConverters['transition-property'] = propertyValueConverters.transitionProperty;
+propertyValueConverters['-webkit-transition-property'] = propertyValueConverters.transitionProperty;
+propertyValueConverters['-moz-transition-property'] = propertyValueConverters.transitionProperty;
+
+var propertiesToConvert = arrayToObject([['paddingLeft', 'paddingRight'], ['marginLeft', 'marginRight'], ['left', 'right'], ['borderLeft', 'borderRight'], ['borderLeftColor', 'borderRightColor'], ['borderLeftStyle', 'borderRightStyle'], ['borderLeftWidth', 'borderRightWidth'], ['borderTopLeftRadius', 'borderTopRightRadius'], ['borderBottomLeftRadius', 'borderBottomRightRadius'], // kebab-case versions
+['padding-left', 'padding-right'], ['margin-left', 'margin-right'], ['border-left', 'border-right'], ['border-left-color', 'border-right-color'], ['border-left-style', 'border-right-style'], ['border-left-width', 'border-right-width'], ['border-top-left-radius', 'border-top-right-radius'], ['border-bottom-left-radius', 'border-bottom-right-radius']]);
+var propsToIgnore = ['content']; // this is the same as the propertiesToConvert except for values
+
+var valuesToConvert = arrayToObject([['ltr', 'rtl'], ['left', 'right'], ['w-resize', 'e-resize'], ['sw-resize', 'se-resize'], ['nw-resize', 'ne-resize']]); // Sorry for the regex 😞, but basically thisis used to replace _every_ instance of
+// `ltr`, `rtl`, `right`, and `left` in `backgroundimage` with the corresponding opposite.
+// A situation we're accepting here:
+// url('/left/right/rtl/ltr.png') will be changed to url('/right/left/ltr/rtl.png')
+// Definite trade-offs here, but I think it's a good call.
+
+var bgImgDirectionRegex = new RegExp('(^|\\W|_)((ltr)|(rtl)|(left)|(right))(\\W|_|$)', 'g');
+var bgPosDirectionRegex = new RegExp('(left)|(right)');
+/**
+ * converts properties and values in the CSS in JS object to their corresponding RTL values
+ * @param {Object} object the CSS in JS object
+ * @return {Object} the RTL converted object
+ */
+
+function convert(object) {
+  return Object.keys(object).reduce(function (newObj, originalKey) {
+    var originalValue = object[originalKey];
+
+    if (isString(originalValue)) {
+      // you're welcome to later code 😺
+      originalValue = originalValue.trim();
+    } // Some properties should never be transformed
+
+
+    if (includes(propsToIgnore, originalKey)) {
+      newObj[originalKey] = originalValue;
+      return newObj;
+    }
+
+    var _convertProperty = convertProperty(originalKey, originalValue),
+        key = _convertProperty.key,
+        value = _convertProperty.value;
+
+    newObj[key] = value;
+    return newObj;
+  }, Array.isArray(object) ? [] : {});
+}
+/**
+ * Converts a property and its value to the corresponding RTL key and value
+ * @param {String} originalKey the original property key
+ * @param {Number|String|Object} originalValue the original css property value
+ * @return {Object} the new {key, value} pair
+ */
+
+function convertProperty(originalKey, originalValue) {
+  var isNoFlip = /\/\*\s?@noflip\s?\*\//.test(originalValue);
+  var key = isNoFlip ? originalKey : getPropertyDoppelganger(originalKey);
+  var value = isNoFlip ? originalValue : getValueDoppelganger(key, originalValue);
+  return {
+    key: key,
+    value: value
+  };
+}
+/**
+ * This gets the RTL version of the given property if it has a corresponding RTL property
+ * @param {String} property the name of the property
+ * @return {String} the name of the RTL property
+ */
+
+function getPropertyDoppelganger(property) {
+  return propertiesToConvert[property] || property;
+}
+/**
+ * This converts the given value to the RTL version of that value based on the key
+ * @param {String} key this is the key (note: this should be the RTL version of the originalKey)
+ * @param {String|Number|Object} originalValue the original css property value. If it's an object, then we'll convert that as well
+ * @return {String|Number|Object} the converted value
+ */
+
+function getValueDoppelganger(key, originalValue) {
+  /* eslint complexity:[2, 10] */
+  // let's try to keep the complexity down... If we have to do this much more, let's break this up
+  if (isNullOrUndefined(originalValue) || isBoolean(originalValue)) {
+    return originalValue;
+  }
+
+  if (isObject(originalValue)) {
+    return convert(originalValue); // recurssion 🌀
+  }
+
+  var isNum = isNumber(originalValue);
+  var isFunc = isFunction(originalValue);
+  var importantlessValue = isNum || isFunc ? originalValue : originalValue.replace(/ !important.*?$/, '');
+  var isImportant = !isNum && importantlessValue.length !== originalValue.length;
+  var valueConverter = propertyValueConverters[key];
+  var newValue;
+
+  if (valueConverter) {
+    newValue = valueConverter({
+      value: importantlessValue,
+      valuesToConvert: valuesToConvert,
+      propertiesToConvert: propertiesToConvert,
+      isRtl: true,
+      bgImgDirectionRegex: bgImgDirectionRegex,
+      bgPosDirectionRegex: bgPosDirectionRegex
+    });
+  } else {
+    newValue = valuesToConvert[importantlessValue] || importantlessValue;
+  }
+
+  if (isImportant) {
+    return newValue + " !important";
+  }
+
+  return newValue;
+}
+
+exports.arrayToObject = arrayToObject;
+exports.calculateNewBackgroundPosition = calculateNewBackgroundPosition;
+exports.convert = convert;
+exports.convertProperty = convertProperty;
+exports.flipSign = flipSign;
+exports.flipTransformSign = flipTransformSign;
+exports.getPropertyDoppelganger = getPropertyDoppelganger;
+exports.getValueDoppelganger = getValueDoppelganger;
+exports.getValuesAsList = getValuesAsList;
+exports.handleQuartetValues = handleQuartetValues;
+exports.includes = includes;
+exports.isBoolean = isBoolean;
+exports.isFunction = isFunction;
+exports.isNullOrUndefined = isNullOrUndefined;
+exports.isNumber = isNumber;
+exports.isObject = isObject;
+exports.isString = isString;
+exports.propertiesToConvert = propertiesToConvert;
+exports.propertyValueConverters = propertyValueConverters;
+exports.propsToIgnore = propsToIgnore;
+exports.valuesToConvert = valuesToConvert;
+
 
 /***/ }),
 
@@ -35949,6 +36636,47 @@ var blue = {
 
 /***/ }),
 
+/***/ "elw/":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var rtl = __webpack_require__("QWDE");
+var convert = rtl['default'] || rtl;
+function jssRTL(_a) {
+    var _b = _a === void 0 ? {} : _a, _c = _b.enabled, enabled = _c === void 0 ? true : _c, _d = _b.opt, opt = _d === void 0 ? 'out' : _d;
+    return {
+        onProcessStyle: function (style, rule, sheet) {
+            if (rule.type === 'font-face') {
+                return style;
+            }
+            if (!enabled) {
+                if (typeof style.flip === 'boolean') {
+                    delete style.flip;
+                }
+                return style;
+            }
+            var flip = opt === 'out'; // If it's set to opt-out, then it should flip by default
+            if (typeof sheet.options.flip === 'boolean') {
+                flip = sheet.options.flip;
+            }
+            if (typeof style.flip === 'boolean') {
+                flip = style.flip;
+                delete style.flip;
+            }
+            if (!flip) {
+                return style;
+            }
+            return convert(typeof rule.toJSON === 'function' ? rule.toJSON() : style);
+        },
+    };
+}
+exports.default = jssRTL;
+
+
+/***/ }),
+
 /***/ "elyg":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37175,6 +37903,43 @@ var MobileStepper_MobileStepper = /*#__PURE__*/react["forwardRef"](function Mobi
 })(MobileStepper_MobileStepper));
 // CONCATENATED MODULE: ./node_modules/@material-ui/core/esm/MobileStepper/index.js
 
+
+/***/ }),
+
+/***/ "f8Eu":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return shortenText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ElevationScroll; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_useScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("9NZZ");
+
+
+// import { withRouter } from 'react-router-dom'
+function shortenText(string, numOfChars) {
+  return string.substring(0, numOfChars) + '...';
+}
+function ElevationScroll(props) {
+  const {
+    children
+  } = props;
+  const trigger = Object(_material_ui_core_useScrollTrigger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({
+    disableHysteresis: true,
+    threshold: 0
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children, {
+    elevation: trigger ? 4 : 0
+  });
+} // class ScrollToTop extends PureComponent {
+//   componentDidMount = () => window.scrollTo(0, 0)
+//   componentDidUpdate = prevProps => {
+//     if (this.props.location !== prevProps.location) window.scrollTo(0, 0)
+//   }
+//   render = () => this.props.children
+// }
+// export default withRouter(ScrollToTop)
 
 /***/ }),
 
@@ -39902,33 +40667,321 @@ module.exports = require("util");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return useLanguageContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LangProvider; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("q1tI");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const languages = ['en', 'he'];
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ useLanguageContext; });
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ LangProvider; });
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("q1tI");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// CONCATENATED MODULE: ./src/contexts/site_data.js
 const siteData = {
   en: {
-    mainHeader: `Team Experience
-      in Virtual Reality`
+    pages: {
+      home: 'Home',
+      about: 'About Us',
+      revolution: 'The Revolution',
+      contact: 'Contact Us',
+      estimate: 'Price Estimate',
+      services: 'Our Services',
+      private: 'Family & Friends',
+      company: 'Companies & Teams',
+      events: 'Conferences & Exhibitions',
+      blog: 'Blog'
+    },
+    heroHeader: `
+    Team Experience in Virtual Reality
+      `,
+    heroText: `
+      Virtual Reality events are stirring the world - the experience is emmersive and mind blowing, with no cables or clumsy equipment. Take your team, family or friends to an unforgettable jurney of consolidation, creative thinking and pure fun.
+      `,
+    megaPoints: [`The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`, `Suitable for groups of 2-12 participants, in all ages (6-80).`, `Professional guidence by our emphatic instructors.`, `Our place or yours? We will be happy to advice you. Just contact us.`],
+    priceEstimate: `
+      Price Estimate
+    `,
+    learnMore: `
+      Learn More
+    `,
+    theTeam: {
+      heading: 'The Team'
+    },
+    weAre: {
+      heading: 'We Are VRFunTeam',
+      text1: `
+      A team of tech geeks and training instructors, who loves to escort
+      groups in conseptual trips into the Virtual Reality world. Our
+      mentors will guide you hand by hand into the new world, and will
+      know to take a step back when you'll be flying on your own.
+              `,
+      text2: `
+      It is a long established fact that a reader will be distracted by
+      the readable content of a page when looking at its layout. The
+      point of using Lorem Ipsum is that it has a more-or-less normal
+      distribution of letters, as opposed to using 'Content here,
+      content here', making it look like readable English. Many desktop
+      publishing packages and web page editors now use Lorem Ipsum as
+      their default model text, and a search for 'lorem ipsum' will
+      uncover many web sites still in their infancy.
+              `
+    },
+    faq: {
+      title: 'FAQ',
+      data: [{
+        title: `Where does all this FUN happenes?`,
+        text: `We will be glad to arrive at your place for consulation and location
+        impression. Together we'll decide if the activity will be at your
+        place or at one of our designated studios across town.`
+      }, {
+        title: `What is the price for all this FUN?`,
+        text: `Our prices changed according to the group size, type of event and
+        the location. You're welcome to contact us for a quote, or 
+        <a href='/estimate'>estimate the price using our calculator</a>.`
+      }, {
+        title: `What if not all of our group is into VR?`,
+        text: `All is good, not everyone must transform into another world. We can
+        offer activities combining human interaction, use of computer/tv
+        screens or trough a mobile app.`
+      }, {
+        title: `What kind of technology are you using?`,
+        text: `We arrive at your place with Oculus Quest goggels, by Facebook. One
+        of the most advanced VR hadset in the market, which allows 4K
+        experience without the need of cables or heavy equipment.`
+      }]
+    },
+    contactForm: {
+      heading: `We're eager to make you fly`,
+      name: `Name`,
+      phone: `Phone`,
+      email: `Email`,
+      Text: `How can we help you?`,
+      submit: `SEND MESSAGE`
+    },
+    estimate: {
+      heading1: 'Choose your type of event',
+      heading2: 'How many players?',
+      heading3: 'How long would you play?',
+      price: 'Price Est: $'
+    },
+    services: {
+      private: {
+        title: `Family & Friends`,
+        text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+
+        `,
+        points: [`The most advanced dset. No cables or clumsy equipment. Fast and easy adaptation.`, `The most advanced VR No cables or clumsy equipment. Fast and easy adaptation.`, `The most advanced VR les or clumsy equipment. Fast and easy adaptation.`, `The most advanced VR Hcables or clumsy equipment. Fast and easy adaptation.`]
+      },
+      company: {
+        title: `Company & Teams`,
+        text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+
+        `,
+        points: [`The most advanced VR H No cables or clumsy equipment. Fast and easy adaptation.`, `The most advanceddset. No cables or clumsy equipment. Fast and easy adaptation.`, `The most advanced et. No cableequipment. Fast and easy adaptation.`, `The movanced . No cables or clumsy equipment. Fast and easy adaptation.`]
+      },
+      events: {
+        title: `Exhibitions & Conferences`,
+        text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+
+        `,
+        points: [`The most advancedles or clumsy equipment. Fast and easy adaptation.`, `The most advanced VR Headset. No sy equipment. Fast and easy adaptation.`, `The most advanced VR Hea or clumsy equipment. Fast and easy adaptation.`, `The most advanced Vset. No cables or clumsy equipment. Fast and easy adaptation.`]
+      }
+    },
+    articles: [{
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `Oculus Quest - The most advanced VR goggles`,
+      text: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`
+    }],
+    qoutes: [{
+      content: `It is a long established fact that a reader will be distracted
+        by the readable content of a page when looking at its layout.`,
+      subContent: `Idan Baron | SEO Chikoom inc`
+    }, {
+      content: `Mow Mow Mow.`,
+      subContent: `Kundofoni | SEO FancyFeast inc`
+    }, {
+      content: `lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum `,
+      subContent: `Moshiko MushMush | SEO DigiDigi inc`
+    }],
+    copyright: 'Dev&Des by Chikoom'
   },
   he: {
-    mainHeader: `חוויה קבוצתית מעולם אחר`
+    pages: {
+      home: 'בית',
+      about: 'עלינו',
+      revolution: 'המהפכה',
+      contact: 'יצירת קשר',
+      estimate: 'הערכת מחיר',
+      services: 'אירועים מכל סוג',
+      private: 'משפחה וחברים',
+      company: 'חברות וקבוצות',
+      events: 'כנסים ותערוכות',
+      blog: 'בלוג'
+    },
+    heroHeader: `חוויה קבוצתית מעולם אחר`,
+    heroText: `
+    מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה. מסווגים טלוויזיה מורחב חלוקה הטכנולוגיה כלים בחיפוש מאז לפי הטכנולוגיה. 
+      `,
+    megaPoints: [`ציוד ה-VR המתקדם ביותר בעולם, ללא כבלים או ציוד מסורב. הטמעה והתאקלמות מהירה במיוחד`, `מתאים לקבוצות של 2-12 משתתפים, בכל הגילאים (6-80)`, `הדרכה וליווי מקצועי מהמדריכים הרגישים `, `אצלנו או אצלכם? צרו איתנו קשר ונשמח לייעץ לכם`],
+    priceEstimate: `
+        מחשבון מחיר
+      `,
+    learnMore: `
+        מידע נוסף
+      `,
+    theTeam: {
+      heading: 'הצוות'
+    },
+    weAre: {
+      heading: 'אנחנו VRFunTeam',
+      text1: `
+      מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה. מסווגים טלוויזיה מורחב חלוקה הטכנולוגיה כלים בחיפוש מאז לפי הטכנולוגיה. 
+        `,
+      text2: `
+      מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה. מסווגים טלוויזיה מורחב חלוקה הטכנולוגיה כלים בחיפוש מאז לפי הטכנולוגיה. 
+        `
+    },
+    faq: {
+      title: 'שאלות נפוצות',
+      data: [{
+        title: `איפה קורה כל הכיף הזה?`,
+        text: `We will be glad to arrive at your place for consulation and location
+        impression. Together we'll decide if the activity will be at your
+        place or at one of our designated studios across town.`
+      }, {
+        title: `מה המחיר של כל הכיף הזה`,
+        text: `Our prices changed according to the group size, type of event and
+        the location. You're welcome to contact us for a quote, or{' '}
+        <a href='/estimate'>estimate the price using our calculator</a>.`
+      }, {
+        title: `מה עושים כשלא כל חברי הצוות בקטע של VR`,
+        text: `All is good, not everyone must transform into another world. We can
+        offer activities combining human interaction, use of computer/tv
+        screens or trough a mobile app.`
+      }, {
+        title: `באיזו טכנולוגיה אתם משתמשים?`,
+        text: `We arrive at your place with Oculus Quest goggels, by Facebook. One
+        of the most advanced VR hadset in the market, which allows 4K
+        experience without the need of cables or heavy equipment.`
+      }]
+    },
+    contactForm: {
+      heading: `אנחנו מחכים לשמוע ממך`,
+      name: `שם מלא`,
+      phone: `טלפון`,
+      email: `אימייל`,
+      text: `איך נוכל לעזור לך?`,
+      submit: `שליחת הודעה`
+    },
+    estimate: {
+      heading1: 'בחרו את סוג האירוע',
+      heading2: 'כמה משתתפים?',
+      heading3: 'מה משך הזמן?',
+      price: 'הערכת מחיר: ₪'
+    },
+    services: {
+      private: {
+        title: `משפחה וחברים`,
+        text: ` מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.
+
+        `,
+        points: [`טכנולוגיית התחכום לתחומים האצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות נ לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. ידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידוש רכב הטכנולוגיה.`]
+      },
+      company: {
+        title: `קבוצות וחברות`,
+        text: ` מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה..
+
+        `,
+        points: [`טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מחידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצוד סייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה  מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסכב הטכנולוגיה.`]
+      },
+      events: {
+        title: `אירועים וכנסים`,
+        text: ` מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.
+
+        `,
+        points: [`טכנולוגיית התחכום לתחומים האומנות ניצול ערך כמדד חידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך ה כמדד חידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. חידושי מסייעת רכב הטכנולוגיה.`, `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מה חידושי מסייעת רכב הטכנולוגיה.`]
+      }
+    },
+    articles: [{
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבותל המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות ושל המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }, {
+      video: 'cmZ-4BsCoIA',
+      title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
+      text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`
+    }],
+    qoutes: [{
+      content: `It is a long established fact that a reader will be distracted
+        by the readable content of a page when looking at its layout.`,
+      subContent: `עידן בראון | מנכ"ל Chikoom.com`
+    }, {
+      content: `Mow Mow Mow.`,
+      subContent: `קונדופוני | מנהל כוח אדם | םנסי פיסט`
+    }, {
+      content: `lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum `,
+      subContent: `Moshiko MushMush | SEO DigiDigi inc`
+    }],
+    copyright: 'עיצוב ופיתוח Chikoom'
   }
 };
-const LangContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
+// CONCATENATED MODULE: ./src/contexts/LangContext.js
+var __jsx = react_default.a.createElement;
+
+
+const languages = ['en', 'he'];
+const LangContext = /*#__PURE__*/react_default.a.createContext();
 function useLanguageContext() {
-  return Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(LangContext);
+  return Object(react["useContext"])(LangContext);
 }
+
+const getQueryLanguage = qString => {
+  return qString.includes('ln=he') ? 'he' : 'en';
+};
+
 function LangProvider({
   children
 }) {
   const {
     0: language,
     1: setLanguage
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('en');
+  } = Object(react["useState"])(false ? undefined : 'en');
 
   const changeLanguageTo = langString => {
     console.log('Changing language to ', langString);
@@ -44921,29 +45974,49 @@ const createPagePathMap = pages => {
 
 const pages = [{
   name: 'Home',
+  nameLang: {
+    en: 'Home',
+    he: 'בית'
+  },
   path: '/',
   special: false,
   icon: 'HomeIcon',
   children: []
 }, {
   name: 'Services',
+  nameLang: {
+    en: 'Services',
+    he: 'אירועים'
+  },
   path: '/services',
   special: false,
   icon: 'AppsIcon',
   children: [{
     name: 'Private',
+    nameLang: {
+      en: 'Private',
+      he: 'פרטיים'
+    },
     path: '/services/private',
     children: [],
     special: false,
     icon: 'GroupIcon'
   }, {
     name: 'Company',
+    nameLang: {
+      en: 'Company',
+      he: 'חברות'
+    },
     path: '/services/company',
     children: [],
     special: false,
     icon: 'BusinessIcon'
   }, {
     name: 'Events',
+    nameLang: {
+      en: 'Events',
+      he: 'כנסים'
+    },
     path: '/services/events',
     children: [],
     special: false,
@@ -44951,12 +46024,20 @@ const pages = [{
   }]
 }, {
   name: 'Revolution',
+  nameLang: {
+    en: 'Revolution',
+    he: 'המהפכה'
+  },
   path: '/revolution',
   special: false,
   icon: 'AllInclusiveIcon',
   children: []
 }, {
   name: 'About',
+  nameLang: {
+    en: 'About',
+    he: 'עלינו'
+  },
   path: '/about',
   special: false,
   icon: 'InfoIcon',
@@ -44967,12 +46048,20 @@ const pages = [{
     `
 }, {
   name: 'Contact',
+  nameLang: {
+    en: 'Contact',
+    he: 'יצירת קשר'
+  },
   path: '/contact',
   special: false,
   icon: 'SendIcon',
   children: []
 }, {
   name: 'Estimate',
+  nameLang: {
+    en: 'Estimate',
+    he: 'הערכת מחיר'
+  },
   path: '/estimate',
   special: true,
   icon: 'AccountBalanceWalletIcon',

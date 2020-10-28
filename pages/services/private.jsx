@@ -124,12 +124,14 @@ const ServicesPrivate = props => {
           <Grid container direction='row' alignItems='center'>
             <Grid item xs={12} sm={8}>
               <List>
-              {siteData.services.private.points.map(point => <ListItem>
+              {siteData.services.private.points.map(point => 
+              <ListItem key={point}>
                   <ListItemIcon>
                     <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>
                   <ListItemText primary={point} />
-                </ListItem>)}
+                </ListItem>
+                )}
               </List>
             </Grid>
             <Grid item xs={12} sm={4} align='center'>

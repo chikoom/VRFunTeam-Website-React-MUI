@@ -102,10 +102,10 @@ export const siteData = {
 
         `,
         points: [
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced dset. No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced VR No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced VR les or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced VR Hcables or clumsy equipment. Fast and easy adaptation.`,
         ],
       },
       company: {
@@ -114,10 +114,10 @@ export const siteData = {
 
         `,
         points: [
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced VR H No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanceddset. No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced et. No cableequipment. Fast and easy adaptation.`,
+          `The movanced . No cables or clumsy equipment. Fast and easy adaptation.`,
         ],
       },
       events: {
@@ -126,10 +126,10 @@ export const siteData = {
 
         `,
         points: [
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
-          `The most advanced VR Headset. No cables or clumsy equipment. Fast and easy adaptation.`,
+          `The most advancedles or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced VR Headset. No sy equipment. Fast and easy adaptation.`,
+          `The most advanced VR Hea or clumsy equipment. Fast and easy adaptation.`,
+          `The most advanced Vset. No cables or clumsy equipment. Fast and easy adaptation.`,
         ],
       },
     },
@@ -273,10 +273,10 @@ export const siteData = {
 
         `,
         points: [
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות נ לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. ידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידוש רכב הטכנולוגיה.`,
         ],
       },
       company: {
@@ -285,10 +285,10 @@ export const siteData = {
 
         `,
         points: [
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מחידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצוד סייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה  מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסכב הטכנולוגיה.`,
         ],
       },
       events: {
@@ -297,10 +297,10 @@ export const siteData = {
 
         `,
         points: [
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
-          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך ה כמדד חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. חידושי מסייעת רכב הטכנולוגיה.`,
+          `טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מה חידושי מסייעת רכב הטכנולוגיה.`,
         ],
       },
     },
@@ -308,22 +308,22 @@ export const siteData = {
       {
         video: 'cmZ-4BsCoIA',
         title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
-        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`,
+        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבותל המואץ הטכנולוגיה המציא טכנולוגיה.`,
       },
       {
         video: 'cmZ-4BsCoIA',
         title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
-        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`,
+        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`,
       },
       {
         video: 'cmZ-4BsCoIA',
         title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
-        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`,
+        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא המואץ הטכנולוגיה המציא טכנולוגיה.`,
       },
       {
         video: 'cmZ-4BsCoIA',
         title: `משקפי ה-VR המתקדמים ביותר בעולם | Oculus Quest`,
-        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות וכיוצא למשל המואץ הטכנולוגיה המציא טכנולוגיה.`,
+        text: `מורחב טכנולוגיה תחכום המוצרים תורת מיווניתטכנו הטכנולוגיה תקופת לשלוש תורה, היסטוריה לרצונות העוסק טכנולוגיית התחכום לתחומים האומנות ניצול ערך לייצור. מהמאה כמדד חידושי מסייעת רכב הטכנולוגיה להגדיר רובוטיקה של המדע, התחכום טכנולוגיים ערך ובתרבות ושל המואץ הטכנולוגיה המציא טכנולוגיה.`,
       },
       {
         video: 'cmZ-4BsCoIA',

@@ -132,7 +132,7 @@ const ServicesEvents = props => {
           <Grid container direction='row' alignItems='center'>
             <Grid item xs={12} sm={8}>
               <List>
-              {siteData.services.events.points.map(point => <ListItem>
+              {siteData.services.events.points.map(point => <ListItem  key={point}>
                   <ListItemIcon>
                     <span style={theme.typography.listIcon}>🥽</span>
                   </ListItemIcon>

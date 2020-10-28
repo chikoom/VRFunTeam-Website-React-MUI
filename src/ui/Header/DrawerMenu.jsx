@@ -8,6 +8,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from '@material-ui/core/'
 import Collapse from '@material-ui/core/Collapse'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -26,6 +27,7 @@ import { usePagesContext } from '../../contexts/PagesContext'
 import DarkModeListSwitch from '../DarkModeListSwitch'
 import { event as GAevent } from '../../functions/gtag'
 import { useLanguageContext } from '../../contexts/LangContext'
+import LanguageListItem from '../LanguageListItem'
 
 // const iconMapping = {
 //   SendIcon,HomeIcon,AppsIcon,AllInclusiveIcon,InfoIcon,AccountBalanceWalletIcon,GroupIcon,BusinessIcon,EmojiEventsIcon
@@ -86,7 +88,7 @@ const useStyles = makeStyles(theme => ({
 const DrawerMenu = props => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
-
+  const theme = useTheme()
   const classes = useStyles()
   const {
     pages,
@@ -128,10 +130,12 @@ const DrawerMenu = props => {
           className={classes.root}
           disablePadding
         >
+          <LanguageListItem />
           <DarkModeListSwitch />
           {pages.map((page, index) => (
             <React.Fragment key={page.path}>
               <ListItem
+                style={{direction: theme.direction}}
                 divider
                 button
                 component={Link}
